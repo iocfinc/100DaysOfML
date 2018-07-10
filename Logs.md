@@ -1,19 +1,23 @@
 # 100DaysOfML
+
 Pledged to the #100daysofMLCode. This will serve as the Journal for the entire 100 Days.
 
-## Objectives:
+## Objectives
+
 * Learn what ML is and its implications to society.
 * Create 1 project per week related to ML and upload it on Github.
 * Participate in the community and learn from others in the same journey.
 
 ## Note to self
+
 Have fun and more importantly learn to give 1-2 hours a day for this cause. I already work 8+ Hours a day for others. 1-2 hours dedicated for this is relatively small.:joy: Learn by doing, have fun, collaborate.
 
 >"Get as much education as you can. Nobody can take that away from you" -Eben Upton
- 
+
 ## Start of the logs
 
 ### Day 1: July 7, 2018
+
 First of all what is Machine Learning?
 From reddit's [ELI5:Machine Learning](https://www.reddit.com/r/explainlikeimfive/comments/4v3u4l/eli5_what_is_machine_learning/) what I learned is that machine learning is a way to program a computer in a way that it would be able to figure something out without you typing it in **rule based, multiple if statements**. You would then **TRAIN** the machine to provide an output by feeding it data. The more data you have the more the machine can get the context of what you are trying to achieve. As it feeds on more data the more complex the things it can come up with.
 
@@ -24,7 +28,7 @@ Reading an article from [Medium](https://medium.com/@lampix/machine-learning-ml-
 Continuing now on the Intro to Machine Learning course by Udacity. I started this when I was in Thailand last June 2. I am already in Lesson 2: Naive Bayes but I had to pause because my Python was still crappy, it still is but I have finished the Intro to Python and I promise to code and practice more every day. With this initiative, I sure am going to be coding for a while. :smiley:
 
 Anyway, the lesson for today is Gaussian Naive Bayes. The documentation as well as sample code for [Gaussian Naive Bayes in SKlearn](http://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html) is in this link.  What is Naive Bayes anyway? From [Medium](https://medium.com/@gp_pulipaka/applying-gaussian-na%C3%AFve-bayes-classifier-in-python-part-one-9f82aa8d9ec4) it says:
->Primarily Naïve Bayes is a linear classifier, which is a supervised machine learning method and works as a probabilistic classifier as well.
+>Primarily Naive Bayes is a linear classifier, which is a supervised machine learning method and works as a probabilistic classifier as well.
 
 The article was very technical for me to wrap my head around. So I went to reddit [ELI5](https://www.reddit.com/r/explainlikeimfive/comments/1p4r3e/eli5_naive_bayes_classifier/). So Naive Bayes is a **Classifier**, this is the first thing. From the reddit answer:
 >classifiers is a way to use **MATH** to identify something.
@@ -39,11 +43,12 @@ I have also tried the example outlined in the SKlearn documentation. The code is
 
 ### Day 3: July 9, 2018
 
-I am currenlty having multiple projects at once. The Deep Learning nanodgree in [Udacity](https://www.udacity.com/course/deep-learning-nanodegree--nd101) is starting this July 10 and I am enrolled. This #100DaysOfMLCode would be a great supplement to track my progress in the nano-degree. I enrolled because I am becoming more interested to pursue the field of AI. I am interested in knowing more and I would like to enter the field and contribute. This would be part of my life long learning initiative. This was paid with the money I saved up as *Education Funds*:thumbsup:
+I am currently having multiple projects at once. The Deep Learning nanodgree in [Udacity](https://www.udacity.com/course/deep-learning-nanodegree--nd101) is starting this July 10 and I am enrolled. This #100DaysOfMLCode would be a great supplement to track my progress in the nano-degree. I enrolled because I am becoming more interested to pursue the field of AI. I am interested in knowing more and I would like to enter the field and contribute. This would be part of my life long learning initiative. This was paid with the money I saved up as *Education Funds*:thumbsup:
 
 In terms of progress for today, I was able to continue watching UD120. It is helpful but I also found the [crash course](https://developers.google.com/machine-learning/crash-course/) in Google Developers helpful. Although I have just finished watching the Intro and Framing, if the course structure is the same then I would recommend this course better than the one in Udacity. The crash course has some reading parts which I can follow along which I **-PERSONALLY-** prefer.
 
 Reading over the crash course, there is a prerequisites page and a poll on your current background in ML. Since I am starting from zero background I have to go over the entire course in the order it is placed. Additionally, there are some recommended prerequisites to the course to better aid the understanding and the pace of the course:
+
 * Intro-level Algebra - Which was already covered in college so I just need to review  :tada:
 * Proficiency in programming basics, and some experience coding in Python -  :muscle: should be manageable since I have some experience in coding and I just finished the Intro to Python Course :satisfied:. I might need to grasp the Tensorflow workflow but that should be manageable.
 
@@ -55,6 +60,7 @@ Basic terminology for (supervised) machine learning. The first term is **Labels*
 The next term to discuss is **Features**. Its the input variable for the system. It is used to define a label we have. For example, for a dog breed classifier it could be "Spotted" or "Unspotted", "Big" or "Small" build, "Nose length" can be a feature. The set of feature can vary from single featured data to millions of features for complicated data.
 
 An **Example** is a particular instance of a data, **x**. Since **x** can contain one or many sets inside it, we can consider it as a **vector** that is why its in boldface. A basic example can be classified into:
+
 * **Labeled** examples which include the feature/s and the corresponding labels
 > labeled examples: {features, label}: (x, y)
 Labeled data is used to **train** the model we are trying to create. In the ducktyping example we can use the features that we know of the duck like its sound, and color and we can label it as either a duck or not a duck based on the **actual** value.
@@ -63,9 +69,10 @@ Labeled data is used to **train** the model we are trying to create. In the duck
 > unlabeled examples: {features, ?}: (x, ?)
 Once we have trained the model from labeled data, we can now input an unlabeled data to the model and know the label of the data.
 
-**Models** are what deines the relationship between features and labels. Think of it as the blackbox between the input and output:smile:. It is here that the relationships and connections are built and reinforced with data. There are *two* phases for a model to go through:
+**Models** are what defines the relationship between features and labels. Think of it as the black box between the input and output:smile:. It is here that the relationships and connections are built and reinforced with data. There are *two* phases for a model to go through:
+
 * First is obviously **Training** the model or the model **Creation**. This is where the model *crunches* the data and starts building the relationship web inside it. The vector of features and label are inputs initially in this phase so that the model can build relationships.
-* After the training comes the **Inference** phase. Obviously we want to use our trained model to predict or infer from new unlabeled data a possible label. This is where the value of training comes forward. The more data you have the better your model becomes and the better your model becomes obviously would yeild a more accurate **inference**.
+* After the training comes the **Inference** phase. Obviously we want to use our trained model to predict or infer from new unlabeled data a possible label. This is where the value of training comes forward. The more data you have the better your model becomes and the better your model becomes obviously would yield a more accurate **inference**.
 
 What is the difference between **Regression** and **Classification**?
 A **classification** model predicts discrete values. The example was that a classification model would predict if an email is "Spam" or "Not spam", it can predict the breed of a dog "German Shepherd" "Bulldog" "Boxer" etc.
@@ -81,16 +88,17 @@ Once the model has been created for the linear regression via the labeled data w
 
 **Training** a model for ML means finding the best weights for each feature with the goal of minimizing the over all error for the given training data. **Weight** is the coefficient of a feature in a linear model, it can also be called **edge** for deep network. The goal of training is find the ideal weight for a given feature. Training needs to find the ideal weight because it wants to minimize the error between the model which is the *best fit line* and the actual training data. In supervised learning, this process of finding weights to minimize loss is called **empirical risk minimization**.
 
-Now we need to define what a loss is? Simply put the **loss** is the penalty for the model when a bad prediction is made. There are two types discussed, one is **L1** loss which is the absolute value difference between the actual value and the predicted value. The other is **L2** loss which is the squared loss, it is the square of the absolute value difference between actual value and predicted value: *(y_actual - y')<sup>2</sup>*. In linear regression models L2 loss is used and the reason is that L2 reacts strongly to outliers in the data. 
+Now we need to define what a loss is? Simply put the **loss** is the penalty for the model when a bad prediction is made. There are two types discussed, one is **L1** loss which is the absolute value difference between the actual value and the predicted value. The other is **L2** loss which is the squared loss, it is the square of the absolute value difference between actual value and predicted value: *(y_actual - y')<sup>2</sup>*. In linear regression models L2 loss is used and the reason is that L2 reacts strongly to outliers in the data.
 
 Mean Square Loss or (MSE) takes into consideration the entire data set. Its the average squared loss per example in the data set. So basically its the __summation of *(y_actual - y')<sup>2</sup>* / N__ where __N__ is the total number of data points in the set.
 
 This is the end of Day 3 update. I am still going to watch some of Siraj's video on ML and see if I can hack/code some of his examples tonight. Will post about the updates tomorrow.
 
 TODO:
-- Udacity's DL nano-degree introductions
-- Reducing loss topic in Crash course
-- Essence of Linear Algebra (3Blue1Brown) Chapters 3 and 4 in 1.5X speed. :muscle:
+
+* Udacity's DL nano-degree introductions
+* Reducing loss topic in Crash course
+* Essence of Linear Algebra (3Blue1Brown) Chapters 3 and 4 in 1.5X speed. :muscle:
 
 ### Day 4: July 10, 2018
 
@@ -117,6 +125,7 @@ Next lesson is **Linear Transformation** and __Matrices__.
 
 First to be discussed is the word _transformation_ which in this case means a function. We enter a value and we get its output. The output is _"transformed"_ due to a given _function_. The idea of using the word transform instead of function stems from the fact that we can imagine vectors _"moving" or "transforming"_ due to the function.
 The word _linear_ is also clarified. For a transformation to be considered linear it has to meet two properties:
+
 * All lines must remain lines without getting curved.
 * The origin must remain in place.
 
@@ -134,8 +143,12 @@ After hammering down on the concept of transformation we then proceed with the p
 
 Now with the concept of how to apply matrix transforms in check, we now prove that matrix transforms are associative. A(BC) == (AB)C, remembering in college when I used to compute this, proving this was time consuming. But now, knowing that multiplication is simply the transformation of matrices, you can already tell that it should not matter how its computed as long as the order of transformation is the same its going to produce the same result. _Now obviously, the professor would not accept an essay form to a math question because LHS == RHS is always the way. :sigh:_
 
+### Day 5: July 11, 2018
 
-### Current Resources:
+Setting up my Anaconda. Updated my MS VS code to 64-bit. Its the start of the nanodegree today. Immediately encountered an issue with Jupyter being blocked by the network settings.
+
+### Current Resources
+
 [Udacity's FREE course Intro to Machine Learning](https://classroom.udacity.com/courses/ud120)
 
 [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/)
