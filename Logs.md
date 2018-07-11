@@ -147,8 +147,161 @@ Now with the concept of how to apply matrix transforms in check, we now prove th
 
 Setting up my Anaconda. Updated my MS VS code to 64-bit. Its the start of the nanodegree today. Immediately encountered an issue with Jupyter being blocked by the network settings.
 
+So now, I am able to get it to work. Yay :smile:. I am currently trying out a simple classifier with tensorflow. Encountered an issue with the tensorflow not installed by default in Anaconda. Made a mistake of following the installation guide in Tensorflow about adding tensorflow to anaconda. I added a new environment instead of adding tensorflow to the root environment :sigh:. I was not able to find a doc detailing how to install somthing on the root env. I am guessing I have to do a pip install via gitbash or cmd prompt to the root folder and nobody got time for that. Actually was able to get the tensorflow module(?) added to the root environment via the anaconda gui.
+
+Anyway, I was able to move and try more examples for the pre-trained deep learning models in the nano-degree. Quite fun actually. The Deep-traffic simulator which was a neural net for self-driving cars was particularly fun. There is also a Flappy bird model which I have not yet tried. There are also recommended readings for the course. I am interested in getting the flappy bird model to work. I will definitely circle back to it.
+
+Moving on to the next lesson, we have an introduction to Anacondas. In the introduction video we get an explanation on why we use Anaconda. One thing that struck me was that Anaconda is used since it has pre-loaded libraries that are useful. The other reason was that it allows us to make use of the Conda environment manager. Now why do we need an environment manager? The explanation is that so we can control the version of our modules and our interpreter. One possible upside here is that we can be sure that all our modules actually work together. The other thing is that we can add the portability of our code through sharing by actually having all the dependencies for our project in one virtual environment. Well now it makes sense to me, before in Pycharm I actually just use one single virtual environment, the one with the most modules and if there are missing modules I just add them. Knowing the importance of environment control, I now appreciate its value and its utility.
+
+Why anaconda? Anaconda has functionalities that make it easier to get started in data science. It comes pre-loaded with packages that are usually used for data science like numpy, pandas and sklearn. With Anaconda there is also a package and environment manager that comes with it called __conda__. Again as I have found out, the utility of being able to manage your environment per project allows us less stress in dealing with compatibility issues or allows us to use an older version of a library that might have a functionality that is no longer available on newer versions.
+
+## Package Managers: conda and pip
+
+Package managers like __pip__ allows us to add software and libraries to our computer. __Conda__ is the same as pip in a sense that it also allows us to install and manage our softwares, the main difference is that conda is generally geared towards data science packages pre-installed while pip is a more general purpose. conda allows us to install and manage software across multiple platforms as _conda is not python specific_. Another point to take note of is that _there will be times when we need to use pip to install a package._
+
+Some useful conda commands to install packages
+
+> conda install <package_name>
+
+Package managers like pip and conda are smart enough to also install the required dependencies needed by the package you want to install. For example, scipy would need numpy to run. Entering _conda install scipy_ would not just install scipy but also get numpy for you as well.
+
+To add multiple packages:
+
+> conda install <package_name1> <package_name2> ... <package_nameN>
+
+To remove a package:
+
+> conda remove <package_name>
+
+To update a package:
+
+> conda update <package_name>
+
+To update all packages in the current environment:
+
+> conda update --all
+
+To see the list of packages in the environment:
+
+> conda list
+
+To search for a package:
+
+> conda search \*package name\*
+> conda search '\*package name\*' # To escape the wildcard
+> google search :joy:
+
+## Environment managers: conda
+
+__Environment__ is pretty straight forward. It allows isolation of packages for individual projects. They allow us to contain the scope of a package only to that project. Why would this be useful? There would be some projects where the functionality we want is available only in older versions of a package, then you will work on a project that also requires the same package but in the most recent version. Obviously the older version needed for the former project gets updated and that will lead you to issues later on when you try to go back and forth between the two projects. If we use environments in this setting we can tailor fit our package requirements in a way that best suits or needs. _Its quite similar to the cloud architecture where you only pay for what you require and you can allocate your specifications (to a certain extent) to allow you better performance_.
+
+> _Here is an analogy I can think of for this: its similar to building a pc._  They allow us build up and spec out our PC in a very specific purpose. For example we want to create a simple PC for basic streaming, we obviously do not need a very strong GPU or a very powerful processor. Since we are in control of our specs we can opt for the most basic components that can allow us to do our intentions without going overboard in terms of computing power and budget.
+
+To create a new environment with packages:
+
+> conda create -n <environment_name> <[List of packages]>
+
+To create a new environment with python:
+
+> conda create -n <environment_name> python=<python_version>
+
+So an example of this would be conda create -n python27 python=2.7 or conda create -n python36 python=3.6. One purpose of this is that you no longer need to install multiple instances of python in your PC manually. Actually its not true, you are still creating them but conda just does all the heavy lifting.
+
+To activate an environment:
+
+> activate <environment_name>
+
+The code above is for windows. You will know the current environment that conda is using by looking at the left hand side of the terminal. The environment name would be enclosed in the parenthesis. For example if you type in _activate python36_ the new line of the terminal should show _(python36) $_.
+
+Sample code for creating an environment with python 3.6, numpy, and pandas:
+
+> conda create -n python36 python=3.6 numpy pandas
+
+Note that the whitespace acts as the separator and do note that you can actually set the version of the package you want the same way you set python version number.
+
+To see the packages inside the environment:
+
+> conda env export
+
+This will show you the packages of the __current__ working environment.
+
+To export the current environment:
+
+> conda env export > <env_name>.yaml
+
+The line above will first list out all the files and then paste the results to the _.yaml_ file. This will allow us to send out the current working environment settings to others who wish to run the same project as ours.
+
+To create a new environment from a yaml file:
+
+> conda env create -f <env_name>.yaml
+
+The code above will create a __new__ environment based on the information from the .yaml file. Take note that _the name of the environment created from loading the yaml will be the same as the environment name exported in the .yaml file_.
+
+To list out the environments:
+
+> conda env list
+
+To know the current working environment, just look for the \* sign beside the environment name. When you do not activate any environment during the conda startup, the default environment would be the __base__ environment or __root__. From my workstation its called __base__.
+
+To remove an environment:
+
+> conda env remove -n env_name
+
+The line above would remove the environment with name _env\_name_ from the available environments in the system. __In case its not yet clear, notice that when creating environments you do not call the env argument. But in manipulating the environments you are inside the env argument. *Just be careful of it.*__
+
+## Best practices
+
+### On using environments
+
+It is good practice to setup a generic environment for the 2 versions of Python. One for Python 2 and one for Python 3. This allows you to have a general purpose environment for testing. You can then populate the environment with the basic packages for the project you want. Or you can keep it generic if you just want to practice.
+
+### On sharing environments
+
+When we upload or share our work and projects to others, for example in github, it is good to include a requirements.yaml file or a requirements.txt file to help users replicate the working environment you had. The requirements.txt file can be obtained via [_pip freeze_](https://pip.pypa.io/en/stable/reference/pip_freeze/) and can be handy because not everyone is using conda. 
+
+## Further Readings for the Topic on Condas
+
+[Conda: Myths and Misconceptions](https://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/)
+
+[Conda documentation](https://conda.io/docs/user-guide/tasks/index.html)
+
+### TODO
+
+* Upload to git hub [DONE]
+* Setup Anaconda correctly
+* Provide a copy of the Lesson2 Jupyter notebook to the repo.
+
+### Day 6: July 12, 2018
+
+## Lesson 4: Jupyter Notebooks
+
+So I just continued on the Deep Learning Nano-degree. I am now at Lesson 4. off topic for a bit, Deep Learning is a subset of machine learning. So in any case, I am still doing the #100DaysOfMLCode challenge. :happy:
+
+Back to the Jupyter Notebooks discussion, I was able to finish it and it seems like it was a version of reused from a data science subject. It has more than enough to get you to consider switching. One of the most important point given in the lesson was that Jupyter allows us to create literate programming which was proposed by Donald Kluth. In his words:
+
+> __Instead of imagining that our main task is to instruct a computer what to do, let us concentrate rather on explaining to human beings what we want a computer to do.__
+
+It is a a strong argument and one that personally makes sense. It allows even those that have no idea or background about the topic the ability to follow along in the discussion of the flow of the code. Instead of giving out a big block of code, by using notebooks, you can show chunks of it and explain what is it's purpose as you go along.
+
+> _Trivia: Jupyter came from the combination of **Ju**lia, **Pyt**hon and **R** were the first Kernels available for Jupyter back then. Jupyter was originally the iPython notebooks. It just changed because it is now supporting not just python but rather a larger collection of software._
+
+Additional topics covered in the lesson was __*cells*__. This is the basic input space you have for a notebook. It allows you to write code or other types of text like markdown files etc.
+
+There was also a topic on a __*Magic Keywords*__ which are python-kernel specific commands that allows you to control the notebook itself. Its useful for interactive portions of code like plots. Magic keywords always begin with either __*%*__ or __*%%*__. For % it is used for line magic and %% is used for cell magic. Magic keywords that are often used include:
+
+> __*%matplotlib*__
+> __*%time*__ or __*%% time*__
+> __*%pdb*__
+
+An interesting read: [A Neural Network in 11 Lines of code](https://iamtrask.github.io/2015/07/12/basic-python-network/) by Trask
+
+And a possible supporting document would be [Siraj Raval's Deep Learning in 6 weeks](https://github.com/llSourcell/Learn_Deep_Learning_in_6_Weeks/) for a structured guide on learning Deep Learning.
+
 ### Current Resources
 
 [Udacity's FREE course Intro to Machine Learning](https://classroom.udacity.com/courses/ud120)
 
 [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/)
+
+[Books Source](https://www.manning.com/)
+
