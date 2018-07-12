@@ -1,5 +1,5 @@
 
-# Lesson 2: Applying Deep Learning
+# Lesson 2 Applying Deep Learning
 
 The main idea in this lesson was to let us try examples of Deep Learning applications and the projects we can look forward to as we go along in the course. The models here are already pre-trained and are availabe in Github. They basically want us to have fun and play around models of deep learning.
 
@@ -11,11 +11,11 @@ Circling back to the topic here are the results of my Style Transfer attempt:
 
 ### Here is the Original image
 
-![GV-IG.png](attachment:GV-IG.png)
+![GV-IG.png](pics/GV-IG.png)
 
 ### Here is the Style Transfer image
 
-![GV-output_image.jpg](attachment:GV-output_image.jpg)
+![GV-output_image.jpg](pics/GV-output_image.jpg)
 
 ## Deep traffic
 
@@ -23,11 +23,10 @@ This example simulates driving in traffic and using deep learning to make decisi
 
 Here is the result I got with the following parameters:
 
-![deeptraffic.png](attachment:deeptraffic.png)
+![deeptraffic.png](pics/deeptraffic.png)
 
-![deeptraffic-params.png](attachment:deeptraffic-params.png)
-
+![deeptraffic-params.png](pics/deeptraffic-params.png)
 
 ## Flappy Bird Game
 
-There is also a pre-trained model to play Flappy bird. 
+There is also a pre-trained model to play Flappy bird.
