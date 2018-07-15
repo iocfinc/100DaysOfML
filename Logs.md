@@ -137,7 +137,7 @@ Consider this, we have a vector 3i + j. Substituting this into basis vectors we 
 
 The second video was about Linear transformations and matrices. First there was a recap about what it means to be linear: *lines remain lines* and *the origin does not move*. Then there is a review on the transformation where we take the new location of i and j as the representation of that transform. Now on to matrices, simply put matrices are just coordinate representation of a vectors location. Consider the following: _v = 2i + 3j_. If we apply a transform to v that it becomes _v'_ then we can get an equation _v' = 2i' + 3j'_. Do note that this is made possible because _2 and 3_ in this case is scalar. Now back to the original idea behind a transform using unit vectors, suppose we want to _shear_ the vector _v = 2i + 3j_. We first get the values of the _i' and j' unit vectors_ when shear is applied and represent them as a matrix with values [ 1 1 > 0 1], note that > means new line. # Note to self: I have to practice formatting in .md.:sad:
 
-Why is representing the shear or any other transformation in terms of basis vector movements important? Its because we can then apply matrix multiplication to get the new value of a vector after the transformation. Back to the example, _v = 2i + 3j_ we can just represent this as [ 2 > 3 ]. We now have a scalar pair of [ 2 > 3 ] and the unit vector of [ 1 1 > 0 1]. Recall that scaling is simply stretching or _multiplying_ the scale to the unit vector, so we can  _apply the transformation_ via multiplication of the _scalar_ and the _unit vector_ matrices. That would mean \left\lgroup \matrix{2\cr 3} \right\rgroup \left\lgroup \matrix{1 & 1\cr 0 & 1} \right\rgroup[ 1 1 > 0 1] which leads us to the transform of the original vector as [ 4 > 3] which we can then write back in terms of unit vectors as \hat v = 4\hat i + 3\hat j_.
+Why is representing the shear or any other transformation in terms of basis vector movements important? Its because we can then apply matrix multiplication to get the new value of a vector after the transformation. Back to the example, _v = 2i + 3j_ we can just represent this as [ 2 > 3 ]. We now have a scalar pair of [ 2 > 3 ] and the unit vector of [ 1 1 > 0 1]. Recall that scaling is simply stretching or _multiplying_ the scale to the unit vector, so we can  _apply the transformation_ via multiplication of the _scalar_ and the _unit vector_ matrices. That would mean [ 2 > 3 ] [ 1 1 > 0 1] which leads us to the transform of the original vector as [ 4 > 3] which we can then write back in terms of unit vectors as _v' = 4i' + 3j'_.
 
 After hammering down on the concept of transformation we then proceed with the properties of transformation. we take note that order matters in matrices. AB != BA. Visualize this, A is shear and B is 90deg rotation. Applying shear first then rotating would give you a different value that applying rotation first and shear. We do a transform (multiplication) right to left even if we read it from left to right. Say A = shear and B = rotation. AB is rotation and shear when transformed, quite tricky.
 
@@ -267,9 +267,9 @@ When we upload or share our work and projects to others, for example in github, 
 
 ### TODO
 
-* Upload to git hub [DONE]
-* Setup Anaconda correctly
-* Provide a copy of the Lesson2 Jupyter notebook to the repo.
+- [x] Upload to git hub [DONE]
+- [ ]Setup Anaconda correctly (uhmm) :smile:
+- [x]Provide a copy of the Lesson2 Jupyter notebook to the repo.
 
 ### Day 6: July 12, 2018
 
@@ -298,8 +298,46 @@ An interesting read: [A Neural Network in 11 Lines of code](https://iamtrask.git
 And a possible supporting document would be [Siraj Raval's Deep Learning in 6 weeks](https://github.com/llSourcell/Learn_Deep_Learning_in_6_Weeks/) for a structured guide on learning Deep Learning.
 
 So I just got home. I was trying to upload the markdown files with the pictures. I can't seem to figure out how they work. :sad:
+I still have to figure out the latex part as well. I wonder if it would be the same if I use jupyter. But those are not the important thing right now. :triumph: :triumph: I'll just circle back here when I have some idle time. LOL.
 
+## Matrix determinant
 
+Recall that a transform of a vector allows you to know the location of the new vector in space. We first get the new coordinates of the unit vectors and then we scale it with the original scalars of the vector. This will lead us to the new location of the Head of the vector (if we think about it as a dot.) If we consider the area of the original vector it will also change as we transform it. The _scale of which the area changed due to a transform_ is what we consider as the determinant. The determinant is therefore a scalar. It scales the unit vector's area by its value. Here is how I picture it: _transforming the vector moves its position **scaling its length**, as we flip the location of a vector we also squish or stretch its area and **scaling of area** is the determinant_.
+
+Moved on to the Numpy lesson in Udactiy. This is a very un-organized day.
+
+### Day 7: July 13, 2018
+
+Moving on to Episode 5 of the Essence of Linear Algebra. The topic was Inverse matrix, column space and null space.
+
+The inverse of a matrix is the reverse of the transformation created by the original matrix. This is the visual approach to it. Since we say that a matrix can correspond to a transformation then its inverse is the values on which the transformation returns to its original form. For example, if the transform is to rotate the unit vectors _clockwise_, the inverse of that would be to transform the vectors _counter-clockwise_ therefore the transformations become nullified. It is the unique property in which when you apply the transformation, say A, and apply the inverse you end up where you started.
+
+Multiplying a matrix with its inverse is equal to the matrix that does nothing. This is called the _identity matrix_. If you recall engineering algebra its the one where the diagonal of the matrix are 1's and the rest are zero. This also called the _identity transformation_.
+
+Now on to the application of matrix which is solving for values of systems of linear equations. We should note that we can readily find a unique solution to the system of linear equations IFF the determinant of the transformation is not equal to 0. For the succeeding example I am going to call A as the transform function matrix, x as the matrix for the varialbes (i.e. [x y z]) and v as the constants. Assuming that det (A) is != 0 then we can multiply both sides by the inverse of A. Here is the original equation: Ax = v. Applying the inverse of matrix A so that only x remains on the other side we get x = v (inv A). This way we can perform the multiplication of inv A and v. This will lead us to the values corresponding to x, y, and z which are the solutions for the equation.
+
+__Rank__  is the number of _dimensions_ in the output of a transformation. For example you the result of a transform is a line then the rank is 1, since the line is in one-dimension. If the output is a point then the rank is 0. The set of all possible outputs of your matrix is called __column space__. Basically the column space is the span of the columns of your matrix. The rank, therefore, can be considered as the number of dimensions in your column space. When the rank is as high as it can be (i.e. no squishing to a line or a point for any column) then the matrix is considered in __full rank__. If there is squishing which leads to vectors landing on the origin then we have a null space or "kernel" of the matrix. Its the space of all vectors that become null because they land on the zero vector.
+
+Currently doing a review of the Numpy for matrices.
+
+I have just finished the Introduction lessons in the Deep Learning Nano-degree. I admit, I still have a lot to cover like reviewing numpy and more practice. For now, I am at the introduction to Neural Networks lesson. I plan to read up first what Neural Networks are in Siraj's channel and ELI5, possibly Medium too.
+
+I need to possibly reinstall Anaconda. I am having some issues with the environment not being detected. I believe this is caused by the location of the folder AppData being hidden by default.
+I'll install Anaconda on the C drive under my name :)
+
+### Day 8: July 14, 2018
+
+It has been 8 days since committing to this initiative. 92 days more. A lot can happen in that span. Slowly and surely I'll get there. For now, the updates are: I was able to re-install Anaconda in My_documents this time so that there are no issues with the hidden folders path in environment. Also, I was able to eventually finish my intro part for the Deep Learning nano-degree. For now I am in the Perceptrons portion of Neural networks. Quite an interesting topic. Its the vanilla version of many deep learning models and it actually makes sense if you think of the logic behind it.
+
+Most of the progress today would be covered in the Notebooks. Today, I was able to watch 3blue1brown Linear Algebra 5 and 6 and Neural nets. One key point given in the Neural nets intro was that the activation factor which is usually a sigmoid functions in older Neural Networks are now being replaced by ReLU, rectified linear units. The reason for the change is that for one the Sigmoid function is slower to train, the other reason pointed out was that the ReLU mimics the activation of neurons more. A brief explanation is that the neurons in the brain actually start functioning after a certain threshold which in the case of a reLU is the origin. Its quite similar to the step function 1 at y>=0 and 0 elsewhere. reLU is quite similar to this, y=x at y>=0 and 0 elsewhere. What this looks like is a linear function but rectified at the origin.
+
+Did something really stupid today: I slipped up and watched the Saga of Tanya the evil. :smile: But its now done, its just 12 episodes in 1.5x speed. I am getting used to this playback speed. Now back to Deep learning.
+
+### Day 9: July 15, 2018
+
+Will continue with the course. Target today is to get to Lesson 1: Chapter 24 at least. I plan to finish Lesson 1 this week and move on to Lesson 2 since there is a project due on July 25, which is 10 days from now. I need to be fast for now so that I can make it.
+
+Note to self: Change the activation function symbol of a sigmoid from omega to phi in the notebook. Also, I figured out why there was trouble connecting to the internet. I was on still on the proxy from work. Face palm :LOL: For now its much better, I am able to load the videos and submit answers without the connection dropping. I am continuing on with the Neural Networks lesson. I am now on the topic of Errors. Finished until chapter 24 today. Likely that I will finish this all by tomorrow and start moving on to the next lesson. Deus Vult.
 
 ### Current Resources
 
@@ -308,4 +346,3 @@ So I just got home. I was trying to upload the markdown files with the pictures.
 [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/)
 
 [Books Source](https://www.manning.com/)
-
