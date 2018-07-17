@@ -268,7 +268,7 @@ When we upload or share our work and projects to others, for example in github, 
 ### TODO
 
 - [x] Upload to git hub [DONE]
-- [ ]Setup Anaconda correctly (uhmm) :smile:
+- [x ]Setup Anaconda correctly (uhmm) :smile:
 - [x]Provide a copy of the Lesson2 Jupyter notebook to the repo.
 
 ### Day 6: July 12, 2018
@@ -338,6 +338,20 @@ Did something really stupid today: I slipped up and watched the Saga of Tanya th
 Will continue with the course. Target today is to get to Lesson 1: Chapter 24 at least. I plan to finish Lesson 1 this week and move on to Lesson 2 since there is a project due on July 25, which is 10 days from now. I need to be fast for now so that I can make it.
 
 Note to self: Change the activation function symbol of a sigmoid from omega to phi in the notebook. Also, I figured out why there was trouble connecting to the internet. I was on still on the proxy from work. Face palm :LOL: For now its much better, I am able to load the videos and submit answers without the connection dropping. I am continuing on with the Neural Networks lesson. I am now on the topic of Errors. Finished until chapter 24 today. Likely that I will finish this all by tomorrow and start moving on to the next lesson. Deus Vult.
+
+### Day 10: July 16, 2018
+
+Almost done with lesson 1. I am now at the feed forward and back propagation lectures. This can be finished today and then there will be a lab. I do have to look carefully at the entire course so that I can pace myself.
+
+### Day 11: July 17, 2018
+
+Finished part 1 of 7. I have to keep up, its supposed to be 15 days and then due. I need to focus more on the nano-degree. :sad: The good thing is that the succeeding lessons are timed at 2 hours or less. The only thing that's long is the first project: Predicting Bike sharing data which is due in 8 days. So I have to move fast. 4 more lessons to go before the project. This is exciting.
+
+So update is that I was able to finish my first neural network. One of the most important thing I learned was how to do a vanilla version of the neural network. I still have to work on my pandas in data manipulation and numpy for data processing and mathematics. But form what I can tell, these formulas and functions will be repetitive and all that will change is the variable that you will use.
+
+### Day 12: July 18, 2018
+
+Target to finish 2nd half of implementing gradient descent lesson.
 
 ### Current Resources
 
