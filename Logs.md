@@ -341,7 +341,7 @@ Note to self: Change the activation function symbol of a sigmoid from omega to p
 
 ### Day 10: July 16, 2018
 
-Almost done with lesson 1. I am now at the feed forward and back propagation lectures. This can be finished today and then there will be a lab. I do have to look carefully at the entire course so that I can pace myself.
+Almost done with lesson 1. I am now at the feed forward and back propagation lectures. This can be finished today and then there will be a lab. I do have to look carefully at the entire course so that I can pace myself. I just asked my mentor for the course about my pace, I just said that I was just done with the first lesson: Neural Networks and hoping to get feedback on my pace. Hopefully we can get some response.
 
 ### Day 11: July 17, 2018
 
@@ -349,9 +349,17 @@ Finished part 1 of 7. I have to keep up, its supposed to be 15 days and then due
 
 So update is that I was able to finish my first neural network. One of the most important thing I learned was how to do a vanilla version of the neural network. I still have to work on my pandas in data manipulation and numpy for data processing and mathematics. But form what I can tell, these formulas and functions will be repetitive and all that will change is the variable that you will use.
 
+I was browsing the documentation for numpy. It was eerily similar to Matlab in college. I don't know if they were made by the same team. Anyway, went over some of the Numpy functions and WOW, it really lives up to its name. Still browsing through the built-in functions and I am currently focusing on the Linear Algebra portion, for ML and DL.
+
+Later today I will be going over the Gradient Descent lesson. Hopefully it would not be too taxing on my brain. My perceptrons gonna get fried after this. :joy:
+
 ### Day 12: July 18, 2018
 
-Target to finish 2nd half of implementing gradient descent lesson.
+Target to finish 2nd half of implementing gradient descent lesson. This is doable, just focus and do it slow. In chunks.
+
+And just like that Gradient Descent Lesson is done. Some important concepts tackled were how to actually apply backpropagation given multiple layers. Again, I noticed that you just have to learn the recipe and I can actually add apply it to multiple layers, although I am not sure how yet. I will figure this one out later. By this time I am planning to use the remainder of the day to make entries on my notebook. This concept has so many layers, pun intended, that its better to just draw out the concept.
+
+Tomorrow, the objective is to cover Training Neural Networks topic. Time check, 8 days until the due of the first project, which is a prediction algorithm using bike sharing data. 15 Days for the Convolutional networks project with a Dog Breed classifier. Some great things to look forward to. Keep grinding, keep learning.
 
 ### Current Resources
 
