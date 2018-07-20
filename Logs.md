@@ -361,6 +361,26 @@ And just like that Gradient Descent Lesson is done. Some important concepts tack
 
 Tomorrow, the objective is to cover Training Neural Networks topic. Time check, 8 days until the due of the first project, which is a prediction algorithm using bike sharing data. 15 Days for the Convolutional networks project with a Dog Breed classifier. Some great things to look forward to. Keep grinding, keep learning.
 
+# Day 13: July 19, 2018
+
+Here is a fun [playground](https://developers.google.com/machine-learning/crash-course/reducing-loss/playground-exercise) for neural network visualization from the Google Developers [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/). Its an interactive site that allows you to visualize how Neural Networks train and come up with its decision plane.
+
+While on commute I decided to watch the lessons in Udemy: Deep Learning A-Z course. One the positive note I was able to finish the videos from Intro to NN course with all the theory. Coming up next would be a project for a bank data. Do note that I was only able to finish the videos because of the traffic in Manila, 15 minutes for the bus to cross an intersection, then 10 minutes wait time for the train to arrive. Silver lining is I was able to finish the course, I'll take it.
+
+Right now, I am trying to organize my notes in the notebook. Currently working on the Gradient descent topic. Will be finished today.
+
+# Day 14: July 20, 2018
+
+Started doing the Neural Network Training by Luis. It really pays to watch and take notes that watch and retake notes. Going over the lesson just to take notes really takes time.
+
+About done with the back notes for Gradient descent. Target for today are: Finish the Lesson on Training Neural Networks. -- Well this did not happen. Binged on Stranger Things S2 today. Was able to finish it all. So that's out of the way. On to writing my notes. Now on multi-layered perceptrons, i.e. Hidden Layers. They are basically the same concept as the one output perceptron. The math is still the same, its just that the operations are now mostly in matrix form. One thing to note, hidden inputs are not the same as hidden layers. Think of it this way, Input Layer, Hidden Layer/s and Output layers are our layers. Inside the layers are our units, which in Udacity I think they called inputs. But the point is that, don't mix units and layers together. Also, the vector notation of $V_{ab}$ where a is the origin and b is the destination still applies in the naming convention for our matrix and matrix elements.
+
+Also, I was able to start Section 4 of Deep Learning A-Z in Udemy. This time it was basically back to building an Artificial Neural Networks. In this course they use Theano, Tensor Flow and Keras which makes things simpler. There is a topic regarding cleaning data and how to prepare the data for entry into a Neural Network, remember that we can only use normalized or standardized data. I need to back read it in the Appendix of the Course. It starting to dawn on me that I took this on the wrong order, it should have been AI then ML then DL. But hey, you at least have to start somewhere right?
+
+For this weekend, I am planning to build my first project in the form of the ANN from Deep Learning AZ. I am excited actually.
+
+For now though, I need to finish my notes and the Udacity: Training Neural Networks lesson. See you tomorrow. :smile:
+
 ### Current Resources
 
 [Udacity's FREE course Intro to Machine Learning](https://classroom.udacity.com/courses/ud120)
