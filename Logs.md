@@ -381,6 +381,17 @@ For this weekend, I am planning to build my first project in the form of the ANN
 
 For now though, I need to finish my notes and the Udacity: Training Neural Networks lesson. See you tomorrow. :smile:
 
+# Day 15: July 21, 2018
+
+To do today:
+Training Neural Networks lesson and notes. Artificial Neural Network project from Udemy. Finish Essence of Linear Algebra. Enjoy the day!
+
+So today I was able to finish the Training Neural Networks Lesson and the note taking. I was able to complete the introduction to the Workspace at Udacity where there are GPU enabled notebooks for future tests. Right now I am setting up my dlnd environment. There is a project due in 3 days.
+
+To give a background on the project, its a Neural network project that will come up with a model to predict the number of bikes that our bike sharing company would need given the previous data. Basically, an optimization problem. We want to limit the excess bikes that we have that are not making money and we also want to have enough bikes that we can cater to our current and projected growth of clients.
+
+I will work on the project tomorrow, for now I am pushing my brain. I need a fresh start tomorrow. Learned a lot today. Local minima, batch and stochastic gradient descent, different activation functions (tanh and reLU), regularization. For now I am calling it a day. Tomorrow I'll resume this.
+
 ### Current Resources
 
 [Udacity's FREE course Intro to Machine Learning](https://classroom.udacity.com/courses/ud120)
