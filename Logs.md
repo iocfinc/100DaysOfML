@@ -392,6 +392,16 @@ To give a background on the project, its a Neural network project that will come
 
 I will work on the project tomorrow, for now I am pushing my brain. I need a fresh start tomorrow. Learned a lot today. Local minima, batch and stochastic gradient descent, different activation functions (tanh and reLU), regularization. For now I am calling it a day. Tomorrow I'll resume this.
 
+# Day 16: July 22, 2018
+
+Doing the project today. Bike sharing model. Actually got stuck in the back propagation in the unit testing. For now I think I solved it. On to fine tuning hyperparameters. This is really tiring.
+
+# Day 17: July 23, 2018
+
+Still trying to train my network. Figuring out what hyperparameters to use to meet the specifications. This is really intensive and eats a lot of time. I am planning to sleep for now and proceed with training later. My plan is this: I will be methodical in searching for the hyperparameters. It looks like 30 nodes, 0.5 learnrates work. To save time, I have to watch advanced lessons in the subject so that I don't waste it waiting for the training to complete. Hopefully I will get this done by today.
+
+And I fucked it up, big time. I was wondering why I only pass the unit test when I manually change the learning rate below to 0.5. Turns out I was supposed to actually call a variable self.lr as the learning rate. Big setback. But will continue on nonetheless. I am already in bed. I want to rest my back.:cries: This is fun.
+
 ### Current Resources
 
 [Udacity's FREE course Intro to Machine Learning](https://classroom.udacity.com/courses/ud120)
