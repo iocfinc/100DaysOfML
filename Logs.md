@@ -426,6 +426,22 @@ So I just finished Sentiment Analysis. There are commands in the end of the less
 
 So there we have it. A sentiment analyzer from start to finish. This was a very interesting module. Theory intensive but still understandable. Also, it shows us how we can optimize our NNs to arrive to a conclusion faster which means faster value turnover to the business or the team we are supporting.
 
+# Day 20: July 26, 2018
+
+Sentiment analysis is done. The main goal of the lesson was to give us an idea on how we are able to frame a problem correctly. What this means is that we are able to figure out what the best course of action to take given our goals. We know what features to consider and what to discard based on the outcome that we want. Also, we are able to look under the hood of our neural network. We are able to simplify the operation in such a way that we do not do un-necessary computations or we can reduce the number of computations done to achieve a specific outcome. There was also an introduction to new hyperparameters that allow us to sift through the data and get only the most polarizing ones that will greatly affect the outcome and disregard the noise. Basically, improving our signal to noise ration so that we do not unnecessarily allocate processing to bloat words that have no bearing.
+
+Target for today is Keras. For now, I have started the Keras course. Overview is that we are going to use Keras to do our neural networks from now on. Having finished the basics of doing NN via basic numpy, we can now move on to using Keras.
+
+Finalizing my notes on the sentiment analysis projects. I am having trouble with Bokeh in the environment and I was not able to download it from home today, something to do with the internet connection/speed.
+
+I can't wait for the weekend to come. Planning on taking on Keras and Sentiment analysis for my Project. For now, reading through on Keras and its functions and calls.
+
+# Day 21: July 27, 2018
+
+I have to slow my progress down today. Received increased load at work due to training commitments for the team. Will have to work slowly for now. I still have to my job to think about. Keras is still the target for today. First its important to learn about the Keras commands so for now that is the target. At the very least, finish this one over the weekend. I hate to pushback objectives but I can't do anything about it. Anyways its just until November. :Angry:
+
+Anyway its now 4:41PM, I just finished Keras chapter 2. I was able to read through the Keras documentation and I now how some clue on what Keras is and I have a handle on how to do the most basic model which is sequential. They are right in saying that this is easier. In a way, I get it because the documentations are great and I am able to build on the previous topics about NN. For now I am going to watch the Mini-Project Intro just to get an idea of what I need to work on. I have to do some Lab works first but I doubt it will be done this night, I am still a single resource later. Hopefully nothing bad happens. Also, working on my resume today preparing for December.
+
 ### Current Resources
 
 [Udacity's FREE course Intro to Machine Learning](https://classroom.udacity.com/courses/ud120)
