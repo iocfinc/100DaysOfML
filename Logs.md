@@ -135,13 +135,13 @@ The succeeding discussion takes more graphical processing at first since the ani
 
 Consider this, we have a vector 3i + j. Substituting this into basis vectors we can get the pairing (3, 1). consider we apply a transform to that point where it now lands in a shifted grid. We can just get the values of the place where i and j landed relative to the original grid. By this means we can get a 2 x 2 matrix where the first column is for the value of i (in terms of x and y) and j (also in x and y). Its hard to do it in markdown form but consider the first pair for where the i landed as (a, b) and where j landed as (c, d) we can then get the 2 x 2 matrix. To get the transform of the original 3i + j we just have to multiply it with the new 2 x 2 matrix representation of the basis vectors in the transformed grid. I can hardly understand what I wrote so its recommended to just watch the video. :joy:
 
-The second video was about Linear transformations and matrices. First there was a recap about what it means to be linear: *lines remain lines* and *the origin does not move*. Then there is a review on the transformation where we take the new location of i and j as the representation of that transform. Now on to matrices, simply put matrices are just coordinate representation of a vectors location. Consider the following: _v = 2i + 3j_. If we apply a transform to v that it becomes _v'_ then we can get an equation _v' = 2i' + 3j'_. Do note that this is made possible because _2 and 3_ in this case is scalar. Now back to the original idea behind a transform using unit vectors, suppose we want to _shear_ the vector _v = 2i + 3j_. We first get the values of the _i' and j' unit vectors_ when shear is applied and represent them as a matrix with values [ 1 1 > 0 1], note that > means new line. # Note to self: I have to practice formatting in .md.:sad:
+The second video was about Linear transformations and matrices. First there was a recap about what it means to be linear: *lines remain lines* and *the origin does not move*. Then there is a review on the transformation where we take the new location of i and j as the representation of that transform. Now on to matrices, simply put matrices are just coordinate representation of a vectors location. Consider the following: _v = 2i + 3j_. If we apply a transform to v that it becomes _v'_ then we can get an equation _v' = 2i' + 3j'_. Do note that this is made possible because _2 and 3_ in this case is scalar. Now back to the original idea behind a transform using unit vectors, suppose we want to _shear_ the vector _v = 2i + 3j_. We first get the values of the _i' and j' unit vectors_ when shear is applied and represent them as a matrix with values [ 1 1 > 0 1], note that > means new line. # Note to self: I have to practice formatting in .md. :rage:
 
 Why is representing the shear or any other transformation in terms of basis vector movements important? Its because we can then apply matrix multiplication to get the new value of a vector after the transformation. Back to the example, _v = 2i + 3j_ we can just represent this as [ 2 > 3 ]. We now have a scalar pair of [ 2 > 3 ] and the unit vector of [ 1 1 > 0 1]. Recall that scaling is simply stretching or _multiplying_ the scale to the unit vector, so we can  _apply the transformation_ via multiplication of the _scalar_ and the _unit vector_ matrices. That would mean [ 2 > 3 ] [ 1 1 > 0 1] which leads us to the transform of the original vector as [ 4 > 3] which we can then write back in terms of unit vectors as _v' = 4i' + 3j'_.
 
 After hammering down on the concept of transformation we then proceed with the properties of transformation. we take note that order matters in matrices. AB != BA. Visualize this, A is shear and B is 90deg rotation. Applying shear first then rotating would give you a different value that applying rotation first and shear. We do a transform (multiplication) right to left even if we read it from left to right. Say A = shear and B = rotation. AB is rotation and shear when transformed, quite tricky.
 
-Now with the concept of how to apply matrix transforms in check, we now prove that matrix transforms are associative. A(BC) == (AB)C, remembering in college when I used to compute this, proving this was time consuming. But now, knowing that multiplication is simply the transformation of matrices, you can already tell that it should not matter how its computed as long as the order of transformation is the same its going to produce the same result. _Now obviously, the professor would not accept an essay form to a math question because LHS == RHS is always the way. :sigh:_
+Now with the concept of how to apply matrix transforms in check, we now prove that matrix transforms are associative. A(BC) == (AB)C, remembering in college when I used to compute this, proving this was time consuming. But now, knowing that multiplication is simply the transformation of matrices, you can already tell that it should not matter how its computed as long as the order of transformation is the same its going to produce the same result. _Now obviously, the professor would not accept an essay form to a math question because LHS == RHS is always the way. :unamused:_
 
 ### Day 5: July 11, 2018
 
@@ -275,7 +275,7 @@ When we upload or share our work and projects to others, for example in github, 
 
 ## Lesson 4: Jupyter Notebooks
 
-So I just continued on the Deep Learning Nano-degree. I am now at Lesson 4. off topic for a bit, Deep Learning is a subset of machine learning. So in any case, I am still doing the #100DaysOfMLCode challenge. :happy:
+So I just continued on the Deep Learning Nano-degree. I am now at Lesson 4. off topic for a bit, Deep Learning is a subset of machine learning. So in any case, I am still doing the #100DaysOfMLCode challenge.  :metal:
 
 Back to the Jupyter Notebooks discussion, I was able to finish it and it seems like it was a version of reused from a data science subject. It has more than enough to get you to consider switching. One of the most important point given in the lesson was that Jupyter allows us to create literate programming which was proposed by Donald Kluth. In his words:
 
@@ -297,7 +297,7 @@ An interesting read: [A Neural Network in 11 Lines of code](https://iamtrask.git
 
 And a possible supporting document would be [Siraj Raval's Deep Learning in 6 weeks](https://github.com/llSourcell/Learn_Deep_Learning_in_6_Weeks/) for a structured guide on learning Deep Learning.
 
-So I just got home. I was trying to upload the markdown files with the pictures. I can't seem to figure out how they work. :sad:
+So I just got home. I was trying to upload the markdown files with the pictures. I can't seem to figure out how they work.  :expressionless:
 I still have to figure out the latex part as well. I wonder if it would be the same if I use jupyter. But those are not the important thing right now. :triumph: :triumph: I'll just circle back here when I have some idle time. LOL.
 
 ## Matrix determinant
@@ -400,7 +400,7 @@ Doing the project today. Bike sharing model. Actually got stuck in the back prop
 
 Still trying to train my network. Figuring out what hyperparameters to use to meet the specifications. This is really intensive and eats a lot of time. I am planning to sleep for now and proceed with training later. My plan is this: I will be methodical in searching for the hyperparameters. It looks like 30 nodes, 0.5 learnrates work. To save time, I have to watch advanced lessons in the subject so that I don't waste it waiting for the training to complete. Hopefully I will get this done by today.
 
-And I fucked it up, big time. I was wondering why I only pass the unit test when I manually change the learning rate below to 0.5. Turns out I was supposed to actually call a variable self.lr as the learning rate. Big setback. But will continue on nonetheless. I am already in bed. I want to rest my back.:cries: This is fun.
+And I fucked it up, big time. I was wondering why I only pass the unit test when I manually change the learning rate below to 0.5. Turns out I was supposed to actually call a variable self.lr as the learning rate. Big setback. But will continue on nonetheless. I am already in bed. I want to rest my back. :trollface: This is fun.
 
 So final update is I was able to pass my first project in the Deep Learning Nanodegree course. Had to play around with the hyper parameters and counter-intuitively, not all learning rates should be small. My learning rate for this was 0.7 with 5 hidden nodes and 2000 iterations. I received Training loss < 0.08 and a Validation loss < 0.18 I think. I'm sure it met the specifications of the Udacity's project as I just received a response from the reviewer that the project passed.
 
@@ -410,7 +410,7 @@ Had multiple learnings/insights on this project. One is that not all learning ra
 
 For now I am moving on to Sentiment Analysis. Taught by Andrew Truskk. Basically its using Neural Networks to figure out if an outlook on a topic is Positive or Negative. Basically, quantifying the qualitative.
 
-First, a review of the Neural network concepts. Neural networks, Feed forward, Back propagation. THen on to Gradient Descent. Then reviewed Errors, Squared Errors and Mean Squared Errors. Finally, Data set splitting. Testing and Training data. Also made some notes on the insights gained on the project. Like the learning rates as well as the transpose of matrices to allow for transformation.
+First, a review of the Neural network concepts. Neural networks, Feed forward, Back propagation. Then on to Gradient Descent. Then reviewed Errors, Squared Errors and Mean Squared Errors. Finally, Data set splitting. Testing and Training data. Also made some notes on the insights gained on the project. Like the learning rates as well as the transpose of matrices to allow for transformation.
 
 Now we move on to Sentiment Analysis using Neural Networks.
 
@@ -438,9 +438,34 @@ I can't wait for the weekend to come. Planning on taking on Keras and Sentiment 
 
 # Day 21: July 27, 2018
 
-I have to slow my progress down today. Received increased load at work due to training commitments for the team. Will have to work slowly for now. I still have to my job to think about. Keras is still the target for today. First its important to learn about the Keras commands so for now that is the target. At the very least, finish this one over the weekend. I hate to pushback objectives but I can't do anything about it. Anyways its just until November. :Angry:
+I have to slow my progress down today. Received increased load at work due to training commitments for the team. Will have to work slowly for now. I still have to my job to think about. Keras is still the target for today. First its important to learn about the Keras commands so for now that is the target. At the very least, finish this one over the weekend. I hate to pushback objectives but I can't do anything about it. Anyways its just until November. :smiling_imp:
 
 Anyway its now 4:41PM, I just finished Keras chapter 2. I was able to read through the Keras documentation and I now how some clue on what Keras is and I have a handle on how to do the most basic model which is sequential. They are right in saying that this is easier. In a way, I get it because the documentations are great and I am able to build on the previous topics about NN. For now I am going to watch the Mini-Project Intro just to get an idea of what I need to work on. I have to do some Lab works first but I doubt it will be done this night, I am still a single resource later. Hopefully nothing bad happens. Also, working on my resume today preparing for December.
+
+# Day 22: July 28, 2018
+
+Well, shift went south fast. So here we are, doing Keras at 8:00AM.  :thumbsup: The lab work right now is for Keras. An implementation of Student Admissions Analysis. This has already been done using the basic Numpy and Pandas, this time we are going to do it with Pandas and Keras. The prelab shows that this is a follow along lab, no wonder there was no TODO item in the lab notebook. Anyway, We would probably update Github for this one. This lab is more of a reinforcement learning of the Keras model.
+
+So I am done with the first Lab: Student admissions. For now I am reading this [post](http://ruder.io/optimizing-gradient-descent/index.html#rmsprop) about Gradient Descent optimization algorithms. This post on [Visualizing and animating Algorithms](http://louistiao.me/notes/visualizing-and-animating-optimization-algorithms-with-matplotlib/) is actually awsome. Makes learning of the algorithms much faster. So what was basically introduced as SGD and MiniBatch GD are just the basics. In the post, I learned about Adam, AdaMax, Nadam,  NAG, RMSProp, AMSGrad. All math heavy but you get the point that they are improved versions of each other. Also, you get the idea that some should work more than others.
+> __*There are no good and bad models, just right and wrong ones.*__
+
+Just meant to say that every model, algorithm that we learn has its own use. Its about where we apply them to that counts. Imagine if you model a 2 input NAND gate with AMSGrad, that would be overkill when a simple SGD could suffice.
+
+> __Incase you haven't noticed, its now on a more serious tone. Rarely placing emojis, and the tone of the logs are different. I guess it does consume you after a while. :muscle: push on!!!__
+
+# Day 23: July 29, 2018
+
+On to TensorFlow. Keras is basically, a wrapper for TensorFlow. Keras is good for creating a network quickly to proceed to testing and validation of the model. The problem with Keras is that it abstracts a huge part of the model. So we are now learning TensorFlow. TensorFlow is great for learning the operation of Neural Networks at a lower level.
+
+A side note on Keras, there comes a time where in my experimentation I got a LOSS value of NAN after some epochs ~70. I think it might have something to do with the dimensions of my output on the first layer, 32. I think the model just fell off or the error function does not graph in a concave way i.e. the loss value went off track. This is worrying but it is good, it means I still have a lot to learn. :innocent: And because I have a lot to learn I have more dedication. Its a great feeling when you are so lost in your studies and that you have so much more to cover that you become more determined. Its a bit counter-intuitive but it works for me. It may get so daunting at times when you are so lost you have to be pulled out but there is that level of lost that feels like you want to do more, strive more and learn more. Or is it just me?  :smiling_imp:
+
+So Tensorflow is quite heavy, its a new syntax altogether. This is going to spill over to tomorrow.
+
+Just to get some perspective, I have another project due for August 20. 4 Weeks from now, and I have to cover 8 lessons to get there. This will be tough.
+
+# Day 23: July 29, 2018
+
+So I have started moving forward in Tensorflow intro for Neural Networks. The same time starting to go over the topics in Convolutional Neural Networks. I want to do this now so that we can proceed with building the project. There is a problem thought, there might be a need to use an external service from Amazon which is the EC2. This is a complication but it should be manageable. For now I am focusing more on getting towards the project phase. I know it would be long but it should be doable.
 
 ### Current Resources
 
