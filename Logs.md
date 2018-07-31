@@ -463,9 +463,18 @@ So Tensorflow is quite heavy, its a new syntax altogether. This is going to spil
 
 Just to get some perspective, I have another project due for August 20. 4 Weeks from now, and I have to cover 8 lessons to get there. This will be tough.
 
-# Day 23: July 29, 2018
+# Day 24: July 30, 2018
 
 So I have started moving forward in Tensorflow intro for Neural Networks. The same time starting to go over the topics in Convolutional Neural Networks. I want to do this now so that we can proceed with building the project. There is a problem thought, there might be a need to use an external service from Amazon which is the EC2. This is a complication but it should be manageable. For now I am focusing more on getting towards the project phase. I know it would be long but it should be doable.
+
+# Day 25: July 31, 2018
+
+And just like that I am 25 days in on this pledge. I am actually happy about what I have accomplished so far. The learnings and the insights on what could be possible its great. I am excited to see how much further I can go on the next 25 days and what I can accomplish after 100 days.
+
+For now I am focusing on the Convolutional Neural Networks topic and also doing something in parallel with the TensorFlow lesson in part 1. I am still wading through it. I slipped for some time last week and it has really been stressful lately but it should come back to normal now. __POWER OVERWHELMING__ is the key today. I was able to watch the intuition part of CNN from Intro to Deep Learning in Udemy. I am still finishing it but I found out that its good to have intuitions first on what is going to be accomplished and then take a deeper dive into the lessons in Udacity.
+
+With regards to TensorFlow, I am having some issues with the requirements for the environment, for some reason it does not go through and some requirements are not found even though it is installed. The little things really are annoying sometimes. :fist: Right now, based on the Udacity progress bar I am 56% in to the TensorFlow lesson and I am 15% in through the Convolutional Neural Networks topic. The topics per se are quite small, 2 hours to 4 hours I think. Its the processing and the digestion for me that is proving some time. For now we shall continue on. Pushing through. 
+
 
 ### Current Resources
 
