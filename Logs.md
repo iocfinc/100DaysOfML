@@ -16,14 +16,14 @@ Have fun and more importantly learn to give 1-2 hours a day for this cause. I al
 
 ## Start of the logs
 
-### Day 1: July 7, 2018
+#### Day 1: July 7, 2018
 
 First of all what is Machine Learning?
 From reddit's [ELI5:Machine Learning](https://www.reddit.com/r/explainlikeimfive/comments/4v3u4l/eli5_what_is_machine_learning/) what I learned is that machine learning is a way to program a computer in a way that it would be able to figure something out without you typing it in **rule based, multiple if statements**. You would then **TRAIN** the machine to provide an output by feeding it data. The more data you have the more the machine can get the context of what you are trying to achieve. As it feeds on more data the more complex the things it can come up with.
 
 Reading an article from [Medium](https://medium.com/@lampix/machine-learning-ml-and-its-impact-on-humanity-71d041298ac) about ML's impact on humanity. It is very exciting to know what machine learning is changing on the fields we know today. Imagine how different and exciting it would be when we reach the point where the things our machine learning models discover today becomes the input to the machine learnings we are about to have. The possibilities. Its exciting. :grinning:
 
-### Day 2: July 8, 2018
+#### Day 2: July 8, 2018
 
 Continuing now on the Intro to Machine Learning course by Udacity. I started this when I was in Thailand last June 2. I am already in Lesson 2: Naive Bayes but I had to pause because my Python was still crappy, it still is but I have finished the Intro to Python and I promise to code and practice more every day. With this initiative, I sure am going to be coding for a while. :smiley:
 
@@ -41,7 +41,7 @@ The closest example I can think of here that could be related is duck-typing. If
 
 I have also tried the example outlined in the SKlearn documentation. The code is in 'GNB-SKLearn.py'.
 
-### Day 3: July 9, 2018
+#### Day 3: July 9, 2018
 
 I am currently having multiple projects at once. The Deep Learning nanodgree in [Udacity](https://www.udacity.com/course/deep-learning-nanodegree--nd101) is starting this July 10 and I am enrolled. This #100DaysOfMLCode would be a great supplement to track my progress in the nano-degree. I enrolled because I am becoming more interested to pursue the field of AI. I am interested in knowing more and I would like to enter the field and contribute. This would be part of my life long learning initiative. This was paid with the money I saved up as *Education Funds*:thumbsup:
 
@@ -100,7 +100,7 @@ TODO:
 * Reducing loss topic in Crash course
 * Essence of Linear Algebra (3Blue1Brown) Chapters 3 and 4 in 1.5X speed. :muscle:
 
-### Day 4: July 10, 2018
+#### Day 4: July 10, 2018
 
 Expecting a light load today. Will review Linear Algebra by 3Blue1Brown. I am targeting chapters 3 and 4 to start. After this, I will continue on the Crash course for the Reducing Loss topic (advertised as a 60 min. exercise). There is a webinar today at 8PM I think? If I remember it correctly its 6:00 PM Pacific time.
 
@@ -143,7 +143,7 @@ After hammering down on the concept of transformation we then proceed with the p
 
 Now with the concept of how to apply matrix transforms in check, we now prove that matrix transforms are associative. A(BC) == (AB)C, remembering in college when I used to compute this, proving this was time consuming. But now, knowing that multiplication is simply the transformation of matrices, you can already tell that it should not matter how its computed as long as the order of transformation is the same its going to produce the same result. _Now obviously, the professor would not accept an essay form to a math question because LHS == RHS is always the way. :unamused:_
 
-### Day 5: July 11, 2018
+#### Day 5: July 11, 2018
 
 Setting up my Anaconda. Updated my MS VS code to 64-bit. Its the start of the nanodegree today. Immediately encountered an issue with Jupyter being blocked by the network settings.
 
@@ -271,7 +271,7 @@ When we upload or share our work and projects to others, for example in github, 
 - [x ]Setup Anaconda correctly (uhmm) :smile:
 - [x]Provide a copy of the Lesson2 Jupyter notebook to the repo.
 
-### Day 6: July 12, 2018
+#### Day 6: July 12, 2018
 
 ## Lesson 4: Jupyter Notebooks
 
@@ -306,7 +306,7 @@ Recall that a transform of a vector allows you to know the location of the new v
 
 Moved on to the Numpy lesson in Udactiy. This is a very un-organized day.
 
-### Day 7: July 13, 2018
+#### Day 7: July 13, 2018
 
 Moving on to Episode 5 of the Essence of Linear Algebra. The topic was Inverse matrix, column space and null space.
 
@@ -325,7 +325,7 @@ I have just finished the Introduction lessons in the Deep Learning Nano-degree. 
 I need to possibly reinstall Anaconda. I am having some issues with the environment not being detected. I believe this is caused by the location of the folder AppData being hidden by default.
 I'll install Anaconda on the C drive under my name :)
 
-### Day 8: July 14, 2018
+#### Day 8: July 14, 2018
 
 It has been 8 days since committing to this initiative. 92 days more. A lot can happen in that span. Slowly and surely I'll get there. For now, the updates are: I was able to re-install Anaconda in My_documents this time so that there are no issues with the hidden folders path in environment. Also, I was able to eventually finish my intro part for the Deep Learning nano-degree. For now I am in the Perceptrons portion of Neural networks. Quite an interesting topic. Its the vanilla version of many deep learning models and it actually makes sense if you think of the logic behind it.
 
@@ -333,17 +333,17 @@ Most of the progress today would be covered in the Notebooks. Today, I was able 
 
 Did something really stupid today: I slipped up and watched the Saga of Tanya the evil. :smile: But its now done, its just 12 episodes in 1.5x speed. I am getting used to this playback speed. Now back to Deep learning.
 
-### Day 9: July 15, 2018
+#### Day 9: July 15, 2018
 
 Will continue with the course. Target today is to get to Lesson 1: Chapter 24 at least. I plan to finish Lesson 1 this week and move on to Lesson 2 since there is a project due on July 25, which is 10 days from now. I need to be fast for now so that I can make it.
 
 Note to self: Change the activation function symbol of a sigmoid from omega to phi in the notebook. Also, I figured out why there was trouble connecting to the internet. I was on still on the proxy from work. Face palm :LOL: For now its much better, I am able to load the videos and submit answers without the connection dropping. I am continuing on with the Neural Networks lesson. I am now on the topic of Errors. Finished until chapter 24 today. Likely that I will finish this all by tomorrow and start moving on to the next lesson. Deus Vult.
 
-### Day 10: July 16, 2018
+#### Day 10: July 16, 2018
 
 Almost done with lesson 1. I am now at the feed forward and back propagation lectures. This can be finished today and then there will be a lab. I do have to look carefully at the entire course so that I can pace myself. I just asked my mentor for the course about my pace, I just said that I was just done with the first lesson: Neural Networks and hoping to get feedback on my pace. Hopefully we can get some response.
 
-### Day 11: July 17, 2018
+#### Day 11: July 17, 2018
 
 Finished part 1 of 7. I have to keep up, its supposed to be 15 days and then due. I need to focus more on the nano-degree. :sad: The good thing is that the succeeding lessons are timed at 2 hours or less. The only thing that's long is the first project: Predicting Bike sharing data which is due in 8 days. So I have to move fast. 4 more lessons to go before the project. This is exciting.
 
@@ -353,7 +353,7 @@ I was browsing the documentation for numpy. It was eerily similar to Matlab in c
 
 Later today I will be going over the Gradient Descent lesson. Hopefully it would not be too taxing on my brain. My perceptrons gonna get fried after this. :joy:
 
-### Day 12: July 18, 2018
+#### Day 12: July 18, 2018
 
 Target to finish 2nd half of implementing gradient descent lesson. This is doable, just focus and do it slow. In chunks.
 
@@ -361,7 +361,7 @@ And just like that Gradient Descent Lesson is done. Some important concepts tack
 
 Tomorrow, the objective is to cover Training Neural Networks topic. Time check, 8 days until the due of the first project, which is a prediction algorithm using bike sharing data. 15 Days for the Convolutional networks project with a Dog Breed classifier. Some great things to look forward to. Keep grinding, keep learning.
 
-# Day 13: July 19, 2018
+## Day 13: July 19, 2018
 
 Here is a fun [playground](https://developers.google.com/machine-learning/crash-course/reducing-loss/playground-exercise) for neural network visualization from the Google Developers [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/). Its an interactive site that allows you to visualize how Neural Networks train and come up with its decision plane.
 
@@ -369,7 +369,7 @@ While on commute I decided to watch the lessons in Udemy: Deep Learning A-Z cour
 
 Right now, I am trying to organize my notes in the notebook. Currently working on the Gradient descent topic. Will be finished today.
 
-# Day 14: July 20, 2018
+## Day 14: July 20, 2018
 
 Started doing the Neural Network Training by Luis. It really pays to watch and take notes that watch and retake notes. Going over the lesson just to take notes really takes time.
 
@@ -381,7 +381,7 @@ For this weekend, I am planning to build my first project in the form of the ANN
 
 For now though, I need to finish my notes and the Udacity: Training Neural Networks lesson. See you tomorrow. :smile:
 
-# Day 15: July 21, 2018
+## Day 15: July 21, 2018
 
 To do today:
 Training Neural Networks lesson and notes. Artificial Neural Network project from Udemy. Finish Essence of Linear Algebra. Enjoy the day!
@@ -392,11 +392,11 @@ To give a background on the project, its a Neural network project that will come
 
 I will work on the project tomorrow, for now I am pushing my brain. I need a fresh start tomorrow. Learned a lot today. Local minima, batch and stochastic gradient descent, different activation functions (tanh and reLU), regularization. For now I am calling it a day. Tomorrow I'll resume this.
 
-# Day 16: July 22, 2018
+## Day 16: July 22, 2018
 
 Doing the project today. Bike sharing model. Actually got stuck in the back propagation in the unit testing. For now I think I solved it. On to fine tuning hyperparameters. This is really tiring.
 
-# Day 17: July 23, 2018
+## Day 17: July 23, 2018
 
 Still trying to train my network. Figuring out what hyperparameters to use to meet the specifications. This is really intensive and eats a lot of time. I am planning to sleep for now and proceed with training later. My plan is this: I will be methodical in searching for the hyperparameters. It looks like 30 nodes, 0.5 learnrates work. To save time, I have to watch advanced lessons in the subject so that I don't waste it waiting for the training to complete. Hopefully I will get this done by today.
 
@@ -406,7 +406,7 @@ So final update is I was able to pass my first project in the Deep Learning Nano
 
 Had multiple learnings/insights on this project. One is that not all learning rates should be small. The idea is that it should first and foremost converge to a minimum. Second is that I got the idea of why the error term for hidden layers are structured in such a way that they need to take into account the error term of the preceding layer. The answer is again due to chain rule. There is already a derivative function in the error term for the output. So multiplying that to the derivative of the activation function of the current hidden layer is in effect a chain rule in action. Also, the transpose of the matrix is sometimes key in getting the code to work (dot products or multiplications) as well as arrive at an answer that is still the same in value but of different order (transposed).
 
-# Day 18: July 24, 2018
+## Day 18: July 24, 2018
 
 For now I am moving on to Sentiment Analysis. Taught by Andrew Truskk. Basically its using Neural Networks to figure out if an outlook on a topic is Positive or Negative. Basically, quantifying the qualitative.
 
@@ -414,7 +414,7 @@ First, a review of the Neural network concepts. Neural networks, Feed forward, B
 
 Now we move on to Sentiment Analysis using Neural Networks.
 
-# Day 19: July 25, 2018
+## Day 19: July 25, 2018
 
 So now we are in Sentiment Analysis. This is quite fun. There is a topic on how to optimize the system and also how to curate a data set. We were taught how to frame a problem and come up with a predictive theory. Then we move on to the concept of optimization where we accept the slight decrease in accuracy for a huge increase in speed.
 
@@ -426,7 +426,7 @@ So I just finished Sentiment Analysis. There are commands in the end of the less
 
 So there we have it. A sentiment analyzer from start to finish. This was a very interesting module. Theory intensive but still understandable. Also, it shows us how we can optimize our NNs to arrive to a conclusion faster which means faster value turnover to the business or the team we are supporting.
 
-# Day 20: July 26, 2018
+## Day 20: July 26, 2018
 
 Sentiment analysis is done. The main goal of the lesson was to give us an idea on how we are able to frame a problem correctly. What this means is that we are able to figure out what the best course of action to take given our goals. We know what features to consider and what to discard based on the outcome that we want. Also, we are able to look under the hood of our neural network. We are able to simplify the operation in such a way that we do not do un-necessary computations or we can reduce the number of computations done to achieve a specific outcome. There was also an introduction to new hyperparameters that allow us to sift through the data and get only the most polarizing ones that will greatly affect the outcome and disregard the noise. Basically, improving our signal to noise ration so that we do not unnecessarily allocate processing to bloat words that have no bearing.
 
@@ -436,13 +436,13 @@ Finalizing my notes on the sentiment analysis projects. I am having trouble with
 
 I can't wait for the weekend to come. Planning on taking on Keras and Sentiment analysis for my Project. For now, reading through on Keras and its functions and calls.
 
-# Day 21: July 27, 2018
+## Day 21: July 27, 2018
 
 I have to slow my progress down today. Received increased load at work due to training commitments for the team. Will have to work slowly for now. I still have to my job to think about. Keras is still the target for today. First its important to learn about the Keras commands so for now that is the target. At the very least, finish this one over the weekend. I hate to pushback objectives but I can't do anything about it. Anyways its just until November. :smiling_imp:
 
 Anyway its now 4:41PM, I just finished Keras chapter 2. I was able to read through the Keras documentation and I now how some clue on what Keras is and I have a handle on how to do the most basic model which is sequential. They are right in saying that this is easier. In a way, I get it because the documentations are great and I am able to build on the previous topics about NN. For now I am going to watch the Mini-Project Intro just to get an idea of what I need to work on. I have to do some Lab works first but I doubt it will be done this night, I am still a single resource later. Hopefully nothing bad happens. Also, working on my resume today preparing for December.
 
-# Day 22: July 28, 2018
+## Day 22: July 28, 2018
 
 Well, shift went south fast. So here we are, doing Keras at 8:00AM.  :thumbsup: The lab work right now is for Keras. An implementation of Student Admissions Analysis. This has already been done using the basic Numpy and Pandas, this time we are going to do it with Pandas and Keras. The prelab shows that this is a follow along lab, no wonder there was no TODO item in the lab notebook. Anyway, We would probably update Github for this one. This lab is more of a reinforcement learning of the Keras model.
 
@@ -453,7 +453,7 @@ Just meant to say that every model, algorithm that we learn has its own use. Its
 
 > __Incase you haven't noticed, its now on a more serious tone. Rarely placing emojis, and the tone of the logs are different. I guess it does consume you after a while. :muscle: push on!!!__
 
-# Day 23: July 29, 2018
+## Day 23: July 29, 2018
 
 On to TensorFlow. Keras is basically, a wrapper for TensorFlow. Keras is good for creating a network quickly to proceed to testing and validation of the model. The problem with Keras is that it abstracts a huge part of the model. So we are now learning TensorFlow. TensorFlow is great for learning the operation of Neural Networks at a lower level.
 
@@ -463,18 +463,34 @@ So Tensorflow is quite heavy, its a new syntax altogether. This is going to spil
 
 Just to get some perspective, I have another project due for August 20. 4 Weeks from now, and I have to cover 8 lessons to get there. This will be tough.
 
-# Day 24: July 30, 2018
+## Day 24: July 30, 2018
 
 So I have started moving forward in Tensorflow intro for Neural Networks. The same time starting to go over the topics in Convolutional Neural Networks. I want to do this now so that we can proceed with building the project. There is a problem thought, there might be a need to use an external service from Amazon which is the EC2. This is a complication but it should be manageable. For now I am focusing more on getting towards the project phase. I know it would be long but it should be doable.
 
-# Day 25: July 31, 2018
+## Day 25: July 31, 2018
 
 And just like that I am 25 days in on this pledge. I am actually happy about what I have accomplished so far. The learnings and the insights on what could be possible its great. I am excited to see how much further I can go on the next 25 days and what I can accomplish after 100 days.
 
 For now I am focusing on the Convolutional Neural Networks topic and also doing something in parallel with the TensorFlow lesson in part 1. I am still wading through it. I slipped for some time last week and it has really been stressful lately but it should come back to normal now. __POWER OVERWHELMING__ is the key today. I was able to watch the intuition part of CNN from Intro to Deep Learning in Udemy. I am still finishing it but I found out that its good to have intuitions first on what is going to be accomplished and then take a deeper dive into the lessons in Udacity.
 
-With regards to TensorFlow, I am having some issues with the requirements for the environment, for some reason it does not go through and some requirements are not found even though it is installed. The little things really are annoying sometimes. :fist: Right now, based on the Udacity progress bar I am 56% in to the TensorFlow lesson and I am 15% in through the Convolutional Neural Networks topic. The topics per se are quite small, 2 hours to 4 hours I think. Its the processing and the digestion for me that is proving some time. For now we shall continue on. Pushing through. 
+With regards to TensorFlow, I am having some issues with the requirements for the environment, for some reason it does not go through and some requirements are not found even though it is installed. The little things really are annoying sometimes. :fist: Right now, based on the Udacity progress bar I am 56% in to the TensorFlow lesson and I am 15% in through the Convolutional Neural Networks topic. The topics per se are quite small, 2 hours to 4 hours I think. Its the processing and the digestion for me that is proving some time. For now we shall continue on. Pushing through.
 
+## Day 26: August 1, 2018
+
+Finally able to finish the __Nerual Networks__ lesson in the Nano-degree. I have to move forward and keep this pace. The next topics are going to be interesting. I am actually still doing the parallel play between the __Convolutional Neural Networks__ and the __Deep Neural Network in TensorFlow__ chapter. The reason is that I beleive that TensorFlow is going to be used moving forward in the course. I'd much rather nail it down now and build on the knowledge today than go on with the course without an inkling of what is happening.
+
+So update on this day is that I was able to finish fully my TensorFlow lesson. Learned how to do multilayer NN and also learned about a very important topic __creating checkpoints__. I emphasize more on _creating checkpoints_ because you are going to need save at some point especially if you are going to process a lot of epochs on a huge data.
+
+## Day 27: August 2, 2018
+
+I finally figure out how I can install opencv-python. This was the last package that I need to install to run the python notebook for the convolutional layer. In case I forget it, I have to run it via pip: __pip install opencv-python__. Additional note, it should be while __*inside*__ the environment. For now, I'll stick to the videos and note taking. Just a side note, the reason I can't download it is because the connection is  :shit: but at least I have the internet so to put things in perspective, I am still lucky :ok_hand:.
+
+So I am now in CNN, and I have just finished 7 videos. Learned on how images are interpreted by computers: bascically as a huge tensor with a base element of a pixel. Then we went on to discuss MLPs and how they are used for image classification and where they are trumped by CNNs: the explanation was that CNNs are more suited for multi-dimensional analysis where it looks for coreelation not just in value but also in the relative position of the elements which obviously works well with images. Then we went on with Categorical Cross-Entropy for the loss function and how it is going to be used in the context of identifying an image: Basically, the model will output the probabilities of the labels and the error is taken from those probabilities taken together and compared with the probabilities of the one-hot encoded label. Then we moved on to validating models in Keras: there was an article about the MNIST data set and how it came to be and also about previous researches done on the data set and its results. Also was able to read more on the Keras documentation, I remember it was the __callback__ class where we get to store data of our training runs and see how our model is proceeding with its training. Based on the documentation on the __callback__ class there were also some interesting functions like _earlystopping_ which stops the training when the loss or accuracy is not improving and _adjusting LR on plateu_ where the LR is decreased automatically when a patience epoch threshold is met to ensure learning progresses.
+<br>That is all for now, will read more on this blog from [Machine Learning Mastery](https://machinelearningmastery.com/about/). I will find a way to download the opencv-python package later.
+
+## Day 28: August 3, 2018
+
+So, I was able to finally download the opencv-python package for the aind2 course. The plan now is to play around with the values in the network and go over the notebook to come up with the way the model was built. __:yum:__
 
 ### Current Resources
 
