@@ -490,7 +490,17 @@ So I am now in CNN, and I have just finished 7 videos. Learned on how images are
 
 ## Day 28: August 3, 2018
 
-So, I was able to finally download the opencv-python package for the aind2 course. The plan now is to play around with the values in the network and go over the notebook to come up with the way the model was built. __:yum:__
+So, I was able to finally download the opencv-python package for the aind2 course. The plan now is to play around with the values in the network and go over the notebook to come up with the way the model was built. __:yum:__ <br>
+Now the training and testing begins on the model. This is just Keras so nothing fancy, the objective here is to figure out where overfitting starts. __*Overfitting happens when the validation loss is higher than (by a significant ammount) the training loss*__. Here is an [interesting read](https://stackoverflow.com/questions/2976452/whats-is-the-difference-between-train-validation-and-test-set-in-neural-netwo) on the implications of validation sets on overfitting. We have known about data set spilts from our Introduction to Neural Networks, I believe its a Machine Learning concept or even an AI concept. But the idea is that we do not just burn through all our data in training, we have to have an idea of how well our model is able to predict an output or label from a data set that it has not yet seen before (think of it as the blind test). Depending on where you read, they say a good split is 20-test then 80-train, or 10-test and 90-train. The idea is that you want as much data as you can to train your model but have enough remaining data set to be able to test your model. This time we are adding another split to the __traininng data__ which is called the __*validation set*__. The validation set is usually 20% or so of your training data. The idea of the validation set is that it allows you to guage the tendency of your current model to overfit. Validation testing is done __while training__. In a way its like testing your data before hand, after each epoch or some epochs, to ensure that the increase in weights is actually going to contribute to the increase in accuracy of the model as a whole.<br>
+> When your training set increases its accuracy more and more after every pass but your validation tests are the same then the model is not actually learning anything new but simply memorizing the training set. This is a __sign of overfitting__.<br>
+When overfitting is detected the training should perform an early stop so that the model does not overfit the training data.<br>
+>Here is how I think of it: Let's say you are enrolled in a course. You run through all the possible materials of the course as dictated by the syllabus, this is your training. If we follow the basic train-test split, then after we go over through the materials multiple times we take a __FINAL EXAM__ which gives out the final grade for the course. If we follow the train-validate-test split, then after a going over the materials once we take a __QUIZ__ to check our learnings. We then take the result of the quiz and decide if we are ready to take the __FINAL EXAM__ or if we have o study some more.
+
+## Day 29: August 4, 2018
+
+Doing the Mini project today. THe idea is to figure out how overfitting can be avoided by different methods.
+
+I just finished this tasks, and its now 8:34 PM. Did not feel well for the day. I will work on this some more. Target is to finish lesson from Local Connectivity on to Convolutional Layers then forward some more. I am aiming for the Quiz at #14. For now, its dinner then shower.
 
 ### Current Resources
 
