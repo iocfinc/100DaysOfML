@@ -511,9 +511,30 @@ For now I'll go over the explanation of what Convolution is and thankfully Udaci
 
 This is a spill over of Day 30. I am the standby duty manager for Sunday going to Monday so its still my shift. Might as well do something fun about it. Anyway my dive into CNNs are now near the implementation part. My notebook already has topics covered from MLPs vs. CNNs to the more technical side of convolution like stride and padding. I even had the time to read and experiment on image kernels or filters. Learned __blur, identity, stobel was it or strobel?__. You can read about them also from this [post](http://setosa.io/ev/image-kernels/). And in the off chance that it might work, here is an animation of a convolution taken from __https://raw.githubusercontent.com/iamaaditya/iamaaditya.github.io/master/images/conv_arithmetic/full_padding_no_strides_transposed.gif__.
 
-![Convolution](https://raw.githubusercontent.com/iamaaditya/iamaaditya.github.io/master/images/conv_arithmetic/full_padding_no_strides_transposed.gif)
+<center>![Convolution](https://raw.githubusercontent.com/iamaaditya/iamaaditya.github.io/master/images/conv_arithmetic/full_padding_no_strides_transposed.gif)</center>
 
 For now I am already at the implementation of 2D convolution in Keras. Still reading through some of the arguments needed and there is a quiz. So I will be back shortly to update this post. For now, I'll push this to check if the animation would work. :smiling_imp:
+
+I'm an idiot, I did not know that backticks != apostrophe. :poop: No wonder my code blocks were not working in both jupyter and in git. You never know what you learn.
+
+## Day 32: August 7, 2018
+
+Yesterday, I ended up in the pooling section of the lesson. I was more into the notes so I did not have any additional entries in this log. For now the target it to read and finish up on the pooling topic from Keras then move further into lesson. Yesterday was quite fun, learned how to compute for depth and shape of the convolutional layer (i.e. the wX) and learned about counting parameters as well.
+
+I can't sleep. A daemon is telling me that I have to catch up and it keeps me up. I might as well read through and study the lectures. Found an interesting resource online, from the looks of it [this](http://cs231n.github.io/convolutional-networks/) might be a CS class. Looks interesting and skimming through it I am getting the idea of what a ConvNet (that is how I'll call them from now on ::). Then here is a resource, again from Udacity about [Loss functions](https://lossfunctions.tumblr.com/). Its like a Tumblr post about user submitted loss functions. Its quite fun to look at. Here is an image from that same link.
+<center>![Loss Function Graphs](https://static.tumblr.com/c1127d32546080731a792febfa3dd631/xg196g9/S2Vnt8f21/tumblr_static_dp2izzbtsrsoc4cg8occ0o0cg_2048_v2.png)</center>
+
+At the end of the day, I was able to read through the CS231n up until the ConvNet Layer. I am going to continue it tomorrow. For now I have a rough idea of what is happening. I am not gonna write about it here because I intend to add it to the notebook I made for Convolutional Neural Networks which will be uploaded once I finish the course.
+
+## Day 33: August 8, 2018
+
+Finally, Its now time to continue on to the readings. While on the way home I also watched the Udemy course by Kiril. I was watching the Intuition: Convolutional Networks portion. Again, getting all the information first and the theory then I will apply it in the Udacity projects. From the looks of it, Udacity is good for the __overview of the topic__ *but it does pay to dig a little deeper so that you grasp the technical/theoretical concept behind it.* At least that is how it works for me.
+
+I also downloaded some datasets from Kaggle. One is about Fifa Man of the Match modeling I think. Another one was a data set for flower recognition and finally I browsed about the pictures for the Airbus Challenge. It was a good challenge advertised as a competition I think. The goal is to correctly identify ships from satellite images captured by Airbus. Its applications are really fascinating, I want to join but I have to be realistic. I need to finish this course first. :smiling_imp: Reading the Kernels in the competition is fun though. You get to see examples of how others are going about solving the problem.
+
+ :satisfied:This reading material for cs231n is very informative. Its not overly theoretical, its just the right amount of insight to form a cohesive idea about the topics discussed.
+
+>Don't be a __HERO__. When practicing the models, especially in CNN, try to find working ones that are already created instead of creating your own architecture from scratch. For now, especially since we are starting its better to have a working model from a built model that was tuned to our data set than a new model from scratch that would only work on our model. Having a template for this study is better that having a tailor fit suit.
 
 ### Current Resources
 
@@ -522,3 +543,5 @@ For now I am already at the implementation of 2D convolution in Keras. Still rea
 [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/)
 
 [Books Source](https://www.manning.com/)
+
+[CS231N lecture notes](http://cs231n.github.io/convolutional-networks/)
