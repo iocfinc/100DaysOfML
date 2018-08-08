@@ -16,14 +16,14 @@ Have fun and more importantly learn to give 1-2 hours a day for this cause. I al
 
 ## Start of the logs
 
-#### Day 1: July 7, 2018
+## Day 1: July 7, 2018
 
 First of all what is Machine Learning?
 From reddit's [ELI5:Machine Learning](https://www.reddit.com/r/explainlikeimfive/comments/4v3u4l/eli5_what_is_machine_learning/) what I learned is that machine learning is a way to program a computer in a way that it would be able to figure something out without you typing it in **rule based, multiple if statements**. You would then **TRAIN** the machine to provide an output by feeding it data. The more data you have the more the machine can get the context of what you are trying to achieve. As it feeds on more data the more complex the things it can come up with.
 
 Reading an article from [Medium](https://medium.com/@lampix/machine-learning-ml-and-its-impact-on-humanity-71d041298ac) about ML's impact on humanity. It is very exciting to know what machine learning is changing on the fields we know today. Imagine how different and exciting it would be when we reach the point where the things our machine learning models discover today becomes the input to the machine learnings we are about to have. The possibilities. Its exciting. :grinning:
 
-#### Day 2: July 8, 2018
+## Day 2: July 8, 2018
 
 Continuing now on the Intro to Machine Learning course by Udacity. I started this when I was in Thailand last June 2. I am already in Lesson 2: Naive Bayes but I had to pause because my Python was still crappy, it still is but I have finished the Intro to Python and I promise to code and practice more every day. With this initiative, I sure am going to be coding for a while. :smiley:
 
@@ -41,9 +41,9 @@ The closest example I can think of here that could be related is duck-typing. If
 
 I have also tried the example outlined in the SKlearn documentation. The code is in 'GNB-SKLearn.py'.
 
-#### Day 3: July 9, 2018
+## Day 3: July 9, 2018
 
-I am currently having multiple projects at once. The Deep Learning nanodgree in [Udacity](https://www.udacity.com/course/deep-learning-nanodegree--nd101) is starting this July 10 and I am enrolled. This #100DaysOfMLCode would be a great supplement to track my progress in the nano-degree. I enrolled because I am becoming more interested to pursue the field of AI. I am interested in knowing more and I would like to enter the field and contribute. This would be part of my life long learning initiative. This was paid with the money I saved up as *Education Funds*:thumbsup:
+I am currently having multiple projects at once. The Deep Learning nanodegree in [Udacity](https://www.udacity.com/course/deep-learning-nanodegree--nd101) is starting this July 10 and I am enrolled. This #100DaysOfMLCode would be a great supplement to track my progress in the nano-degree. I enrolled because I am becoming more interested to pursue the field of AI. I am interested in knowing more and I would like to enter the field and contribute. This would be part of my life long learning initiative. This was paid with the money I saved up as *Education Funds*:thumbsup:
 
 In terms of progress for today, I was able to continue watching UD120. It is helpful but I also found the [crash course](https://developers.google.com/machine-learning/crash-course/) in Google Developers helpful. Although I have just finished watching the Intro and Framing, if the course structure is the same then I would recommend this course better than the one in Udacity. The crash course has some reading parts which I can follow along which I **-PERSONALLY-** prefer.
 
@@ -80,7 +80,7 @@ A **Regression** model predicts continuous values. For example "probability of b
 
 Moving forward on the crash course you get to **Linear Regression**.
 
-A familiar topic considering this was already discussed in ENGSTAT during uni. From what I remember, the data would be plotted in a scatter plot and then there is a *best fit line* that would be available from the labeled data provided. Now recalling from algebra the formula for a line is *y = mx + b* where m is the slope of the line or gradient, b is the y-intercepts (y @ x = 0). In ML the names change as well as the information they correspond to. y becomes y' which is the label prediction. m becomes w to correspond to the *weight* of the feature (x). b is is still be but it now denotes *bias*. So the linear regression equation becomes **y' = wx + b**. Now this is only true for *simple linear regression* models where we have one feature and one label. We can have multiple features which in turn has multiple weights so a more sophisticated linear regression equation could look like this: **y' = w1x1 + w2X2 + ... + wnxn + b**.
+A familiar topic considering this was already discussed in ENGSTAT during uni. From what I remember, the data would be plotted in a scatter plot and then there is a *best fit line* that would be available from the labeled data provided. Now recalling from algebra the formula for a line is $y = mx + b$ where m is the slope of the line or gradient, b is the y-intercepts (y @ x = 0). In ML the names change as well as the information they correspond to. y becomes y' which is the label prediction. m becomes w to correspond to the *weight* of the feature (x). b is is still be but it now denotes *bias*. So the linear regression equation becomes $y' = wx + b$. Now this is only true for *simple linear regression* models where we have one feature and one label. We can have multiple features which in turn has multiple weights so a more sophisticated linear regression equation could look like this: $y' = w1x1 + w2X2 + ... + wnxn + b$.
 
 In the crash course the example given was the relationship between the chirps of a cricket and the temperature of the environment the cricket is in. The relationship can be plotted as a simple linear regression with the number of chirps in direct proportion (positive weight) with the temperature.
 
@@ -100,7 +100,7 @@ TODO:
 * Reducing loss topic in Crash course
 * Essence of Linear Algebra (3Blue1Brown) Chapters 3 and 4 in 1.5X speed. :muscle:
 
-#### Day 4: July 10, 2018
+## Day 4: July 10, 2018
 
 Expecting a light load today. Will review Linear Algebra by 3Blue1Brown. I am targeting chapters 3 and 4 to start. After this, I will continue on the Crash course for the Reducing Loss topic (advertised as a 60 min. exercise). There is a webinar today at 8PM I think? If I remember it correctly its 6:00 PM Pacific time.
 
@@ -143,11 +143,11 @@ After hammering down on the concept of transformation we then proceed with the p
 
 Now with the concept of how to apply matrix transforms in check, we now prove that matrix transforms are associative. A(BC) == (AB)C, remembering in college when I used to compute this, proving this was time consuming. But now, knowing that multiplication is simply the transformation of matrices, you can already tell that it should not matter how its computed as long as the order of transformation is the same its going to produce the same result. _Now obviously, the professor would not accept an essay form to a math question because LHS == RHS is always the way. :unamused:_
 
-#### Day 5: July 11, 2018
+## Day 5: July 11, 2018
 
 Setting up my Anaconda. Updated my MS VS code to 64-bit. Its the start of the nanodegree today. Immediately encountered an issue with Jupyter being blocked by the network settings.
 
-So now, I am able to get it to work. Yay :smile:. I am currently trying out a simple classifier with tensorflow. Encountered an issue with the tensorflow not installed by default in Anaconda. Made a mistake of following the installation guide in Tensorflow about adding tensorflow to anaconda. I added a new environment instead of adding tensorflow to the root environment :sigh:. I was not able to find a doc detailing how to install somthing on the root env. I am guessing I have to do a pip install via gitbash or cmd prompt to the root folder and nobody got time for that. Actually was able to get the tensorflow module(?) added to the root environment via the anaconda gui.
+So now, I am able to get it to work. Yay :smile:. I am currently trying out a simple classifier with tensorflow. Encountered an issue with the tensorflow not installed by default in Anaconda. Made a mistake of following the installation guide in Tensorflow about adding tensorflow to anaconda. I added a new environment instead of adding tensorflow to the root environment :sigh:. I was not able to find a doc detailing how to install something on the root env. I am guessing I have to do a pip install via gitbash or cmd prompt to the root folder and nobody got time for that. Actually was able to get the tensorflow module(?) added to the root environment via the anaconda gui.
 
 Anyway, I was able to move and try more examples for the pre-trained deep learning models in the nano-degree. Quite fun actually. The Deep-traffic simulator which was a neural net for self-driving cars was particularly fun. There is also a Flappy bird model which I have not yet tried. There are also recommended readings for the course. I am interested in getting the flappy bird model to work. I will definitely circle back to it.
 
@@ -257,7 +257,7 @@ It is good practice to setup a generic environment for the 2 versions of Python.
 
 ### On sharing environments
 
-When we upload or share our work and projects to others, for example in github, it is good to include a requirements.yaml file or a requirements.txt file to help users replicate the working environment you had. The requirements.txt file can be obtained via [_pip freeze_](https://pip.pypa.io/en/stable/reference/pip_freeze/) and can be handy because not everyone is using conda. 
+When we upload or share our work and projects to others, for example in github, it is good to include a requirements.yaml file or a requirements.txt file to help users replicate the working environment you had. The requirements.txt file can be obtained via [_pip freeze_](https://pip.pypa.io/en/stable/reference/pip_freeze/) and can be handy because not everyone is using conda.
 
 ## Further Readings for the Topic on Condas
 
@@ -267,13 +267,13 @@ When we upload or share our work and projects to others, for example in github, 
 
 ### TODO
 
-- [x] Upload to git hub [DONE]
-- [x ]Setup Anaconda correctly (uhmm) :smile:
-- [x]Provide a copy of the Lesson2 Jupyter notebook to the repo.
+* [x] Upload to git hub [DONE]
+* [x ]Setup Anaconda correctly (uhmm) :smile:
+* [x]Provide a copy of the Lesson2 Jupyter notebook to the repo.
 
-#### Day 6: July 12, 2018
+## Day 6: July 12, 2018
 
-## Lesson 4: Jupyter Notebooks
+### Lesson 4: Jupyter Notebooks
 
 So I just continued on the Deep Learning Nano-degree. I am now at Lesson 4. off topic for a bit, Deep Learning is a subset of machine learning. So in any case, I am still doing the #100DaysOfMLCode challenge.  :metal:
 
@@ -300,13 +300,13 @@ And a possible supporting document would be [Siraj Raval's Deep Learning in 6 we
 So I just got home. I was trying to upload the markdown files with the pictures. I can't seem to figure out how they work.  :expressionless:
 I still have to figure out the latex part as well. I wonder if it would be the same if I use jupyter. But those are not the important thing right now. :triumph: :triumph: I'll just circle back here when I have some idle time. LOL.
 
-## Matrix determinant
+#### Matrix determinant
 
 Recall that a transform of a vector allows you to know the location of the new vector in space. We first get the new coordinates of the unit vectors and then we scale it with the original scalars of the vector. This will lead us to the new location of the Head of the vector (if we think about it as a dot.) If we consider the area of the original vector it will also change as we transform it. The _scale of which the area changed due to a transform_ is what we consider as the determinant. The determinant is therefore a scalar. It scales the unit vector's area by its value. Here is how I picture it: _transforming the vector moves its position **scaling its length**, as we flip the location of a vector we also squish or stretch its area and **scaling of area** is the determinant_.
 
 Moved on to the Numpy lesson in Udactiy. This is a very un-organized day.
 
-#### Day 7: July 13, 2018
+## Day 7: July 13, 2018
 
 Moving on to Episode 5 of the Essence of Linear Algebra. The topic was Inverse matrix, column space and null space.
 
@@ -314,7 +314,7 @@ The inverse of a matrix is the reverse of the transformation created by the orig
 
 Multiplying a matrix with its inverse is equal to the matrix that does nothing. This is called the _identity matrix_. If you recall engineering algebra its the one where the diagonal of the matrix are 1's and the rest are zero. This also called the _identity transformation_.
 
-Now on to the application of matrix which is solving for values of systems of linear equations. We should note that we can readily find a unique solution to the system of linear equations IFF the determinant of the transformation is not equal to 0. For the succeeding example I am going to call A as the transform function matrix, x as the matrix for the varialbes (i.e. [x y z]) and v as the constants. Assuming that det (A) is != 0 then we can multiply both sides by the inverse of A. Here is the original equation: Ax = v. Applying the inverse of matrix A so that only x remains on the other side we get x = v (inv A). This way we can perform the multiplication of inv A and v. This will lead us to the values corresponding to x, y, and z which are the solutions for the equation.
+Now on to the application of matrix which is solving for values of systems of linear equations. We should note that we can readily find a unique solution to the system of linear equations IFF the determinant of the transformation is not equal to 0. For the succeeding example I am going to call A as the transform function matrix, x as the matrix for the variables (i.e. [x y z]) and v as the constants. Assuming that det (A) is != 0 then we can multiply both sides by the inverse of A. Here is the original equation: Ax = v. Applying the inverse of matrix A so that only x remains on the other side we get x = v (inv A). This way we can perform the multiplication of inv A and v. This will lead us to the values corresponding to x, y, and z which are the solutions for the equation.
 
 __Rank__  is the number of _dimensions_ in the output of a transformation. For example you the result of a transform is a line then the rank is 1, since the line is in one-dimension. If the output is a point then the rank is 0. The set of all possible outputs of your matrix is called __column space__. Basically the column space is the span of the columns of your matrix. The rank, therefore, can be considered as the number of dimensions in your column space. When the rank is as high as it can be (i.e. no squishing to a line or a point for any column) then the matrix is considered in __full rank__. If there is squishing which leads to vectors landing on the origin then we have a null space or "kernel" of the matrix. Its the space of all vectors that become null because they land on the zero vector.
 
@@ -325,7 +325,7 @@ I have just finished the Introduction lessons in the Deep Learning Nano-degree. 
 I need to possibly reinstall Anaconda. I am having some issues with the environment not being detected. I believe this is caused by the location of the folder AppData being hidden by default.
 I'll install Anaconda on the C drive under my name :)
 
-#### Day 8: July 14, 2018
+## Day 8: July 14, 2018
 
 It has been 8 days since committing to this initiative. 92 days more. A lot can happen in that span. Slowly and surely I'll get there. For now, the updates are: I was able to re-install Anaconda in My_documents this time so that there are no issues with the hidden folders path in environment. Also, I was able to eventually finish my intro part for the Deep Learning nano-degree. For now I am in the Perceptrons portion of Neural networks. Quite an interesting topic. Its the vanilla version of many deep learning models and it actually makes sense if you think of the logic behind it.
 
@@ -333,17 +333,17 @@ Most of the progress today would be covered in the Notebooks. Today, I was able 
 
 Did something really stupid today: I slipped up and watched the Saga of Tanya the evil. :smile: But its now done, its just 12 episodes in 1.5x speed. I am getting used to this playback speed. Now back to Deep learning.
 
-#### Day 9: July 15, 2018
+## Day 9: July 15, 2018
 
 Will continue with the course. Target today is to get to Lesson 1: Chapter 24 at least. I plan to finish Lesson 1 this week and move on to Lesson 2 since there is a project due on July 25, which is 10 days from now. I need to be fast for now so that I can make it.
 
 Note to self: Change the activation function symbol of a sigmoid from omega to phi in the notebook. Also, I figured out why there was trouble connecting to the internet. I was on still on the proxy from work. Face palm :LOL: For now its much better, I am able to load the videos and submit answers without the connection dropping. I am continuing on with the Neural Networks lesson. I am now on the topic of Errors. Finished until chapter 24 today. Likely that I will finish this all by tomorrow and start moving on to the next lesson. Deus Vult.
 
-#### Day 10: July 16, 2018
+### Day 10: July 16, 2018
 
 Almost done with lesson 1. I am now at the feed forward and back propagation lectures. This can be finished today and then there will be a lab. I do have to look carefully at the entire course so that I can pace myself. I just asked my mentor for the course about my pace, I just said that I was just done with the first lesson: Neural Networks and hoping to get feedback on my pace. Hopefully we can get some response.
 
-#### Day 11: July 17, 2018
+## Day 11: July 17, 2018
 
 Finished part 1 of 7. I have to keep up, its supposed to be 15 days and then due. I need to focus more on the nano-degree. :sad: The good thing is that the succeeding lessons are timed at 2 hours or less. The only thing that's long is the first project: Predicting Bike sharing data which is due in 8 days. So I have to move fast. 4 more lessons to go before the project. This is exciting.
 
@@ -353,7 +353,7 @@ I was browsing the documentation for numpy. It was eerily similar to Matlab in c
 
 Later today I will be going over the Gradient Descent lesson. Hopefully it would not be too taxing on my brain. My perceptrons gonna get fried after this. :joy:
 
-#### Day 12: July 18, 2018
+## Day 12: July 18, 2018
 
 Target to finish 2nd half of implementing gradient descent lesson. This is doable, just focus and do it slow. In chunks.
 
@@ -438,7 +438,7 @@ I can't wait for the weekend to come. Planning on taking on Keras and Sentiment 
 
 ## Day 21: July 27, 2018
 
-I have to slow my progress down today. Received increased load at work due to training commitments for the team. Will have to work slowly for now. I still have to my job to think about. Keras is still the target for today. First its important to learn about the Keras commands so for now that is the target. At the very least, finish this one over the weekend. I hate to pushback objectives but I can't do anything about it. Anyways its just until November. :smiling_imp:
+I have to slow my progress down today. Received increased load at work due to training commitments for the team. Will have to work slowly for now. I still have to my job to think about. Keras is still the target for today. First its important to learn about the Keras commands so for now that is the target. At the very least, finish this one over the weekend. I hate to push back objectives but I can't do anything about it. Anyways its just until November. :smiling_imp:
 
 Anyway its now 4:41PM, I just finished Keras chapter 2. I was able to read through the Keras documentation and I now how some clue on what Keras is and I have a handle on how to do the most basic model which is sequential. They are right in saying that this is easier. In a way, I get it because the documentations are great and I am able to build on the previous topics about NN. For now I am going to watch the Mini-Project Intro just to get an idea of what I need to work on. I have to do some Lab works first but I doubt it will be done this night, I am still a single resource later. Hopefully nothing bad happens. Also, working on my resume today preparing for December.
 
@@ -446,7 +446,7 @@ Anyway its now 4:41PM, I just finished Keras chapter 2. I was able to read throu
 
 Well, shift went south fast. So here we are, doing Keras at 8:00AM.  :thumbsup: The lab work right now is for Keras. An implementation of Student Admissions Analysis. This has already been done using the basic Numpy and Pandas, this time we are going to do it with Pandas and Keras. The prelab shows that this is a follow along lab, no wonder there was no TODO item in the lab notebook. Anyway, We would probably update Github for this one. This lab is more of a reinforcement learning of the Keras model.
 
-So I am done with the first Lab: Student admissions. For now I am reading this [post](http://ruder.io/optimizing-gradient-descent/index.html#rmsprop) about Gradient Descent optimization algorithms. This post on [Visualizing and animating Algorithms](http://louistiao.me/notes/visualizing-and-animating-optimization-algorithms-with-matplotlib/) is actually awsome. Makes learning of the algorithms much faster. So what was basically introduced as SGD and MiniBatch GD are just the basics. In the post, I learned about Adam, AdaMax, Nadam,  NAG, RMSProp, AMSGrad. All math heavy but you get the point that they are improved versions of each other. Also, you get the idea that some should work more than others.
+So I am done with the first Lab: Student admissions. For now I am reading this [post](http://ruder.io/optimizing-gradient-descent/index.html#rmsprop) about Gradient Descent optimization algorithms. This post on [Visualizing and animating Algorithms](http://louistiao.me/notes/visualizing-and-animating-optimization-algorithms-with-matplotlib/) is actually awesome. Makes learning of the algorithms much faster. So what was basically introduced as SGD and MiniBatch GD are just the basics. In the post, I learned about Adam, AdaMax, Nadam,  NAG, RMSProp, AMSGrad. All math heavy but you get the point that they are improved versions of each other. Also, you get the idea that some should work more than others.
 > __*There are no good and bad models, just right and wrong ones.*__
 
 Just meant to say that every model, algorithm that we learn has its own use. Its about where we apply them to that counts. Imagine if you model a 2 input NAND gate with AMSGrad, that would be overkill when a simple SGD could suffice.
@@ -477,7 +477,7 @@ With regards to TensorFlow, I am having some issues with the requirements for th
 
 ## Day 26: August 1, 2018
 
-Finally able to finish the __Nerual Networks__ lesson in the Nano-degree. I have to move forward and keep this pace. The next topics are going to be interesting. I am actually still doing the parallel play between the __Convolutional Neural Networks__ and the __Deep Neural Network in TensorFlow__ chapter. The reason is that I beleive that TensorFlow is going to be used moving forward in the course. I'd much rather nail it down now and build on the knowledge today than go on with the course without an inkling of what is happening.
+Finally able to finish the __Neural Networks__ lesson in the Nano-degree. I have to move forward and keep this pace. The next topics are going to be interesting. I am actually still doing the parallel play between the __Convolutional Neural Networks__ and the __Deep Neural Network in TensorFlow__ chapter. The reason is that I believe that TensorFlow is going to be used moving forward in the course. I'd much rather nail it down now and build on the knowledge today than go on with the course without an inkling of what is happening.
 
 So update on this day is that I was able to finish fully my TensorFlow lesson. Learned how to do multilayer NN and also learned about a very important topic __creating checkpoints__. I emphasize more on _creating checkpoints_ because you are going to need save at some point especially if you are going to process a lot of epochs on a huge data.
 
@@ -485,8 +485,8 @@ So update on this day is that I was able to finish fully my TensorFlow lesson. L
 
 I finally figure out how I can install opencv-python. This was the last package that I need to install to run the python notebook for the convolutional layer. In case I forget it, I have to run it via pip: __pip install opencv-python__. Additional note, it should be while __*inside*__ the environment. For now, I'll stick to the videos and note taking. Just a side note, the reason I can't download it is because the connection is  :shit: but at least I have the internet so to put things in perspective, I am still lucky :ok_hand:.
 
-So I am now in CNN, and I have just finished 7 videos. Learned on how images are interpreted by computers: bascically as a huge tensor with a base element of a pixel. Then we went on to discuss MLPs and how they are used for image classification and where they are trumped by CNNs: the explanation was that CNNs are more suited for multi-dimensional analysis where it looks for coreelation not just in value but also in the relative position of the elements which obviously works well with images. Then we went on with Categorical Cross-Entropy for the loss function and how it is going to be used in the context of identifying an image: Basically, the model will output the probabilities of the labels and the error is taken from those probabilities taken together and compared with the probabilities of the one-hot encoded label. Then we moved on to validating models in Keras: there was an article about the MNIST data set and how it came to be and also about previous researches done on the data set and its results. Also was able to read more on the Keras documentation, I remember it was the __callback__ class where we get to store data of our training runs and see how our model is proceeding with its training. Based on the documentation on the __callback__ class there were also some interesting functions like _earlystopping_ which stops the training when the loss or accuracy is not improving and _adjusting LR on plateu_ where the LR is decreased automatically when a patience epoch threshold is met to ensure learning progresses.
-<br>That is all for now, will read more on this blog from [Machine Learning Mastery](https://machinelearningmastery.com/about/). I will find a way to download the opencv-python package later.
+So I am now in CNN, and I have just finished 7 videos. Learned on how images are interpreted by computers: basically as a huge tensor with a base element of a pixel. Then we went on to discuss MLPs and how they are used for image classification and where they are trumped by CNNs: the explanation was that CNNs are more suited for multi-dimensional analysis where it looks for coreelation not just in value but also in the relative position of the elements which obviously works well with images. Then we went on with Categorical Cross-Entropy for the loss function and how it is going to be used in the context of identifying an image: Basically, the model will output the probabilities of the labels and the error is taken from those probabilities taken together and compared with the probabilities of the one-hot encoded label. Then we moved on to validating models in Keras: there was an article about the MNIST data set and how it came to be and also about previous researches done on the data set and its results. Also was able to read more on the Keras documentation, I remember it was the __callback__ class where we get to store data of our training runs and see how our model is proceeding with its training. Based on the documentation on the __callback__ class there were also some interesting functions like _earlystopping_ which stops the training when the loss or accuracy is not improving and _adjusting LR on plateu_ where the LR is decreased automatically when a patience epoch threshold is met to ensure learning progresses.<br>
+That is all for now, will read more on this blog from [Machine Learning Mastery](https://machinelearningmastery.com/about/). I will find a way to download the opencv-python package later.
 
 ## Day 28: August 3, 2018
 
@@ -536,7 +536,14 @@ I also downloaded some datasets from Kaggle. One is about Fifa Man of the Match 
 
 >Don't be a __HERO__. When practicing the models, especially in CNN, try to find working ones that are already created instead of creating your own architecture from scratch. For now, especially since we are starting its better to have a working model from a built model that was tuned to our data set than a new model from scratch that would only work on our model. Having a template for this study is better that having a tailor fit suit.
 
-### Current Resources
+I was about to start item 19 in Convolutional Neural Networks. It is a mini-project involving CIFAR. It looks like it will take a while when I download the dataset, ~ 3:47:15 was the ETA.:smiling_imp:. FML. No way. I have to actually use my AWS credits for this one. Anyway I have to sleep for now. Its already 12PM. I will get back on this soon.
+
+How would you feel when the universe tells you __*"I got you"*__? I slept when I was not able to download the dataset. When I woke up, I checked my emails and there was this email from Kaggle. They are now offering free GPU enabled notebooks. :muscle:<br>
+Don't you just love it when the confluence of things are in your favor? I am now done with the initial run of the mini-project. How about that? Big step in my progress today. I will do some more testing. I checked and with Kaggle's free GPU resource, I was able to run 100 epochs of the model at approximately 15 mins. Not bad.<br>
+
+I am also uploading a copy of the notebook created in Kaggle together with this update in git.
+
+## Current Resources
 
 [Udacity's FREE course Intro to Machine Learning](https://classroom.udacity.com/courses/ud120)
 
