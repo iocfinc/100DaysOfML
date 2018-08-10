@@ -511,8 +511,8 @@ For now I'll go over the explanation of what Convolution is and thankfully Udaci
 
 This is a spill over of Day 30. I am the standby duty manager for Sunday going to Monday so its still my shift. Might as well do something fun about it. Anyway my dive into CNNs are now near the implementation part. My notebook already has topics covered from MLPs vs. CNNs to the more technical side of convolution like stride and padding. I even had the time to read and experiment on image kernels or filters. Learned __blur, identity, stobel was it or strobel?__. You can read about them also from this [post](http://setosa.io/ev/image-kernels/). And in the off chance that it might work, here is an animation of a convolution taken from __https://raw.githubusercontent.com/iamaaditya/iamaaditya.github.io/master/images/conv_arithmetic/full_padding_no_strides_transposed.gif__.
 
-<center>![Convolution](https://raw.githubusercontent.com/iamaaditya/iamaaditya.github.io/master/images/conv_arithmetic/full_padding_no_strides_transposed.gif)</center>
-
+    <center>![Convolution](https://raw.githubusercontent.com/iamaaditya/iamaaditya.github.io/master/images/conv_arithmetic/full_padding_no_strides_transposed.gif)</center>
+Te
 For now I am already at the implementation of 2D convolution in Keras. Still reading through some of the arguments needed and there is a quiz. So I will be back shortly to update this post. For now, I'll push this to check if the animation would work. :smiling_imp:
 
 I'm an idiot, I did not know that backticks != apostrophe. :poop: No wonder my code blocks were not working in both jupyter and in git. You never know what you learn.
@@ -542,6 +542,22 @@ How would you feel when the universe tells you __*"I got you"*__? I slept when I
 Don't you just love it when the confluence of things are in your favor? I am now done with the initial run of the mini-project. How about that? Big step in my progress today. I will do some more testing. I checked and with Kaggle's free GPU resource, I was able to run 100 epochs of the model at approximately 15 mins. Not bad.<br>
 
 I am also uploading a copy of the notebook created in Kaggle together with this update in git.
+
+## Day 34: August 9, 2018
+
+Finally, some solid progress in terms of crunching through the lectures. __Having the right set of tools on hand while doing something really saves a lot of time and keeps you moving__. I hope that I can finish the course before the free GPU enabled notebooks of Kaggle runs out. I do have some credits in AWS but that is for later, for those compute intensive networks, or should it be used for CNN.  :open_mouth:<br><br>
+For now I will continue on the Convolutional Neural Netorks Topic. This goes in parallel with the CNN in Tensorflow lesson. I say in parallel because training still takes a while to complete. Might as well read from other lessons to catch up. From the looks of the forum, I think I am behind by a huge ammount. I have until this weekend to finish all the pre-requisite topics before I touch the project. Must push on. :muscle:<br><br>
+I ended at Transfer Learning in Lesson 2 and I am on Max Pooling Layers in Lesson 3.
+
+I just finished ConvNet in TensorFlow. Actually, not fully. I am still about to do the read through for the MNIST code. I will run the code later. Also, I have to learn how to transition from importing the data set to simply reading it from a my disk in Kaggle. That is for later. For now I am focusing on CNNs in TensorFlow, specifically in going over the sample code.
+
+I am viewing the code and it looks quite similar to ANN. Which makes sense considering that they should be based on the same concept but on a different operation. One critical thing I have to wrap my head around is the order of the arguments in the functions. TensorFlow already has built-in functions for neural nets including conv and pooling and we have taken on the weigths and varaibles in TF from the previous topic on ANN. This should take some time.
+
+## Day 35: August 10, 2018
+
+I did some studies last night. Mostly about initialization of the weights and how initializing the weights to ones or zeros are actually making the model train longer. The concept is about initializing the weights via the random generator.
+
+I did some auditing of the remaining days for the project. Its only 10 days. Plenty of time relative to what can be done in a day but subject to the demands of the work. I still have to do my job before the course.
 
 ## Current Resources
 
