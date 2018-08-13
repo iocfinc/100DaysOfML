@@ -583,14 +583,14 @@ Then there is this article from ComputerWeekly about [how SEA keeps pace with AI
 
 Meaning that AI is, as it has always been, a tool that requires actual domain knowledge to be able to apply it correctly. Its not some sort of degree that gets you going. Its a tool that must be sharpened with experience and knowledge of the subject matter. Applying AI is dependent on the context of its field of application.
 
-<center>
 ![ASEAN AI ADOPTION](https://www.theaseanpost.com/sites/default/files/10628_1.jpg)
-</center>
-Off topic: I have been browsing on Kaggle for possible project ideas and I found this: [Daily News for Stock Market Prediction](https://www.kaggle.com/aaron7sun/stocknews) in the data set. Interested to run through it and see what the data is like and find some applications. This one as well [Telco Customer Churn](https://www.kaggle.com/blastchar/telco-customer-churn).
+Off topic: I have been browsing on Kaggle for possible project ideas and I found this: 
+
+[Daily News for Stock Market Prediction](https://www.kaggle.com/aaron7sun/stocknews) in the data set. Interested to run through it and see what the data is like and find some applications. This one as well [Telco Customer Churn](https://www.kaggle.com/blastchar/telco-customer-churn).
 
 ## Day 38: August 13, 2018
 
-I feel so refreshed. I slept close to normal hours for the first time in a while. Between working graveyard shifts, doing marathon sprints for projects and actually staying up due to standby duties, it hase been __really draining__. Now at least I am a bit recharged. :poop:
+I feel so refreshed. I slept close to normal hours for the first time in a while. Between working graveyard shifts, doing marathon sprints for projects and actually staying up due to standby duties, it has been __really draining__. Now at least I am a bit recharged. :poop:
 
 So on to the quiz that was held up yesterday. Auto-encoders with CNN and tensorflow. I do have a physical notes for this section, just so that I can draw out the model and label which tensorflow function is needed as well as the arguments.
 
