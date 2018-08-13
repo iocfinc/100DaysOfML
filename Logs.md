@@ -559,6 +559,56 @@ I did some studies last night. Mostly about initialization of the weights and ho
 
 I did some auditing of the remaining days for the project. Its only 10 days. Plenty of time relative to what can be done in a day but subject to the demands of the work. I still have to do my job before the course.
 
+I actually was able to finish the Weights initialization course for this lesson. I am moving on to encoders tomorrow.
+
+## Day 36: August 11, 2018
+
+Doing autoencoders for today. I will be able to practice my tensorflow with this one. Was able to do the first auto-encoder, the simple forwards pass one. The idea behind an auto-endcoder is that it will compress your file and then decompress it in such a way that there is __minimal loss__ supposedly. By the looks of it, there is a noticable loss in terms between the input and output. Some are smudged while others are missing some tails or rounds.
+
+The next thing to be covered is the encoder with CNN instead of the normal NN. First some [readings](https://distill.pub/2016/deconv-checkerboard/) on the deconvolution topic. This is going to be used when we do our upsampling in the decoding portion of our auto-encoder.
+
+## Day 37: August 12, 2018
+
+For today, finish auto-encoders via CNN. Final lesson before the project is transfer learning.
+
+Okay, I do not have any output for today. But I did do something that I have not done in a while. __I SLEPT FOR THE DAY__.:smiling_imp: Also, I was reading on the prospects of the field of AI-ML-DL in ASEAN. I have this image from [this post](https://theaseanpost.com/article/prospect-ai-southeast-asia-0). The good thing is that there is a push to apply AI in several fields and ASEAN countries are joining in. The sad thing is that Philippines seems to be getting left behind, again. If the image is any indication, it looks like there is still room for improvement in the Philippine market. The question is who will push for the change. One interesting thing noted in the article was that even if there is an initiative towards moving to AI and automation, ASEAN investments are still small relative to the giants like US or China. One particular point provided was that the income class for most of ASEAN is mostly low. What this means is that the returns would also be lower or will take longer because nobody would be able to buy in to the services. Another interesting point is in the ethical debates concerning privacy. As we all know, AI-ML-DL requires user data and most of this is private or should at least have privacy. Its important to be able to learn about the current trends in the leaders in AI so that the region can better create laws to balance out the privacy and progress.
+
+Then there is this article from ComputerWeekly about [how SEA keeps pace with AI](https://www.computerweekly.com/feature/How-Southeast-Asia-is-keeping-pace-with-AI). Again has a lot of important topics to consider. One interesting call out to the Philippines is the infrastructure for data, or lack thereof. To successfully scale any AI, there is a need for constant collection and transfer of data. While the country has kept close to the latest trends, investment in the infrastucture and network in the country as a whole is still lacking. Sure, the metro areas have relatively good infrastructure but how about those in the other provinces and areas?
+
+ On another note, the openess of the country to data is high. The Philippines together with Singpaore is among the top in terms of open data implementation. But, relative to the global numbers, it can still improve.
+
+ For moving in to the field, the article did state that __globally__ the manpower required for the AI field is still expected to grow. In terms of the growth potential, AI is still in its nascent stages. One point that could be taken is that:
+
+>“AI/machine learning is simply not an easy technology to apply – it requires a good understanding of the business problem, and which data and machine learning tools will address that problem.”
+
+Meaning that AI is, as it has always been, a tool that requires actual domain knowledge to be able to apply it correctly. Its not some sort of degree that gets you going. Its a tool that must be sharpened with experience and knowledge of the subject matter. Applying AI is dependent on the context of its field of application.
+
+<center>
+![ASEAN AI ADOPTION](https://www.theaseanpost.com/sites/default/files/10628_1.jpg)
+</center>
+Off topic: I have been browsing on Kaggle for possible project ideas and I found this: [Daily News for Stock Market Prediction](https://www.kaggle.com/aaron7sun/stocknews) in the data set. Interested to run through it and see what the data is like and find some applications. This one as well [Telco Customer Churn](https://www.kaggle.com/blastchar/telco-customer-churn).
+
+## Day 38: August 13, 2018
+
+I feel so refreshed. I slept close to normal hours for the first time in a while. Between working graveyard shifts, doing marathon sprints for projects and actually staying up due to standby duties, it hase been __really draining__. Now at least I am a bit recharged. :poop:
+
+So on to the quiz that was held up yesterday. Auto-encoders with CNN and tensorflow. I do have a physical notes for this section, just so that I can draw out the model and label which tensorflow function is needed as well as the arguments.
+
+Placing this here:
+
+```python
+tf.nn.conv2d(
+    input,  # The input matrix or tensor
+    filter,  # Filter is not the filter size but the actual depth
+    strides,
+    padding,
+    use_cudnn_on_gpu=True,
+    data_format='NHWC',
+    dilations=[1, 1, 1, 1],
+    name=None
+)
+```
+
 ## Current Resources
 
 [Udacity's FREE course Intro to Machine Learning](https://classroom.udacity.com/courses/ud120)
