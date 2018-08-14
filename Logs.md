@@ -600,7 +600,7 @@ Placing this here:
 tf.nn.conv2d(
     input,  # The input matrix or tensor
     filter,  # Filter is not the filter size but the actual depth
-    strides,
+    strides, # 
     padding,
     use_cudnn_on_gpu=True,
     data_format='NHWC',
@@ -609,9 +609,46 @@ tf.nn.conv2d(
 )
 ```
 
-## Current Resources
+## Day 39: August 14, 2018
 
-[Udacity's FREE course Intro to Machine Learning](https://classroom.udacity.com/courses/ud120)
+Actually finished the Autoencoder mini-project in Udacity. I had to run it in Kaggle so that I can make use of the GPU. I was not able to get the maximum accuracy. 
+
+The plan for today is:
+[x] Transfer learning start
+[ ] Fashion Mnist CNN - Kaggle (open sourced)
+[ ] Finish the Mckinsey report on AI in SEA
+[x] Notes on the tensorflow functions
+
+#### Notes on TensorFlow CNN functions
+
+`tf.Variable` - Using this for defining our _variables_ when initializing. We will need to call it as variable if we expect it to change at any time during our `Session`. Examples would be _weights_ and _bias_.<br>
+`tf.placeholder` - Similar to `tf.Variable`, this is used to define _variables_. The difference is that the values defined as `tf.placeholder` will never change in the session. Examples for this would be _inputs_ and _labels_ or _targets_.<br>
+`tf.layers.conv2d` - We use this to define our convolution layer. The key point to know for this is that _it will define our depth_. This would determine how many filters will be applied to our image.<br>
+`tf.layers.max_pooling2d` - For this one we are applying pooling. The concpet here is that _it will change the **shape** of the input_. I believe it will decrease the shape. The output would be calculated depending on the strides as well as on the settings of the padding.<br>
+`tf.image.resize_bilinear` - This will _increase the shape of the input_ to the new size in the arguments. The **new** pixel values will be interpolated depending on the method used, in this case it is bilinear. There are more image resizing options in the documentation. _**In other words, this is upsampling**_.
+`logits` - This is not really a function in tensorflow that has only one call. This will vary depending on the architecture of our model. The general idea here, if we recall back to our Neural Networks lesson, is that this is $h$ (i.e. the __final output__ without the activation). We will use this later for the loss function.<br>__NOTE: This is not a rule that we call the output without the activation as logits, its just that in the context of tensorflow it is called logits.__<br>
+`tf.sigmoid` - This is similar to `tf.nn.sigmoid` as they are aliases. Basically, it applies the sigmoid activation to our input.<br>
+`tf.nn.sigmoid_cross_entropy_with_logits` - A built-in loss function in TensorFlow. There are various loss functions in tensorflow, it just so happened that we are using cross entropy for most of our exercises.<br>
+`tf.reduce_mean` - This is a simple _mean_ function. This is done after our loss function since we want to get the average loss. It would usually appear as `tf.reduce_mean(loss)`.<br>
+`tf.train.AdamOptimizer` - This is an optimizer call, in this case the Adam optimizer. There are many built-in optimizers in tensorflow as well. Just read the documentations on how to call them.<br>
+
+##### Using the functions
+
+Here is an important lesson to learn:
+
+> We will not be able to use the tools unless we know what we are building.
+
+What I want to say is that no matter what library we use, TensorFlow, Keras, SK-learn, it will still depend on how we were able to grasp the concepts. These tools are just there to make it easier to develop our models. Without knowing what to do and what to look for, these layers are worthless.
+
+## Day 40: August 15, 2018
+
+Plan for today is read the Mckinsey Report. Also, I am doing the MNIST Fashion dataset CNN in Kaggle. For some reason, I am having some issues on the data. Or I think I have a problem.
+
+Also, to move forward, I am also watching the Transfer Learning course in Udacity. Transfer learning is a meta, like supervised learning. Basically, we use a pretrained model that others have trained and we will use that as our base for our new models. From the trained model, we add additional layers so that the results are going to get trained to our training sample (i.e. adjusting the model to fit our problem).
+
+I am having some problems with the VGG code. Figured it out and it was due to the network I was on. The office network does not allow any connections to the github repo that was why I was getting an SSL error. I think.
+
+So for now, I am going to try doing the MNIST Fashion and for some reason I cannot connect to the Notebook. I will have to do this at home. I'll open up the McKinsey report. If that still fails, I don't know anymore. It's turning out to be a crappy day.
 
 [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/)
 
