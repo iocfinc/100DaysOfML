@@ -268,8 +268,8 @@ When we upload or share our work and projects to others, for example in github, 
 ### TODO
 
 * [x] Upload to git hub [DONE]
-* [x ]Setup Anaconda correctly (uhmm) :smile:
-* [x]Provide a copy of the Lesson2 Jupyter notebook to the repo.
+* [x] Setup Anaconda correctly (uhmm) :smile:
+* [x] Provide a copy of the Lesson2 Jupyter notebook to the repo.
 
 ## Day 6: July 12, 2018
 
@@ -666,10 +666,10 @@ Okay, So I was able to progress with my Dog Classifier project. I have done the 
 
 __To Do List:__
 
-[ ] CNN from Scratch - with explanation (1%)
-[ ] Transfer Learning CNN
-[ ] Fine tuning the transfer learning CNN
-[ ] Dog detector
+* [ ] CNN from Scratch - with explanation (1%)
+* [ ] Transfer Learning CNN
+* [ ] Fine tuning the transfer learning CNN
+* [ ] Dog detector
 
 So here are some of the notes I have with Transfer learning. We use transfer learning so that we can skip the training portion of the Conv layers. By making use of a _generaly trained model_, we can already have the weights and biases that will work for a generic task. We are to use the pretrained Conv Nets to either _be the start of our model (i.e. we will still adjust the weights) or we can add to it our more task-specific feature extractor_.
 
@@ -683,4 +683,4 @@ We can also use a pre-trained model as the starting point of our _fine-tuned mod
 
 [Books Source](https://www.manning.com/)
 
-[CS231N lecture notes](http://cs231n.github.io/convolutional-networks/)
+[CS231N lecture notes](http://cs231n.github.io/convolutional-networks/)* 
