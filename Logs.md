@@ -485,15 +485,19 @@ So update on this day is that I was able to finish fully my TensorFlow lesson. L
 
 I finally figure out how I can install opencv-python. This was the last package that I need to install to run the python notebook for the convolutional layer. In case I forget it, I have to run it via pip: __pip install opencv-python__. Additional note, it should be while __*inside*__ the environment. For now, I'll stick to the videos and note taking. Just a side note, the reason I can't download it is because the connection is  :shit: but at least I have the internet so to put things in perspective, I am still lucky :ok_hand:.
 
-So I am now in CNN, and I have just finished 7 videos. Learned on how images are interpreted by computers: basically as a huge tensor with a base element of a pixel. Then we went on to discuss MLPs and how they are used for image classification and where they are trumped by CNNs: the explanation was that CNNs are more suited for multi-dimensional analysis where it looks for coreelation not just in value but also in the relative position of the elements which obviously works well with images. Then we went on with Categorical Cross-Entropy for the loss function and how it is going to be used in the context of identifying an image: Basically, the model will output the probabilities of the labels and the error is taken from those probabilities taken together and compared with the probabilities of the one-hot encoded label. Then we moved on to validating models in Keras: there was an article about the MNIST data set and how it came to be and also about previous researches done on the data set and its results. Also was able to read more on the Keras documentation, I remember it was the __callback__ class where we get to store data of our training runs and see how our model is proceeding with its training. Based on the documentation on the __callback__ class there were also some interesting functions like _earlystopping_ which stops the training when the loss or accuracy is not improving and _adjusting LR on plateu_ where the LR is decreased automatically when a patience epoch threshold is met to ensure learning progresses.<br>
+So I am now in CNN, and I have just finished 7 videos. Learned on how images are interpreted by computers: basically as a huge tensor with a base element of a pixel. Then we went on to discuss MLPs and how they are used for image classification and where they are trumped by CNNs: the explanation was that CNNs are more suited for multi-dimensional analysis where it looks for coreelation not just in value but also in the relative position of the elements which obviously works well with images. Then we went on with Categorical Cross-Entropy for the loss function and how it is going to be used in the context of identifying an image: Basically, the model will output the probabilities of the labels and the error is taken from those probabilities taken together and compared with the probabilities of the one-hot encoded label. Then we moved on to validating models in Keras: there was an article about the MNIST data set and how it came to be and also about previous researches done on the data set and its results. Also was able to read more on the Keras documentation, I remember it was the __callback__ class where we get to store data of our training runs and see how our model is proceeding with its training. Based on the documentation on the __callback__ class there were also some interesting functions like _earlystopping_ which stops the training when the loss or accuracy is not improving and _adjusting LR on plateu_ where the LR is decreased automatically when a patience epoch threshold is met to ensure learning progresses.
+<br>
 That is all for now, will read more on this blog from [Machine Learning Mastery](https://machinelearningmastery.com/about/). I will find a way to download the opencv-python package later.
 
 ## Day 28: August 3, 2018
 
 So, I was able to finally download the opencv-python package for the aind2 course. The plan now is to play around with the values in the network and go over the notebook to come up with the way the model was built. __:yum:__ <br>
-Now the training and testing begins on the model. This is just Keras so nothing fancy, the objective here is to figure out where overfitting starts. __*Overfitting happens when the validation loss is higher than (by a significant ammount) the training loss*__. Here is an [interesting read](https://stackoverflow.com/questions/2976452/whats-is-the-difference-between-train-validation-and-test-set-in-neural-netwo) on the implications of validation sets on overfitting. We have known about data set spilts from our Introduction to Neural Networks, I believe its a Machine Learning concept or even an AI concept. But the idea is that we do not just burn through all our data in training, we have to have an idea of how well our model is able to predict an output or label from a data set that it has not yet seen before (think of it as the blind test). Depending on where you read, they say a good split is 20-test then 80-train, or 10-test and 90-train. The idea is that you want as much data as you can to train your model but have enough remaining data set to be able to test your model. This time we are adding another split to the __traininng data__ which is called the __*validation set*__. The validation set is usually 20% or so of your training data. The idea of the validation set is that it allows you to guage the tendency of your current model to overfit. Validation testing is done __while training__. In a way its like testing your data before hand, after each epoch or some epochs, to ensure that the increase in weights is actually going to contribute to the increase in accuracy of the model as a whole.<br>
-> When your training set increases its accuracy more and more after every pass but your validation tests are the same then the model is not actually learning anything new but simply memorizing the training set. This is a __sign of overfitting__.<br>
-When overfitting is detected the training should perform an early stop so that the model does not overfit the training data.<br>
+Now the training and testing begins on the model. This is just Keras so nothing fancy, the objective here is to figure out where overfitting starts. __*Overfitting happens when the validation loss is higher than (by a significant ammount) the training loss*__. Here is an [interesting read](https://stackoverflow.com/questions/2976452/whats-is-the-difference-between-train-validation-and-test-set-in-neural-netwo) on the implications of validation sets on overfitting. We have known about data set spilts from our Introduction to Neural Networks, I believe its a Machine Learning concept or even an AI concept. But the idea is that we do not just burn through all our data in training, we have to have an idea of how well our model is able to predict an output or label from a data set that it has not yet seen before (think of it as the blind test). Depending on where you read, they say a good split is 20-test then 80-train, or 10-test and 90-train. The idea is that you want as much data as you can to train your model but have enough remaining data set to be able to test your model. This time we are adding another split to the __traininng data__ which is called the __*validation set*__. The validation set is usually 20% or so of your training data. The idea of the validation set is that it allows you to guage the tendency of your current model to overfit. Validation testing is done __while training__. In a way its like testing your data before hand, after each epoch or some epochs, to ensure that the increase in weights is actually going to contribute to the increase in accuracy of the model as a whole.
+<br>
+> When your training set increases its accuracy more and more after every pass but your validation tests are the same then the model is not actually learning anything new but simply memorizing the training set. This is a __sign of overfitting__.
+<br>
+When overfitting is detected the training should perform an early stop so that the model does not overfit the training data.
+<br>
 >Here is how I think of it: Let's say you are enrolled in a course. You run through all the possible materials of the course as dictated by the syllabus, this is your training. If we follow the basic train-test split, then after we go over through the materials multiple times we take a __FINAL EXAM__ which gives out the final grade for the course. If we follow the train-validate-test split, then after a going over the materials once we take a __QUIZ__ to check our learnings. We then take the result of the quiz and decide if we are ready to take the __FINAL EXAM__ or if we have to study some more.
 
 ## Day 29: August 4, 2018
@@ -619,7 +623,7 @@ The plan for today is:
 [ ] Finish the Mckinsey report on AI in SEA
 [x] Notes on the tensorflow functions
 
-#### Notes on TensorFlow CNN functions
+### Notes on TensorFlow CNN functions
 
 `tf.Variable` - Using this for defining our _variables_ when initializing. We will need to call it as variable if we expect it to change at any time during our `Session`. Examples would be _weights_ and _bias_.<br>
 `tf.placeholder` - Similar to `tf.Variable`, this is used to define _variables_. The difference is that the values defined as `tf.placeholder` will never change in the session. Examples for this would be _inputs_ and _labels_ or _targets_.<br>
@@ -649,6 +653,31 @@ Also, to move forward, I am also watching the Transfer Learning course in Udacit
 I am having some problems with the VGG code. Figured it out and it was due to the network I was on. The office network does not allow any connections to the github repo that was why I was getting an SSL error. I think.
 
 So for now, I am going to try doing the MNIST Fashion and for some reason I cannot connect to the Notebook. I will have to do this at home. I'll open up the McKinsey report. If that still fails, I don't know anymore. It's turning out to be a crappy day.
+
+I went home and opened up my Project - Dog Classifier. Here are some of the [resources](https://www.superdatascience.com/opencv-face-detection/) I scrounged for the task. I have to come up with a face detection algorithm. Also, I have to learn transfer learning as that will come in handy later in my project. 7 days to go. WOW.
+
+## Day 41: August 16, 2018
+
+Here is an interesting [Kaggle Kernel for Transfer Learning](https://www.kaggle.com/dansbecker/transfer-learning). Also, I finally figured out how to download and run my Transfer Learning notebook and its dependencies, VGG16 and tensorflow's flower dataset. 
+
+Here is a note on [Transfer Learning from CS231n](http://cs231n.github.io/transfer-learning/) and here is one from [machine learning mastery](https://machinelearningmastery.com/transfer-learning-for-deep-learning/).
+
+Okay, So I was able to progress with my Dog Classifier project. I have done the assesments part. I have a lot more to do though. For now, I need to do a network train the first instance of the netowkr. Its part of the Transfer Learning.
+
+__To Do List:__
+
+[ ] CNN from Scratch - with explanation (1%)
+[ ] Transfer Learning CNN
+[ ] Fine tuning the transfer learning CNN
+[ ] Dog detector
+
+So here are some of the notes I have with Transfer learning. We use transfer learning so that we can skip the training portion of the Conv layers. By making use of a _generaly trained model_, we can already have the weights and biases that will work for a generic task. We are to use the pretrained Conv Nets to either _be the start of our model (i.e. we will still adjust the weights) or we can add to it our more task-specific feature extractor_.
+
+If we are going to use a pre-trained model as a fixed-feature extractor we simply have to change the FC layers and keep the original layers fixed. What we are doing is changing how the model decides which is important and which is not only on the Fully Connected layers, we just use the Conv Layers as a base model.
+
+We can also use a pre-trained model as the starting point of our _fine-tuned model_. In this scenario, we will adjust __all the weights and biases__ of our network via back propagation. From the FCs to the first Conv Layer from the input. This way we have a pre-trained model and we cutomized the weights even further so that it is specific to our task. One thing to note when doing a fine-tuning of a pre-trained model is that it is actually not a bad idea to lock the first few layers of the Conv Layers. The reason behind this is that the first few layers should only come up with generic features. Training these layers would often cause more issues with overfitting later on.
+
+## Resources
 
 [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/)
 
