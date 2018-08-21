@@ -677,10 +677,109 @@ If we are going to use a pre-trained model as a fixed-feature extractor we simpl
 
 We can also use a pre-trained model as the starting point of our _fine-tuned model_. In this scenario, we will adjust __all the weights and biases__ of our network via back propagation. From the FCs to the first Conv Layer from the input. This way we have a pre-trained model and we cutomized the weights even further so that it is specific to our task. One thing to note when doing a fine-tuning of a pre-trained model is that it is actually not a bad idea to lock the first few layers of the Conv Layers. The reason behind this is that the first few layers should only come up with generic features. Training these layers would often cause more issues with overfitting later on.
 
+Research Topics: Zhima Credit of Alibaba.\
+Nathan McAlone, “Why Netflix thinks its personalized recommendation engine is worth
+$1 billion per year”, Business Insider, June 14, 2016.
+
+## Day 42: August 17, 2018
+
+Progress done on the project. I was able to do the CNN from scratch. Next thing to do is the CNN from Tensorflow, I have to study it first. There is a pattern here. I will learn it. I have also done some readings on the McKinsey report.
+
+For now I intend to at least start the write up on the VGG-19 transfer learning. From what I have read yesterday (see the logs above), there are 2 ways to do transfer learning. One is to keep the conv-pool and edit the FC layers. The next one is start of with the model and keep the weights there. I think that is what the project wants to happen. Which shoud be doable. I am unable to run this on Kaggle for some reason which is sad. I am also having some issues with the connection to the workspace. It resets sometimes with some edits lost. For now that is it. I'll add some more later.
+
+## Day 43: August 18, 2018
+
+Today, the plan is to figure out the VGG 19 model. possible source of pre-trained models for download [VGG-19](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/DogVGG19Data.npz), [ResNet-50](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/DogResnet50Data.npz), [Inception](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/DogInceptionV3Data.npz), [Xception](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/DogXceptionData.npz). Do note that these are pretrained models and will therefore consume space. For example, VGG-19 is ~800MB in size.
+
+For now I have to write the code for steps 5-7 of my project so that I can initially submit and get feedback. I also have to defend my choices for the architecture so good luck with that. That would mean reading some more VGG19 notes to get the concept of what happened inside the VGG.
+
+## Day 44: August 19, 2018
+
+Went out with friends yesterday. Did not do much about the project. So there is no additional progress to reported for yesterday. For today I am on Standby again. I will have to do some smoketesting for my job :poop:. I am going to read about the VGG19 lectures for today. The goal is to be able to explain and come up with the model.
+
+For now, I will code in VS code and try to run it later in Udacity. I will also have to read the VGG or inception notes to provide a backing on the choices. Also, I will be reading Mason's book. Intending to finish it now.
+
+Here is another [reading material](https://adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html) which contains the papers that is interesting for Deep Learning. For now my priority commintments to the standby shift is completed. I will nap for a bit and then continue with this coding. I am thinking of changing my approach to the inception model instead of VGG-19. Reason for this is that I am intending to add just the fully connected layers and Inception already has a good accuracy for feature detection. This would be fun :smiling_imp:.
+
+Okay, so I researched a bit about the Inception network. Its Google's submission to ImageNet 2014 competition. One of the ideas behind the architecture is that it is structured in a way that the system is designed to actually fit a computational budget which was imposed for the practicality of the network to be used in other applications like embedded or mobile apps. Inception is geared more towards efficiency which we greatly want considering the application we want has limited computational power (relatively).
+
+Had great fun and insights reading the first chapter of the GoogleLeNet (Inception) paper. Wow. They were able to explain the trend as well as the drawbacks to those trends in creating Deep Neural Networks. They also made it a point to explain why there is a need to be efficient in creating the network instead of just blindly enlarging it in terms of width and depth.
+
+And an application went unavailable. I cannot catch a break. __SERIOUSLY__. :poop: Its now 7:43. Almost 14 hours awake. And only a few of those are spent for the project. Mostly reading. This is really disheartening.
+
+## Day 45: August 20, 2018
+
+    Why InceptionV3? Well for one thing, I was actually impressed by the point made on the paper "Going Deeper with Convolutions" describing the idea behind the Inception network. For one thing, it interested me because they mentioned that this is a model that they designed with a computational limit in mind and geared towards mobile or embedded computation which means that efficiency for the model is key as opposed to highest accuracy. Given that the model we are going to do does not really require that much of an accuracy. Also, in terms of base accuracy, if I read it correctly between VGG, Resnet and Inception models, Inception models have the highest accuracy in its basic vanilla version so that always helps.
+
+Found out another interesting fact about inception: __It processes visual information at different scales and aggregates the results to figure out the features of the image.__ _How cool is that?_ That is like an HDR image trying to come up with a sharper image only in this context it is trying to come up with a good feature.
+
+>Given relatively large depth of the network, the ability to propagate gradients back through all the layers in an effective manner was a concern. The strong performance of shallower networks on this task suggests that __the features produced by the layers in the middle of the network should be very discriminative.__ By adding auxiliary classifiers connected to these intermediate layers, discrimination in the lower stages in the classifier was expected. This was thought to combat the vanishing gradient problem while providing regularization. - Going Deeper Paper
+
+The statement above, forked from the paper, is another nugget of information. It change how I though of the network architecture generally. The idea that it is the middle layers that actually improve the ease of backpropagation. To achieve this they added more convolutional layers on top of the inception's layers that are now weighted. The way I understood it is that they sort of added a capacitor in the later stages that will allow the voltage not to sag so much in value. Only in this context, its the gradient that we do not want to sag so much so as to prevent the vanishing gradient issue.
+
+Man, I am all over the place. Devouring labs and papers and everything else I can get. Just learned about Bottlenecks. Its not really slowing the network down. Its just named that way due to the way it looks if you imagine a typical network. __Bottlenecks is the layer we have just prior to the classification layer done by the output layer.__ By these defenitions, its easier to see that the top of the model resembles a bottleneck slowly trying to taper of until only the number of classiications are left.
+
+One possible improvement I can think of while reading some materials to decide on this architecture is the possiblity of regional bounding and labeling, I think that's the concept behind it. Basically, it will look for points of interest or fields of interest in an object and do a convolution on regional fields instead of doing the entire picture. I think that is a great idea since we are more interested in finding subjects in the image and classifying that subject instead of blindly applying convolution on "blank" spaces or empty fields in the image trying to find features. Its quite interesting to now that the idea is already there. I would really want to try it out later.
+
+Officialy found the [TensorFlow Mobile iOS lab](https://codelabs.developers.google.com/codelabs/tensorflow-for-poets-2-ios/#0) manual. THere is also an entry for Android and android mobile development for TF. Interesting.
+
+For now, I filed for a Sick Leave. I have to sleep. This draft is due in 3 days. I have a plan already. First: Review the Transfer Learning Notebook again. Second: Get the context and transfer it to the current project. Third: Run the code and check that it does meet with the requirements for the review.
+
+I have to figure out how to do the Optional Part as well for fun.
+
+## Day 46: August 21, 2018
+
+So, 2:00 AM and running through this project. I have added a GAP layer to the pretrained models.
+
+While training the models, I was reading throgh some post on LearnOpencv.com. I was reading about [Fine tuning on Keras](https://www.learnopencv.com/keras-tutorial-fine-tuning-using-pre-trained-models/) and [Transfer Learning on Keras](https://www.learnopencv.com/keras-tutorial-transfer-learning-using-pre-trained-models/). I read somewhere that transfer learning is when you use the pre-trained model as the classifier and add your own top layers while fine tuning is when you make use of the pretrained models as the starting point of your training. This does make sense. Onwards.
+
+Back to the coding of the TF for Inception. Checking on the output of the inception model via `print(train_inceptionV3.shape[:])`, I noticed that the shape of the output is (6680, 5,5,2048). This would make the input to our layers as (5,5,2048). Reading from a post by instructor Alexis Cook about [GAP layers for object localization](https://alexisbcook.github.io/2017/global-average-pooling-layers-for-object-localization/), there was an argument there that the GAP layers are being used to reduce the total number of parameters which in turn prevents overfitting (and by extension less computations).
+
+Then I added two simple Dense layer before the final Dense layer for the output. I was about to add a 500 unit layer before the final output but the summary showed that there would be more than 1,000,000 parameters in total. That would not be good. So instead of going wide I went deeper. I know that spillting a 500 unit dense layer to two 250-unit layers are not the same (width vs. depth) but I want to ensure that there is another decision maker redundancy before the final layer. Doing the deeper route led to 608,383 total parameters.
+
+Finally, I am able to get it to work close to the intended purpose. I have yet to train my FC layers to more epochs, I think it would benefit more on the decision making FCs. I'll add an early stopping just in case and set the epochs to 2000 with patience of 5. :muscle:
+
+Right now I am having issues with the Workspace again. As long as the progress (codes) are saved then we will not have a problem :smiling_imp: While waiting for the model to train here is an article about [9 things to know about TensorFlow](https://hackernoon.com/9-things-you-should-know-about-tensorflow-9cf0a05e4995).
+
+Made my first submission for the CNN Dog Breed classifier. I heard back from the review team. The initial submission requires minimal re-work. Most of it is in answering the questions which I though was optional. :poop: Turned out its the coding portion that is optional. Not answering the questions. I also raised the issue about the 'dog_names' being problematic in a sense that it is still displaying the index. They said try to restart Jupyter and run all the codes initially. Also, they suggested that I remove all the duplications in the code cells I made below to avoid further errors and to limit the points of failure.
+
+## Day 47: August 22, 2018
+
+Changes that needs to be done on the notebook:
+
+- [ ] Fix the 'dog_names' issue (if possible)
+- [ ] Answer Question 2: Face Detection
+- [ ] Answer the question on Build from Scratch
+- [ ] Answer the question on the difference between build from scratch and TF
+- [ ] Fix the images used in testing. Remove the ones from the original repo.
+- [ ] Switch the face detection and dog detection in the algorithm
+
+I have a lot of things to do for today with regards to the project. Nothing major really. While waiting for the review, I continued on CNN with the lesson from Sebastian Thrun about Melanoma detection using CNN. Its an interesting topic and it does have implications on the society.
+
+I also read about OpenCV and face detection to answer the question posted in the project. Here is one article refered to by the reviewer about [OpenCV for face detection](https://memememememememe.me/post/training-haar-cascades/). Here is another one about [Face detection using HAAR cascade classifiers](http://www.bogotobogo.com/python/OpenCV_Python/python_opencv3_Image_Object_Detection_Face_Detection_Haar_Cascade_Classifiers.php). Finally the last referal article is [OpenCV's documentation on Haar Cascade classifiers](http://www.bogotobogo.com/python/OpenCV_Python/python_opencv3_Image_Object_Detection_Face_Detection_Haar_Cascade_Classifiers.php).
+
+From what I understand on the Haar Cascade face detector, it actually is limited to a few unique features when detecting a face. It will detect features based on an XML file for example `harcascade_frontal_face_alt.xml` or `haarcascacde_eye_tree_eyeglasses.xml`. These XML files will dicate what features can be detected. The limitation comes, as already presented in the context of the question, when there are slight deviations on the input images that the detector cannot accomodate.
+
+In line with the topic of this project, I think CNN would be a great alternative for finding faces in a picture. Instead of the detectors being a fixed file pre-loaded in the xml, with Deep Learning and CNN we can possibly accomodate more "unique" inputs. For example a partial image or an image that is rotated.
+
+I initially thought that Haar Cascade was transfer learning. In a way, it seems to be transfer learning (i.e. it does train the detectors to provide an xml file). It just so happens that Haar Cascade is not that great in accomodating deviations in the input and will have a problem with scaling to a larger dataset. With a larger data set then I believe a solution involving CNN would be more appropriate.
+
+[Batch Normalization in Fast.AI](http://course.fast.ai/lessons/lesson5.html) . [Used in CCN](https://www.kaggle.com/kentaroyoshioka47/cnn-with-batchnormalization-in-keras-94) acheived 94% accuracy. From what I understand, you will use normalization to increase the speed of the training by making sure that all the inputs are centered. In a way it reduces co-variance shift. If you think about it, what it means is that we try to keep our inputs "normal" by setting it to play around a defined range (usually set by Standard Deviation). This will cut-off the outliers which will take some points of our accuracy but the speed increase would be beneficial.
+
+```python
+### Here is a sample code for using normalization. It is done before the activation.
+model.add(Conv2D(64, kernel_size=(filter_pixel, filter_pixel), activation='relu',border_mode="same"))#1
+model.add(BatchNormalization())
+model.add(MaxPooling2D())
+model.add(Dropout(droprate))
+```
+
 ## Resources
 
 [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/)
 
 [Books Source](https://www.manning.com/)
 
-[CS231N lecture notes](http://cs231n.github.io/convolutional-networks/)* 
+[CS231N lecture notes](http://cs231n.github.io/convolutional-networks/)
+
+[The 9 Deep Learning Papers You Need To Know About](https://adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html)
