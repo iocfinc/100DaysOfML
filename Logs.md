@@ -747,12 +747,12 @@ Made my first submission for the CNN Dog Breed classifier. I heard back from the
 
 Changes that needs to be done on the notebook:
 
-- [ ] Fix the 'dog_names' issue (if possible)
-- [ ] Answer Question 2: Face Detection
-- [ ] Answer the question on Build from Scratch
-- [ ] Answer the question on the difference between build from scratch and TF
-- [ ] Fix the images used in testing. Remove the ones from the original repo.
-- [ ] Switch the face detection and dog detection in the algorithm
+- [X] Fix the 'dog_names' issue (if possible)
+- [X] Answer Question 2: Face Detection
+- [X] Answer the question on Build from Scratch
+- [X] Answer the question on the difference between build from scratch and TF
+- [X] Fix the images used in testing. Remove the ones from the original repo.
+- [X] Switch the face detection and dog detection in the algorithm
 
 I have a lot of things to do for today with regards to the project. Nothing major really. While waiting for the review, I continued on CNN with the lesson from Sebastian Thrun about Melanoma detection using CNN. Its an interesting topic and it does have implications on the society.
 
@@ -774,6 +774,31 @@ model.add(MaxPooling2D())
 model.add(Dropout(droprate))
 ```
 
+It is almost 6:00 AM and my shift is almost ending. Finally submitted my codes for review. I'll sleep and see what happens.
+
+Actually, did not sleep *YET*. I went on and learned about Cancer detection AI by Sebastian Thrun. It is used to detect Melanoma in its early stages when it is not yet that fatal. Learned about ROC (no not region of covergence). Almost done with it.
+
+Its 1:00 PM and I opened up Gmail to see that the project submission has been reviewed. __It meets all specifications__. So happy that I was able to finish the project on CNN. So pumped. Its just day 47 and looking at my progress really makes me happy. On to the next topic: __Recurrent Neural Networks__.
+
+Also, I made a promise that I will help out a friend regarding Kaggle. So while I am working on my __RNN__ intuitions I am also going to do a collaborative project.
+
+TO DO:
+- [X] Finish Melanoma Detection AI
+- [ ] Browse and create a plan for RNN topic
+- [ ] Kaggle Competition: Which one? Or Do we try an auto-primary.
+- [ ] Kaggle Transfer Learning
+- [ ] Xception
+
+That is all for later. For now, I am gonna play __Yuri's Revenge__ and I'll finish The Subtle Art of Not Giving a Fuck. I am 40 pages short of completing the book.
+
+## Day 48: August 23, 2018
+
+Playing around with the concept of Datasets in Kaggle. For some reason I cannot get the CSV file to work when I upload it.
+
+In the meantime I had fun reading [Elite Data Science: Becoming a Data Scientist](https://elitedatascience.com/become-a-data-scientist). Also, I was able to start a new Kernel for a collaborative side-project although we would need to discuss first until where the project would lead to. The idea is to create a genre labeler from the IMDB dataset. The Kernel can be found [here](https://www.kaggle.com/iocfinc/genre-tag-imdb). We are still in the early stages of it, mostly data clean up. __It is great fun though__. Just today I figured out how to prepare the dataset (which I did not use by the way due to confidentiality). I was able to do a simple _Seaborn_ bar plot of the common words. I was also able to learn how to create a DataFrame from a counter using Pandas as well as create a New DataFrame. __I am really enjoying this.__
+
+In terms of the Udacity course, I am finished with the Cancer Detection AI of Sebastian. When I arrive at the office I can proceed with the RNN.
+
 ## Resources
 
 [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/)
@@ -783,3 +808,7 @@ model.add(Dropout(droprate))
 [CS231N lecture notes](http://cs231n.github.io/convolutional-networks/)
 
 [The 9 Deep Learning Papers You Need To Know About](https://adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html)
+
+[Elite Data Science ML Projects for beginners](https://elitedatascience.com/machine-learning-projects-for-beginners)
+
+[Elite Data Science: Becoming a Data Scientist](https://elitedatascience.com/become-a-data-scientist)
