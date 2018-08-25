@@ -782,12 +782,7 @@ Its 1:00 PM and I opened up Gmail to see that the project submission has been re
 
 Also, I made a promise that I will help out a friend regarding Kaggle. So while I am working on my __RNN__ intuitions I am also going to do a collaborative project.
 
-TO DO:
-- [X] Finish Melanoma Detection AI
-- [ ] Browse and create a plan for RNN topic
-- [ ] Kaggle Competition: Which one? Or Do we try an auto-primary.
-- [ ] Kaggle Transfer Learning
-- [ ] Xception
+
 
 That is all for later. For now, I am gonna play __Yuri's Revenge__ and I'll finish The Subtle Art of Not Giving a Fuck. I am 40 pages short of completing the book.
 
@@ -798,6 +793,29 @@ Playing around with the concept of Datasets in Kaggle. For some reason I cannot 
 In the meantime I had fun reading [Elite Data Science: Becoming a Data Scientist](https://elitedatascience.com/become-a-data-scientist). Also, I was able to start a new Kernel for a collaborative side-project although we would need to discuss first until where the project would lead to. The idea is to create a genre labeler from the IMDB dataset. The Kernel can be found [here](https://www.kaggle.com/iocfinc/genre-tag-imdb). We are still in the early stages of it, mostly data clean up. __It is great fun though__. Just today I figured out how to prepare the dataset (which I did not use by the way due to confidentiality). I was able to do a simple _Seaborn_ bar plot of the common words. I was also able to learn how to create a DataFrame from a counter using Pandas as well as create a New DataFrame. __I am really enjoying this.__
 
 In terms of the Udacity course, I am finished with the Cancer Detection AI of Sebastian. When I arrive at the office I can proceed with the RNN.
+
+> One of the key point we have to know is that AI in itself would be disruptive in the way society would work and it already is disrupting most of the work now. The power of AI to do tasks that are repetitive would give, those that are willing to use and explore it, the power to leverage impact and scope of work. One interesting example given was how farmers in the US before can feed 4 persons. Right now, with the proper application of AI, it can feed up to 155 people. That is an almost exponential increase in productivity.
+
+## Day 49: August 24, 2018
+
+Finally started browsing through recurrent neural network. The project which is a TV script generator is due in 20 days. So day 70. By day 60, I am expecting that all the lessons and mini-projects should already be downloaded.
+
+I was working on the Genre Tagger for IMDB in Kaggle. Still on data pre-processing. I now have a new table with words and genre as the indices. I am planning on cleaning up data some more. I think I need to cut off some of the non-polarizing words, (i.e. a, the, for, it). In terms of Recurrent Neural Networks, I was able to browse through the readings. Its quite long, 4 hours worth of watching and intuition lectures. Then some projects and quizes.
+
+For now, back to the genre tagger. I have until tomorrow to work on this. I need to create a histogram or distribution list at least of the words.
+
+## Day 50: August 24, 2018
+
+Its now halfway through this pledge. So happy about my progress. Still a long way to go. To 50 more days. I am now on Recurrent Neural Networks. Neural Networks with memory. For now, in the Nanodegree its more on lectures and theories of how RNN works. In terms of project, I am working on the Kaggle Kernel for IMDB genre tag. More projects and more applications to build. This is so much fun. In terms of other things, I am done with __The Subtle Art of Not Giving a Fuck__. Up next would be finishing __Thinking Fast and Slow__.
+
+Still have a lot to do. I am looking forward to applying my learnings
+
+TO DO:
+- [X] Finish Melanoma Detection AI
+- [X] Browse and create a plan for RNN topic
+- [ ] Kaggle Competition: Which one? Or Do we try an auto-primary.
+- [ ] Kaggle Transfer Learning
+- [ ] Xception
 
 ## Resources
 
