@@ -804,11 +804,66 @@ I was working on the Genre Tagger for IMDB in Kaggle. Still on data pre-processi
 
 For now, back to the genre tagger. I have until tomorrow to work on this. I need to create a histogram or distribution list at least of the words.
 
-## Day 50: August 24, 2018
+## Day 50: August 25, 2018
 
 Its now halfway through this pledge. So happy about my progress. Still a long way to go. To 50 more days. I am now on Recurrent Neural Networks. Neural Networks with memory. For now, in the Nanodegree its more on lectures and theories of how RNN works. In terms of project, I am working on the Kaggle Kernel for IMDB genre tag. More projects and more applications to build. This is so much fun. In terms of other things, I am done with __The Subtle Art of Not Giving a Fuck__. Up next would be finishing __Thinking Fast and Slow__.
 
-Still have a lot to do. I am looking forward to applying my learnings
+Still have a lot to do. I am looking forward to applying my learnings. Found this opening in __Open AI__ for a __[Machine Learning Engineer/Researcher](https://jobs.lever.co/openai/588c1d80-4632-4d5c-a535-9f2c8c80c501)__. Based on the listing, one of the characteristics they are looking for is novelty and . This is [the challenge](http://app.getpy.com/start#hNAQTq5e) that was posted on their site.
+
+## Day 51: August 26, 2018
+
+Will finish Recurrent Neural Networks intuition portion for today. I have 9 more days to finish it. I also have been reading requirements for OpenAI researcher and Engineer. The plan is in line with the move to AI field. I am basing it on the email I got from EliteDataScience. It outlined how to start [building your own resume](https://elitedatascience.com/resume-tips). Also, here is another article from [Codementor regarding portfolios](https://www.codementor.io/mgalarny/how-to-build-a-data-science-portfolio-mcnz7sxlt?utm_content=posts&utm_source=sendgrid&utm_medium=email&utm_term=post-mcnz7sxlt&utm_campaign=newsletter20180822).
+
+I am also reading on Pandas Documentation. Specifically how to [handle dataframes like in SQL](http://pandas.pydata.org/pandas-docs/stable/comparison_with_sql.html). With regards to the intuition portion of RNN, it seems like they again made a review of feed forward and backpropagation topic. This makes sense because RNNs were created to address the problem of _Vanishing Gradient_ that is affecting the original neural networks.
+
+> One of the major difference with a feed forward neural network (FFNN) from a recurrent neural network (RNN) is the absence of __sequences__ and __memory__.
+
+__Sequences__ are now the input of our network. For example a sequence of words or the 5 previous closing price of a stock. Then we have __memory__, this is simply the output of hidden layer neurons being stored and fed back into the system for the next iteration. This structure is defined as the __Elman Network__.
+
+<center>
+![Elman Network](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Elman_srnn.png/330px-Elman_srnn.png)
+</center>
+
+There are two models that are often used when dealing with RNNs. One is the __folded method__ where the _state/memory_ is seen as looping back to the input. The other one is the __unfolded__ where the _state/memory_ is fed to another model but at a future time (i.e. the initial state __s__ is fed to the input at t+1, s at t+1 is fed to the input at t+2 and so on).
+
+![Folded model](https://d17h27t6h515a5.cloudfront.net/topher/2017/November/5a1c955f_screen-shot-2017-11-27-at-2.44.11-pm/screen-shot-2017-11-27-at-2.44.11-pm.png)source: Udacity DLND
+
+![Unfolded Model](https://d17h27t6h515a5.cloudfront.net/topher/2017/November/5a1ca463_screen-shot-2017-11-27-at-3.48.31-pm/screen-shot-2017-11-27-at-3.48.31-pm.png)source: Udacity DLND
+
+One example of RNN is when we want to detect a word, for example `hello`. To do this we input individual letters and the system figures out the error by decreasing the error every time the correct sequence is detected until eventually the correct word is detected. For example `h` has an error or .9 then `he` will have 0.8 and `hel` will have 0.7 until we reach `hello` in which case the error would have been ideally 0. Do note that this is just an example. Training the RNN involves backpropagation through time.
+
+In __Back Propagation Through Time__ we are going over not just the weights and the input at the _present time_ but also consider the __state__ of all the previous times. The Gradient descent is therefore not just on the current time forward and back but also the preceeding states in time. I know, it sounds like a weird Back to the Future concept but it does explain how RNN approached the vanishing gradient problem. This time __the contribution of *ALL* the preceeding weights are considered in the computation and adjustment_. Obviously the farther back in time the state was the farther the chain rule has to go back and the gradient would still vanish but by accumulating all the gradients to adjust the weight instead of just one we can have a bigger value for the gradient. Its in simple terms a _Recency Bias_, although that is now how the is used. What I am trying to say is that the most recent inputs and state will, obviously, contribute the most to the adjustment of the weights.
+
+![RNN Output](http://quicklatex.com/cache3/a1/ql_4cd5f21dec1523e6957fe9491ca9c1a1_l3.png)
+
+So I sort of figured out how to do BPTT. The idea is that we need to be sure with respect to what are we adjusting the weights.
+
+![Sample Backprop - 1](https://d17h27t6h515a5.cloudfront.net/topher/2017/December/5a24fe85_screen-shot-2017-12-03-at-11.34.41-pm/screen-shot-2017-12-03-at-11.34.41-pm.png)source: Udacity DLND
+
+> Quiz Question
+>Lets look at the same folded model again (displayed above). Assume that the error is noted by the symbol E. What is the update rule of weight matrix U at time t+1 (over 2 timesteps) ? Hint: Use the unfolded model for a better visualization.
+
+I'll try to add the images but if they will be removed then I have no complaints there. For this one we need to get the update rule for weight matrix at U for 2 timesteps (t and t+1). So from here we get the idea that we need to get from $\bar{y}$ to $U$ for two timesteps. As stated in the hint, we are better off using the unfolded version of it. In the image below we already have the first path from $\bar{y}$ down to $U$ so this would be for time t+1 (i.e. the present).  This is the first path.
+
+![Sample Backprop - 2](https://d17h27t6h515a5.cloudfront.net/topher/2017/December/5a259f26_screen-shot-2017-12-04-at-11.16.19-am/screen-shot-2017-12-04-at-11.16.19-am.png)source: Udacity DLND
+
+We also have to consider the path to $U$ for time $t+1$. In this case there are _two paths possible_ between $\bar{y}$ to $U$ at $\bar{x}-sub{t}$ (referring to the image). One is to take the path from $Z$ node to the time $t$ and the other is from $S$ node to time $t$. The path is more clear in the succeeding images.
+
+![Sample Backprop - 3](https://d17h27t6h515a5.cloudfront.net/topher/2017/December/5a25a02b_screen-shot-2017-12-04-at-11.14.30-am/screen-shot-2017-12-04-at-11.14.30-am.png)source: Udacity DLND
+
+![Sample Backprop - 4](https://d17h27t6h515a5.cloudfront.net/topher/2017/December/5a25a091_screen-shot-2017-12-04-at-11.12.31-am/screen-shot-2017-12-04-at-11.12.31-am.png)source: Udacity DLND
+
+Once the paths have been made, its now a simple application of chain rule. Come to thing of it, it looks like a discrete math question: Find how many paths from $\bar{y}$ to $U$. The answer for the question would be:
+
+![Sample Backprop - 5](https://d17h27t6h515a5.cloudfront.net/topher/2017/December/5a25a757_screen-shot-2017-12-04-at-11.48.22-am/screen-shot-2017-12-04-at-11.48.22-am.png)source: Udacity DLND
+
+Note: This has always been a problem for me, -t is past for me and +t is future. But that is considering where your point of reference is. From the image, the present time is already t+1 so we will use that. A possible alternate would have been the present is t and the last sequence was the past (i.e. t-1).
+
+The formula below is the most basic representation of an RNN.
+
+![RNN-Formula](https://d17h27t6h515a5.cloudfront.net/topher/2017/November/5a04ea8c_screen-shot-2017-11-09-at-3.53.12-pm/screen-shot-2017-11-09-at-3.53.12-pm.png)source: Udacity DLND
+
+Final note on RNN. With the addition of the previous states to the equation of getting the output state we were able to accumulate the gradients of the previous state and get a bigger gradient value. This however would still vanish if we backpropagate for more than ~10 steps. This is inherent to the mathematics involved in getting the gradient. The temporal dependencies will always decrease geometrically. To avoid this, __Long Short-Term Memory (LSTM)__ was created to address the decay for RNNs. One problem that the RNN is known to have is the __exploding gradient__ problem where our gradient actually grows uncontrollably (i.e. we will diverge instead of converege in our error). To solve the exploding gradients we use __gradient clipping__.
 
 TO DO:
 - [X] Finish Melanoma Detection AI
