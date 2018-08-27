@@ -865,6 +865,12 @@ The formula below is the most basic representation of an RNN.
 
 Final note on RNN. With the addition of the previous states to the equation of getting the output state we were able to accumulate the gradients of the previous state and get a bigger gradient value. This however would still vanish if we backpropagate for more than ~10 steps. This is inherent to the mathematics involved in getting the gradient. The temporal dependencies will always decrease geometrically. To avoid this, __Long Short-Term Memory (LSTM)__ was created to address the decay for RNNs. One problem that the RNN is known to have is the __exploding gradient__ problem where our gradient actually grows uncontrollably (i.e. we will diverge instead of converege in our error). To solve the exploding gradients we use __gradient clipping__.
 
+## Day 52: August 27, 2018
+
+Interested in listening in to this [Podcast](https://80000hours.org/podcast/episodes/the-world-needs-ai-researchers-heres-how-to-become-one/). Also, Ate wants me to try her netflix account. Temptations. :poop: For today I will do some chores first and read some book. Then later I will continue on to LTSM topic by Luis. It might have some lectures and reading to go through.
+
+Working again on the Kaggle IMDB tagger. Still cleaning up the data. This is actually taking up a while to complete. I was able to fix the data. I was able to create a new `Genre` called `Others` which was the comibination of all genres with less than 100 items. Then I was able to make a new table with 100 entries for each genre. Come to think of if, it might still be a small dataset to do NN work on. assuming we have 20 test and 10 validation we have 70 train sets for each. Unless I am thinking at it wrong. In any case, it has been paused for now. I encountered an issue when I tried running my word counter. Will fix it probably tomorrow or next weekend. For now the focus is on LSTMs and RNN.
+
 TO DO:
 - [X] Finish Melanoma Detection AI
 - [X] Browse and create a plan for RNN topic
