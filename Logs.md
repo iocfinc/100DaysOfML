@@ -871,11 +871,39 @@ Interested in listening in to this [Podcast](https://80000hours.org/podcast/epis
 
 Working again on the Kaggle IMDB tagger. Still cleaning up the data. This is actually taking up a while to complete. I was able to fix the data. I was able to create a new `Genre` called `Others` which was the comibination of all genres with less than 100 items. Then I was able to make a new table with 100 entries for each genre. Come to think of if, it might still be a small dataset to do NN work on. assuming we have 20 test and 10 validation we have 70 train sets for each. Unless I am thinking at it wrong. In any case, it has been paused for now. I encountered an issue when I tried running my word counter. Will fix it probably tomorrow or next weekend. For now the focus is on LSTMs and RNN.
 
+## Day 53: August 27, 2018
+
+What is LSTM? __Long Short Term Memory__, which is used to retain memory and help solve the vanishing gradient problem encountered in RNNs. From what I can get, the concept is that we use memory to retain context. For example, we want to correctly identify an image. The previous images has been a bear and an owl. When our system sees the image it is deciding between a dog and a wolf based on its features. But knowing that the previous images has been in the context of animals from the forest, the system would choose to classify it as a wolf instead of a dog.
+
+LSTM works by keeping both long and short term memories as inputs and then using these memories to come up with a prediction as well as the next long and short term memory. To do this, the LSTM has multiple gates (4 to be exact) that it uses to keep track of long term and short term memory, the prediction and the new entries for the long and short term memory.
+
+__Learn Gate__ is used for the short term memory. Its input is the previous short term memory and the latest event input. It would then pass through the ignore logic where the older items in the memmory are forgotten. The rate at which the previous items in the short term memory is ignored is decided by the _ignore factor_.
+
+__Forget Gate__ is used for the long term memory. Its input would be the previous long term memory (LTM of t-1) which is hen multiplied by a _forget factor_ which is a function of the previous short term memory, the current event which is evaluated with the forget weights and activated by sigmoid.
+
+__Remember Gate__ is used to get the new long term memory that will be used by the next timestep. Basically it is the addition of the previous long term memory and the previous short term memory. These two will then add up to make the new long term memory.
+
+__Use Gate__ is used to get the new short term memory. Its input is again the previous long term memory and short term memory. This time, instead of mathematically combining the two it is the evaluation of the parameters to come up with an updated short term memory.
+
+For more details on LSTM make use of [this link](https://skymind.ai/wiki/lstm#long). I have finished reading up on LSTM topic. the articale in skymind.ai which is linked did a great job in explaining more how the LSTM gates are used in a grander scheme of things. The simile on life is also a big plus. I am now on to application of LSTM by Matt which I will do in the office later. For now, I am fixing the Kaggle kernel.
+
+Update on the Kernel, its now closer to moving to neural networks. Here was one [Kernel for Data Science beginneres](https://www.kaggle.com/glsahcann/data-science-for-beginner) which sort of helped me in this sprint. Also, __Stackoverflow__ as always. I was able to finish up cleaning the data (removed the punctuations via `maketrans` and `translate`). I then fixed the `others` genre for genres not reaching the 100 min count I set. The heatmap is also fixed for now.
+
+I think I can start moving up to doing the NN. First step later would be to one-hot encode the `genre` column. Then split the data into _test, validate and train_ sets. That is all for later. Also have to get progress on my _secure the human training_.
+
+> Update on the timings 8 more days to finish 4 more lessons. Keep at it. :muscle:
+
+__:pop:__
+
+## Day 53: August 28, 2018
+
+I was able to finish my _Secure the human training_ for work commitments. For today, I have to start on LSTM/RNN applications. Later would be to transfer the revisions to Kaggle and commit it as another version. Focus now more on Udacity's nanodegree.
+
 TO DO:
 - [X] Finish Melanoma Detection AI
 - [X] Browse and create a plan for RNN topic
 - [ ] Kaggle Competition: Which one? Or Do we try an auto-primary.
-- [ ] Kaggle Transfer Learning
+- [X] Kaggle Transfer Learning
 - [ ] Xception
 
 ## Resources
