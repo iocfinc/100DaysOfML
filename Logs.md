@@ -871,7 +871,7 @@ Interested in listening in to this [Podcast](https://80000hours.org/podcast/epis
 
 Working again on the Kaggle IMDB tagger. Still cleaning up the data. This is actually taking up a while to complete. I was able to fix the data. I was able to create a new `Genre` called `Others` which was the comibination of all genres with less than 100 items. Then I was able to make a new table with 100 entries for each genre. Come to think of if, it might still be a small dataset to do NN work on. assuming we have 20 test and 10 validation we have 70 train sets for each. Unless I am thinking at it wrong. In any case, it has been paused for now. I encountered an issue when I tried running my word counter. Will fix it probably tomorrow or next weekend. For now the focus is on LSTMs and RNN.
 
-## Day 53: August 27, 2018
+## Day 53: August 28, 2018
 
 What is LSTM? __Long Short Term Memory__, which is used to retain memory and help solve the vanishing gradient problem encountered in RNNs. From what I can get, the concept is that we use memory to retain context. For example, we want to correctly identify an image. The previous images has been a bear and an owl. When our system sees the image it is deciding between a dog and a wolf based on its features. But knowing that the previous images has been in the context of animals from the forest, the system would choose to classify it as a wolf instead of a dog.
 
@@ -893,18 +893,297 @@ I think I can start moving up to doing the NN. First step later would be to one-
 
 > Update on the timings 8 more days to finish 4 more lessons. Keep at it. :muscle:
 
-__:pop:__
+__:poop:__
 
-## Day 53: August 28, 2018
+## Day 54: August 29, 2018
 
 I was able to finish my _Secure the human training_ for work commitments. For today, I have to start on LSTM/RNN applications. Later would be to transfer the revisions to Kaggle and commit it as another version. Focus now more on Udacity's nanodegree.
 
-TO DO:
-- [X] Finish Melanoma Detection AI
-- [X] Browse and create a plan for RNN topic
-- [ ] Kaggle Competition: Which one? Or Do we try an auto-primary.
-- [X] Kaggle Transfer Learning
-- [ ] Xception
+RNN and LTSM implementation. The mini-project is to create an RNN that will output a "semi-comprehensible" text based on character inputs. I was about to go over it but I was drawn into [this post](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) by Andrej Karpathy regarding RNNs. He also has a post [regarding Neural Nets](http://karpathy.github.io/neuralnets/). The Karpathy post is quite long and I am unable to read through them. Had to stop and go to work for now.
+
+## Day 55: August 30, 2018
+
+Still stuck at RNN implementation. I cannot seem to move. Everytime I try to open the classroom I get stymied. Procrastination at its simplest form. :poop:. We shall see what progress can be done today. I might have to reformat my laptop for work. Also, I had to setup my AWS account for deep learning. I did the registration and redeemed my credits. I have requested the increase in my instance limit. I'll see when the approval gets in.
+
+While waiting for the IT office to open up (bit of context: I work nights and they usually get in around 8-9AM) I was watching some videos on Youtube. Like I said, procrastinating. I came across this [video](https://www.youtube.com/watch?v=UuAJMzpoq5E&index=167&list=WL) about DJ Patel, chief data scientist of the White House. I just found it interesting what he mentioned were traits that Data Scientist should have. Curiousity, Diversity and teamwork as well as solving local problems and studing data.gov datasets that the US government has already released.
+
+Another procrastination [chore](https://www.16personalities.com/intj-personality). :poop:
+
+## Day 56: August 31, 2018
+
+This is going to be another slow progress day. I am backing up my laptop files. I have to reimage to Win10. Will do Kaggle and watch UD lessons later.
+
+Its now 14:42. I have just finished most of the required installations for the migration. I was not able to do any other thing related to the degree today. Actually, I was able to do something in Kaggle but I again got stuck. I already had the heatmap in check but I am having trouble doing the Neural Network part of it. Also, the code has not yet been commited. I still have to work on the draft. For some reason the changes I made (which contained the fix of what I am stuck right now) was not saved. I think it is my fault. I should have downloaded the version. Or do I need to upload a version?
+
+Studied [this post](https://www.shanelynn.ie/select-pandas-dataframe-rows-and-columns-using-iloc-loc-and-ix/) for Pandas data manipulation. `loc` and `iloc` and `ix` calls. I need it to do the Kaggle network.
+
+I will be continuing on the RNN at udacity today. This would be a productive day. I am not on stand by either so that is great.  More time to focus here.
+
+## Day 57: September 1, 2018
+
+Its finally Ber months. Its now close to December. The pressure is now on to finish this one and work on my projects so that I can build my portfolio.
+
+Today, I am finishing RNN Implementation lesson. I will go over the exercises in the notebook and I'll try to squeeze the Hyperparameters lesson as well. The createion of an LSTM for Tensorflow is quite odd. Odd in a way that it is not similar to a basic CNN or NN for that matter. It has its own quirks. Quite big ones actually. I am having some trouble wrapping my head around it for the moment. But must move on. Must keep going forward.
+
+In terms of the Kaggle kernel, I think I have a solution to the problem I was having. Basically, create a set for the words that are split from the row. After creating the set, we will need to change the value of the columns with the column name in the set of words to 1 from 0. I do not have the time right now to do this as Udacity takes precedence.
+
+Another possible solution would be to reuse what was made in the sentiment analyzer project to this kernel. Again, I'll try to do a sprint for this tomorrow. For now Udacity ND takes priority.:poop:
+
+Also I need to install git bash again, SAD.
+
+## Day 58: September 2, 2018
+
+8 more days to the deadline. Done with Hyperparameters lesson for today. A complete review of the Hyperparamenters from the earlier lessons in neural networks. Some of the new insights taken were that there are 2 types of hyperparameters: One set is for the optimization and training like normalization, the second set is for the speed like mini-batches etc. Smaller batches lead to slower training time. Bigger batches tend to oscillate. This is similar in relation to learning rate. Speaking of learning rate, if you read the documentation in tensorflow, there is a setting on learning rate decay. What this means is that the learning rate will decrease at a fixed rate after a fixed epochs. Then there is also a training method for early stopping. This would allow us to stop the training phase after a few "patience" epochs are reached without the error decreasing. This saves us time by ensuring that we do not unnecessarily train the network when it is not improving.
+
+Also there is a research regarding depth of the layers. 3 layers outperforms 2 layers but there is no significant difference the more layers you add. The obvious extension would always going to be the convolutional neural network.
+
+Also, look at Elon's resume below. Talk about goals. Also, been browsing on this [article](https://www.greatlearning.in/blog/5-must-haves-on-your-artificial-intelligence-resume/) about what to put in your resume for AI-ML-DL track. I still have a long way to go but now at least I know where to go and get them.
+
+![GOALS](https://images.news18.com/ibnlive/uploads/2018/03/elon-musk-one-page-resume.jpg)
+
+## Day 59: September 3, 2018
+
+Plan for today. Coding and dissection of the three mini-projects `intro-to-rnns`, `embeddings`, `sentiment-rnns`. I was able to run my `intro-to-rnns` earlier although it took a while to train. It showed a good ammount of progress though. I timed it, almost 30 mins for the entire pass. For now I have to dissect it to undestand what actually goes on and view the documentations on what could be improved. Then I have to go to the office for the upgrade. This is going to be costly and time consuming. 
+
+## Day 60: September 4, 2018
+
+40 more days to got. Power through. I browsed through on the next topics: GAN and Reinforcement Learning. There are intense lessons ahead. Some of the lectures are worth 10 hours for GAN. For RL, the topics are not that long BUT the quantity is also huge because it is mostly situational so its almost the same. For now I am finishing the RNNs topic. I am actually dissecting how the RNN was made in the characterwise RNNs. Then after that I am going to dive through how it is being made as word2vec or embedding.
+
+I think one of the more important things to consider when trying to understand RNN applications is that there are actually 4 types of architecture being used. This is based on the relationship between input and output of the architecture. There is __one-to-one__, where there are mutliple inputs and multiple outputs (for example the characterwise RNN). There is __one-to-many__ which is for script generation (I think, where you have one key sentiment and then it generates base on that). Then there is __many-to-many__ and then __many-to-one__. For _many-to-one_ and example could be a sentiment analyzer where you take in a stream of words and come up with the context. I think I am confused between _many-to-many_ and _one-to-one_.
+
+## Day 61: September 5, 2018
+
+I am going over the RNN dissection. I think there is an issue with the matching of the solution notebook to the actual problem notebook. I am having issues with the `tf.contrib.rnn.BasicLSTMCell`. I am slowly getting over the requirements. I have to start the project later in the workspace. I need to start doing the codes. Less than a week to go.
+
+I'll read TensorFlow documentations regarding LSTM later. I need to figure out how the cell is to be created. And the connection is crap for today. I can't even download extensions. What is with that? Seriously?
+
+I also have not updated the log files in the repo. Git bash is still not fixed.
+
+```python
+
+tf.reset_default_graph()
+
+# Create input data
+X = np.random.randn(2, 10, 8)
+
+# The second example is of length 6 
+X[1,6,:] = 0
+X_lengths = [10, 6]
+
+cell = tf.nn.rnn_cell.LSTMCell(num_units=64, state_is_tuple=True)
+cell = tf.nn.rnn_cell.DropoutWrapper(cell=cell, output_keep_prob=0.5)
+cell = tf.nn.rnn_cell.MultiRNNCell(cells=[cell] * 4, state_is_tuple=True)
+
+outputs, last_states = tf.nn.dynamic_rnn(
+    cell=cell,
+    dtype=tf.float64,
+    sequence_length=X_lengths,
+    inputs=X)
+
+result = tf.contrib.learn.run_n(
+    {"outputs": outputs, "last_states": last_states},
+    n=1,
+    feed_dict=None)
+
+
+print(result[0]["outputs"].shape)
+print(result[0]["outputs"])
+assert result[0]["outputs"].shape == (2, 10, 64)
+
+# Outputs for the second example past past length 6 should be 0
+assert (result[0]["outputs"][1,7,:] == np.zeros(cell.output_size)).all()
+
+print(result[0]["last_states"][0].h.shape)
+print(result[0]["last_states"][0].h)
+
+```
+
+## Day 62: September 6, 2018
+
+Finally able to figure out why the training of the RNN was taking so long. For one thing it was due to the length of the corpus. The size of the text file was ~2MB, but given that I am running it on an APU and not a dedicated GPU it takes a while. I tried to run this in the Udacity workspace with GPU mode enabled and it took me ~35 mins to go over 20 epochs. That shows you how compute intensive this is going to be. Now I am worried that the project will eat up most of the compute time I have.
+f
+One workaround for this that I did, just for the sake of trying to see how it would look like is by editing out the text file. I limited it to until chapter 20 and I also reduced the epochs to 10. Even with that my PC is still _struggling_ with the size. __I really need my AWS account.__
+
+I am also reading about the contrib layer where RNN belongs to in TensorFlow. There are some good reading materials that explains the process but seeing as this is still a contrib layer, TF has not released yet a digestible guide. But this is far better off than doing it in Keras, where from what I have read the layers for RNN are not only contributed but already under maintenance for quite a while. But that shows you the power of community, there is someone out there willing to give time to create layers for future users and researchers. Although it should be noted that creating layers from Tensorflow is far better than just using and waiting for the Keras layer to come up. I have not yet come across information regarding Theano as Keras backend.
+
+So I was able to do some digging. Cutting out the file to save time will severely limit the results that you will get out of the system.
+
+## Day 63: September 7, 2018
+
+Learning to use the contrib layers of TensorFlow for RNN today. I am checking out if Kaggle can do the RNNs for me. If it can then I can use the GPU to leverage my speed in training.
+
+I think it is possible. I forked a Kernel about stock prices and RNN using LSTM in Kaggle. Quite interesting actually. I forked it to study and to learn more about stock predictions becuase its acutally part of a project that I am thinking about doing.
+
+__tf.contrib.rnn class__
+
+Here we will try to go over the documentation for the layers of RNN available in tensorflow. The most basic cell is `tf.contib.rnn.RNNCell`. Based on the documentation, this is the basis of all the succeeding cells used in RNN class: LSTM and GRU cells. Properties of this would be `output_size` for the output produced by the cell and `state_size` which is the size of the state used by the cell.
+
+Following this [guide](https://www.tensorflow.org/versions/r1.0/api_guides/python/contrib.rnn#Core_RNN_Cells_for_use_with_TensorFlow_s_core_RNN_methods) we next have the Core RNN cells for TensorFlow's core RNN methods.
+
+`tf.contrib.rnn.BasicRNNCell` which as the name implies is the most basic RNN cell. Not much else on the documentation sadly. As it is based on the rnn.RNNCell, it also has the same properties (output_size and state_size). Arguments include `batch_size` and `dtype`.
+
+`tf.contrib.rnn.BasicLSTMCell` is the equivalent basic RNNCell. Also has no solid documenation behind it. Arguments include `num_units` which are the number of units in the LSTM cell (vertical stack?). `activation` is also  a possible argument which is set by default to tanh. Note that this can only be editted via the `__init__` method.
+
+There are also wrappers in for RNN cells. To work you first need to have craeted beforehand the cell. What the wrapper will do, from what I understand, is that it will take the original cell and apply another argument to it (for example dropouts).
+
+`tf.contrib.rnn.MultiRNNCell` which will create a sequential RNN cells of the same type as the simple RNN cell that was defined. Essentially it will provide us with the columns of our model (i.e. Left to right width) while the basic cells defined earlier will define the depth(i.e. top to bottom).
+
+`tf.contrib.rnn.DropoutWrapper` which is used when you want the cell to have dropouts in an input and output. I think you can use this to create one cell and then from this one use MultiRNNCell method to create the model.
+
+[Practical Guide for RNN in TensorFlow and Keras](https://paulx-cn.github.io/blog/4th_Blog/) is outlining what to do. Also this [post](http://monik.in/a-noobs-guide-to-implementing-rnn-lstm-using-tensorflow/).
+
+## Day 64: September 8, 2018
+
+Shut down all other things and focus on the project. I have to finish the project over the weekend.
+
+I was curious on the Word2Vec embeddings and found the image below which is from [part 1 of a tutorial](http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/). So what is the logic behind it? How does it work? The most basic idea is that it will output the collection of the words that are __in context__ with the given word. That is, words that are mostly seen in front or behind the given input. For example we have the word ant: the expected outputs would be hill, colony, queen, red, black, worker. As we can see, this are words that we normally assume are related to ants: ant hill, red ant, black ant, ant colony. Do note that this is still dependent of the training corpus that the model used. The context learned by the model is dependent, as always, with the training data fed to it. If every occurrance of ant in the system is just 'red ant' and 'ant hill' then we will expect red and hill to have a higher probability but that the rest of the words will be according now to occurance rather than context. This is actually the logic behind data poisoning. By increasing the occurance of a word artificially we can, if we are trying to trick the model, just flood it with the same incorrect information and the weights will adjust accordingly.
+
+![http://mccormickml.com/assets/word2vec/training_data.png](http://mccormickml.com/assets/word2vec/training_data.png)
+
+Now in the image above, the model is a simple one where the window is just 2 steps forward and back. The input for the model is the word highlighted in blue. So for the first one the input is 'the' and the training samples it got were (the, quick) and (the, brown). With this, it will update the weights. Then it will go on to the second pass where the input is now on 'quick'. With this there is now one step backwards in the window. The pairs received are (quick, the), (quick, brown) and (quick, fox). This goes on and on until it reaches the end of the training corpus.
+
+With the idea in mind, I think I now get the issue with why training the chanracter wise RNN in the `intro-to-rnn` topic takes so long. It actually has to come up with probabilities character wise instead of word wise. Sure there are lesser possible characters than words (this is due to the number of possible combinations and permutations of letters that make up a word) but there are more characters in a training file than words.
+
+Now on to [part 2](http://mccormickml.com/2017/01/11/word2vec-tutorial-part-2-negative-sampling/) of the tutorial there is insights on how to optimize the word2vec model. There are three ways that were cited from the original source [paper](http://arxiv.org/pdf/1310.4546.pdf). One optimization put forward was the use of "paired words" as single words or phrases for the model to reduce complexity. For example the words 'new', 'york' and 'city'. It is quite obvious for humans to only come up with 'new york city' from this set of words. It is also highly likely that any mention of a set containing these words are going to be arranged as 'new york city' since the training data will have to have been written by humans (for now :imp:). How do tell the machine to learn it this way? The solution put forward was for the machine to treat pairs of words or group of words comming together often as a single word. Obviously it would be difficult for the machine to immediately learn from a 3-word set. So the obvious, and also scalable, solution is to find first a pair of words that can be combined as a single word. So in this example we will have 'new' and 'york' being combined first. In this case we will have a new word 'new_york'. Then as the model passes again, it will figure out that 'new_york' is closely related to 'city' so by then it will combine the two words together to form 'new_york_city'.
+
+Another solution put forward in the paper is the use of subsampling frequent words to reduce the number of training examples. The idea behind it is quite similar to the dropout conecpt where we want to make the system more resilient by randomly turning of some of the nodes. In the case of subsampling, instead of randomly turning of the nodes we actually remove words based on their frequency. For example, we have the word 'the' in the example: `the quick brown fox jumps over the lazy dog`. As you notice, the word 'the' appears more frequtenly than the other words (granted it appeared twice lol). This in turn would have created duplicates in the training samples we have produced if we have a big window. By doing subsampling, we can tell the model to ignonre the word 'the' in some of its passes so that we do not form a bias and overfit on it as well as reduce the number of passes our model has to do.
+
+The last solution put out in the paper was the use of 'negative sampling'. On this solution it addresses the requirement of updating all the weights for a given word. Using word2vec will give us a lot of parameters to train and update, this is due to the unique relationship between words. For example, (the, quick) and (the, brown) are both unique pairs and this is just for a simple single sentence. Imagine if your training corpus is the entire wikipedia or reddit comments section, then you have to deal with thousands of pairs. Since this is a  neural network, we have to also have hidden layers which constitues another set of weights. So by now we have a weight matrix with a size of a thousand pairs by the number of hidden layers. This would easily push our weight matrix to the millions level. The way negative sampling works is that instead of updating ALL of the weights as is common with neural networks, we simply select a number of words that we want to update for example 5 words. Only the weights of the paired words and negative words selected will have to update their weight matrix. The rest will simply be updated as zero and the implementation would be do nothing. This is similar to the way Trusk did it in the sentiment analysis at the earlier part of the degree on the introduction to NN.
+
+## Day 65: September 9, 2018
+
+So today, I am going over the project. Reading over the specifications and the assertions in the `unittest.py`.
+
+So here is a sample exchange of script for Simpsons that is in the original text file:
+
+```text
+Barney_Gumble: Hey Homer, how's your neighbor's store doing?
+Homer_Simpson: Lousy. He just sits there all day. He'd have a great job if he didn't own the place. (CHUCKLES)
+Moe_Szyslak: (STRUGGLING WITH CORKSCREW) Crummy right-handed corkscrews! What does he sell?
+Homer_Simpson: Uh, well actually, Moe...
+HOMER_(CONT'D: I dunno.
+```
+
+I was able to do the project and here is a sample of the script that was generated:
+
+```text
+moe_szyslak:(nasty laugh) ah, ha ha, you got me, didn't ya?(handing homer a beer) all right, here you go--" red tick.
+lenny_leonard: oh, i'm so sorry...
+moe_szyslak:(generously) aw, homer. you know, i gotta check with lenny on that. uh, swishkabobs.
+waylon_smithers:(knowing) yeah, right. it's too bad. could have been fun. could have made a little money.
+moe_szyslak: thank you for saving my precious... gheet!(sighs)
+moe_szyslak:(sympathetic) aw, that's a procedure. you're talkin' about deadly, life-threatening surgery, here.
+homer_simpson:(getting nervous) why, homer, you're doin' great. you're way ahead in the polls... even got a lot of catching up to do.
+homer_simpson:(noise of pain, then) can i just get a glass of water?
+moe_szyslak: water.
+carl_carlson: to smithers, the little cutie wants to do something cute...(to barflies) shut up, ya bums, have a right now.
+lenny_leonard: that's why i'm not doing?
+lenny_leonard: oh, sure thing, homer. i learned how much of my blood and sweat are in this drink?
+barney_gumble: good for you, moe. only an idiot would give away a million.
+moe_szyslak: oh, yeah. here ya go.
+moe_szyslak:... then we light a match... and fwooof! we start a new life in hawaii.
+moe_szyslak:(sobs) i'm happy on christmas eve. and for once it's not 'cause some drunk left a wallet in his other skirt, and he pays me with this!
+carl_carlson: hey, i don't know, carl. he might be closer than you think.
+homer_simpson: moe, what are you doing?
+moe_szyslak:(sighs) what's the point?... same ol' stinkin' world... ah, your tavern... here comes the evening rush. clear out, fellas.
+barflies: what a day. / let's get started. / some serious drinkin'.
+homer_simpson:(chuckles)
+homer_simpson: no, uh, hey, moe. you've got a job here for your sign.
+barney_gumble:(gives a little wave) yoo hoo!
+moe_szyslak: oh, god, no.
+```
+
+I have made a submission for this one. I am currently waiting for it to be reviewed but for the most part, I was able to meed the expectations of the rubrics. I also asked some questions regarding the placeholder name as I am still getting some issues with it. For now, I will continue learning.
+
+__GANs: Generative Adversarial Networks__
+
+From what I understand in the intro video GANs are generally like mirrors trying to create an oytput as close to the input as possible. This is a naive way of explaining GANs
+
+## Day 66: September 10, 2018
+
+Received the review. Its a pass. In terms of unit test here is a [post](https://docs.python-guide.org/writing/tests/) on python unit testing. The reviewer was kind enough __to provide a [link](https://datascience.stackexchange.com/questions/11402/preprocessing-text-before-use-rnn) to the Data Science Section of StackExchange__. There is this [link](https://stackoverflow.com/questions/36693740/whats-the-difference-between-tf-placeholder-and-tf-variable) about the difference in `tf.placeholder` and `tf.variable` which is a good supplementary read. He even went on to provide a suggestion on how embeddings could have been done better via `tf.contrib.layers.embed_sequence(input_data, vocab_size, embed_dim)` method. An [indepth explanation via article](http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/) is also given, which is the same as the ones in the lessons so I have been able to go over this one. There is [this guide](https://www.tensorflow.org/api_guides/python/nn#Recurrent_Neural_Networks) in TensorFlow regarding embeddings and building Recurrent Neural Networks. I got a commendation on my choice of keeping the hyperparameters to a power of two. This makes it easier for TensorFlow to compute them more efficiently, being able to provide background as to why those values were chosen was also appreciated. I think [this link](https://magenta.tensorflow.org/) is the best of all in terms of impact. Its the link to Project Magenta by Google/TensorFlow. They are currently using Music and Art using Machine Learning. The possibilites are amazing.
+
+Now on to GANs. The lecturer for this course is the creator of the GAN model himself, Ian Goodfellow. So exciting to learn the basics from this guy. As far as I can tell he is good at making you understand what the concept is via his examples. In terms of the components of the GAN there are two main ones: the _discriminator_ and the _generator_. Their functions are pretty self explenatory. The logic of how they function is the basis of GAN. In simple terms the generator tries to come up with ways to pass the discriminator and the discriminator looks for ways to discern the outputs from the discriminator. The example given was about the discriminator being the cops and the generator being criminals who want to counterfiet money. The cops has to come up with ways to tell which ones are fake money and which ones are real. The criminals look for ways to fool the cops into thinking that their output is real.
+
+The basis of the GAN concept was actaully based on Game Theory. The underlying assumption is that for all possibilities between a scenario, there would be a point where in all the distribution of possibilities would lead to a zero-sum game (?). The example here was the rock-paper-scissors game. Basically, the scenario is that two players will try to play the game: They correspond to our discriminator and generator. In this example let us consider we are the discriminator.
+
+## Day 67: September 11, 2018
+
+More on GANs. Since the connection is acting up again, I did some readings of papers on GAN. First one on the list if the seminal paper by Ian Goodfellow et.al. Mostly the background and the idea of the paper first.
+
+## Day 68: September 12, 2018
+
+Watching the lessons on GAN. Ian had some recommendations regarding how a Discriminator and Generator in GAN can be implemented. He also gave out some caution regarding the counter-intuitive ways to implement GAN that for some reason works well in implementation. Also started watching GAN implementation by Mat. In terms of the paper on GANs, I have not yet finished reading a 9 page paper. Really busy on work lately.
+
+Any way here is an update regarding the readings on GAN. Building on the context earlier about the criminals and cops. The GAN is trained through the _adverserial_ portion of the network. Meaning that the descriminator will have to reduce errors by finding out the outputs of the generators from the actual outputs and the generator has to minimize loss by finding a way to fool the descriminator into thinking that its output is the real thing. This will go on, in theory, until the least ammount of loss and error is acheived.
+
+In terms of the adverserial network, the idea is that it will be like both Descriminator (D) and Generator (G) playing a minmax game. Now obviously if there is no initial bias on the network, it will encounter an issue where in the Descriminator is going to get more and more into the negative side that it will not be able to find a way to minimize loss. Imagine the descriminator as the police wherein obviously upon learning of the counterfeits it won't immediately be able to tell. When it receives the report of a counterfeit, it would already be out so it would incur a loss. Then this would happen for some time until they are able to train on the previous data and know how to detect the counterfeit. Once the descriminator is able to correctly detect the fakes all the generator has to do is change one thing on the fakes and the police will have to figure out again what changed. This is one of the algorithms behind Adeverserial networks, we have to __alternate__ between _k_ steps in the descriminator and _one_ step for the generator. This is veiwed from one of the perspective, another way to look at it is that the descriminator ealry on will just descriminate __all__ the samples as fake with high accuracy since the generator will, for lack of better word, suck. Given that the generator can only update after _k_ steps and knowing that none of its previous attempts made it through the descriminator then it will lead to complications because it will not be able to learn anything. *Feels familiar*.
+
+## Day 69: September 13, 2018
+
+Now on to Intro to GANs notebook. The idea is to train a GAN on MNIST dataset. Basically, we want to generate hand written numbers after our trainings.
+
+For more information on GAN applications we can view them [here](https://github.com/wiseodd/generative-models). Here is an example of a GAN application in action, this is called CycleGan where a video of a horse was transformed to make it appear like a zebra.
+
+![CycleGAN - application](https://raw.githubusercontent.com/junyanz/CycleGAN/master/imgs/horse2zebra.gif)
+
+For more readings on some GAN applications, we can use [this one](https://arxiv.org/abs/1611.07004) about Pix2Pix project. Or this [Medium post](https://medium.com/@jonathan_hui/gan-some-cool-applications-of-gans-4c9ecca35900) about applications of GAN. Here is a sample [paper](https://arxiv.org/pdf/1804.00064.pdf) on GAN for Dental Restorations.
+
+Back to intro to GAN. First up we define our placeholders for input and z.
+
+## Day 70: September 14, 2018
+
+Working again on the intro to GAN lectures. While trying to figure out the `tf.variable_scope`I was directed to this [guide in TensorFlow](https://www.tensorflow.org/guide/variables#the_problem). What's great about this guide is that it also covers items that are essential for us, for example it covers High Level APIs like Keras, it has a section for Checkpoints and Estimators and also Low Level APIs like Tensors and Variables and Graphs. All the things that you might need to get a good grasp of Tensorflow can be found in the [guide section](https://www.tensorflow.org/guide/).
+
+So back to the variables scope documentation. I was reading about it and from what I understand, it is simply wrapping the variable created to an implicit scope. Its quite similar to global and local variables I think. One way variable scope is needed is when we are doing multiple layers of NN work. In this case we may need to get multiple outputs of the same name. I am copying the example of a point where the variable will fail since tensorflow does not know what behaviour is expected. In the case below, we are trying to name a variable and an operation while calling an earlier variable. The first variable x is called as an input to the second layer while the output is still called x.
+
+```python
+input1 = tf.random_normal([1,10,10,32])
+input2 = tf.random_normal([1,20,20,32])
+x = conv_relu(input1, kernel_shape=[5, 5, 32, 32], bias_shape=[32])
+x = conv_relu(x, kernel_shape=[5, 5, 32, 32], bias_shape = [32])  # This fails.
+```
+To solve this issue we can define the scope of our varialbes:
+
+```python
+def my_image_filter(input_images):
+    with tf.variable_scope("conv1"): # Same names but on different scopes
+        # Variables created here will be named "conv1/weights", "conv1/biases".
+        relu1 = conv_relu(input_images, [5, 5, 32, 32], [32])
+    with tf.variable_scope("conv2"):
+        # Variables created here will be named "conv2/weights", "conv2/biases".
+        return conv_relu(relu1, [5, 5, 32, 32], [32])
+```
+In here we can share variables by setting the argument `reuse = True`:
+```python
+with tf.variable_scope("model"): 
+  output1 = my_image_filter(input1)
+with tf.variable_scope("model", reuse=True):
+  output2 = my_image_filter(input2)
+
+# OR Alternativeley we acn use scope.reuse_variables()
+
+with tf.variable_scope("model") as scope:
+  output1 = my_image_filter(input1)
+  scope.reuse_variables()
+  output2 = my_image_filter(input2)
+```
+
+So in the case of the mini-project, our generator function will have a scope of `generator` and with `reuse` argument set to `False`.
+
+## Day 71: September 15, 2018
+
+I am going over the Deep GAN lectures for today. Goal is to reach at least 25% of the lecture for now. Then I will go back to the intro to gans notebook. I am really procrastinating right now. But I know I am close. I can feel it. From nothing to GANs in 70 days is quite great. I want to finish this now and move on to building my portfolio. There is a plan behind this one. I just have to recover the initiative.
+
+For Deep Convolutional GANs, the end goal is to generate Street View House Numbers. This lesson will cover also semi-supervised learning with GANs. The idea is that we will try to fool our discriminator by creating an image that closely resembeles the real input. To do this we will need to do convolution. For our generator protion we will need to use the transpose mode to create the image. Recalling from CNNs, we have a wide image with depth of 3(RGB). For our generator architecture we are simply going to reverse the order of the layers, instead of going from a wide and shallow to small and deep we will go the other way. Sort of similar to the encoder decoder problem. Some key points to take in this is that we do not use any fully connected layers (since we are not after some features), we also activate via ReLU for all layers. We use transpose with strides to increase the size of our matrix and we will use batch normalization as well.
+
+For the discriminator we are going to use something similar to the CNN because we are going to look for features in the images. Remember that the goal of a descriminator is to find the features of the images (both real and generated) so it must have a CNN in this case. We still have ReLU as our activation function for our layers and we will have Batch Normalization as well.
+
+_Batch Normalization_ is a technique for improving performace and stability of neural networks. How it works is that we normalize the layer inputs so that all items will have a mean of zero and a variance of one. This is quite similar to using standardize in network inputs. The use of batch normalization is __necessary__ in ensuring that our DCGANs work. Recalling what happened in the CNNs dog breed classifier project we now that we can increase the speed of training for the network for a slight decrease in the accuracy. Since GANs will use both generation and discrimination function with CNN as the base, we expect that the computations would be intensive. In this case, the use and understanding of how to setup batch normalization is critical.
+
+## Day 72: September 16, 2018
+
+__"Rebellions are built on hope"__.
 
 ## Resources
 
