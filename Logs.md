@@ -1183,7 +1183,263 @@ _Batch Normalization_ is a technique for improving performace and stability of n
 
 ## Day 72: September 16, 2018
 
-__"Rebellions are built on hope"__.
+__"Rebellions are built on hope"__. This is one of the main things I wanted to do which led to me to the path of AI, [bots](https://chatbotslife.com/crypto-trading-bot-on-raspberry-pi-3-using-profittrailer-and-bittrex-41c2d63e3697). Actually, its the idea of automating the most boring of things so that you can free your time. Its tied in to the concept of _toil_ in devops, you should allocate a toil budget for your resource wherein they can and are expected to engage in toil. Tasks that consume toil time with less benefits should be candidate therefore for automation. Also, another article this time for [High Frequency Trading Bot](https://www.indiehackers.com/interview/building-a-3-500-mo-neural-net-for-trading-as-a-side-project-5dda352c13). I am intending to make this my Capstone project for the degree. Might be feasible and lucrative.
+
+## Day 73: September 17, 2018
+
+So no coding done yesterday. Today is also the same, minimal coding only. My focus for now is to go over every readings necessary. I have to read about Batch Normalization and its implications on GANs and on training as a whole. Then I will touch on the different bots out there, dabbling on what they are and how we can make them.
+
+First of let's build upon the previous lessons on batch normalization. _Normalization_ should be familiar to us as it is already used in the input portion of our model. All our data, as much as possible, are normalized, this is basic normalization. The idea of _batch normalization_ is that instead of treating the entire model as a whole, we think of it modularly (? is that correct). What we mean by this is that we deconstruct the layers of the models and treat those as individual input components with input and output arguments. If we view the model this way, we can see now that there is an opportunity to deploy normalization in between the layers. Do note that the layers will go over by batch, this is the reason for the naming. This is the intuition behind the use of normalization, there are also mathematical ways on which the batch normalization approach is defended. For more readings, the book of Ian Goodfellow et.al about [Deep Learning](http://www.deeplearningbook.org/) and also this [paper](https://arxiv.org/pdf/1502.03167.pdf).
+
+So we now move on to the benefits of batch normalization.
+
+1. __Faster training speed__ - counter-intuitively, the training is going to be much more faster even if we added more hyperparameters and calculations during the forward and backward pass. The speed difference is actually because the model, even if it has to calculate more items, can make up for the time by the relative ease of the computations as a whole (i.e. the covergence of the actual model happens faster).
+2. __Possiblity of higher learning rates__  - The idea behind gradient descent is that we need to have a small learning rate so that the nework will converge. As the networks get deeper, the gradient actually gets smaller (vanishes). With the application of batch normalization we can actually use a higher learning rate and still allow the network to converge.
+3. __Weights are easier to initialize__ - Not really in a sense that we can just throw any initialization but batch normalization allows us more freedom in choosing what our initial weigths are going to be and still allow our network to converge.
+4. __Allows for more activation functions__- This is in the context of giving us more activation functions to choose from. We all know that the problem with sigmoids and ReLUs and Leaky ReLUs is that they often die out too quickly.
+5. __Simplifies creation of deeper networks__ - As a by product of the earlier items, batch normalization allows us to create deeper layers which is always good. Caveat: the idea is that layers that are 2 to 3 stacks are normally good but more than that and the returns almost do not justify the cost. So, deeper in this context would be in terms of the nodes inside the layers and not the layers themselves.
+6. __Provides regularization__ - Bach normalization is known to add noise to the network. It has been known to work as well as a dropout (the randomness is equated in this case to noise). So we can, in general, consider batch normalization as a bit of extra regularization so we can remove some of the dropout we might add to the network.
+7. __May provide better overall results__ - With the addition of the batch normalization in every interconnection of layers we actually add more parameters which should slow down the network. But in terms of the speed of training/convergence, it has been shown that this is simply not the case. Also, since we will be using normalization, we can build deeper models that is often a good thing. To put simply, Batch Normalization is to be treated as an optimization to help us train our network train faster.
+
+>Personal Opinion - Think of batch normalization as a capacitor in your input/output layer. Instead of dropping off immediately, the capacitor will try to maintain the levels so that the circuit will keep on working. This is almost )but not really) similar to the function of batch normalization.
+
+In terms of creating a pipeline for development, I think creating a class or at least defining functions will make it easier to make the code modular for further reuse. For example we can create functions for read_csv, for weight initialization and for hyperparameters. Most of this items will be repetitive and can be used across multiple projects with minimal code change. That is it for now.
+
+## Day 74: September 18, 2018
+
+Note to self: review how to actually use graphs in TensorFlow as it makes it easier to understand the training methods and the way we training works in terms of the changes in the loss and accuracy or any other metric that we might want.
+
+Two ways to do batch normalization in Tensorflow. The first one is `tf.layers.batch_normalziation` and the second one is  via `tf.nn.batch_normalization`. Based on the modules they are taken, we can see that one is a higher-level function while the other is for more lower-level works. `tf.layers` is the one for higher-level implementations, it will usually work for most of our problems and use cases but it also pays to learn about the `tf.nn` method in case we want a more controlled use case.
+
+This is the reference for [implementing and testing Batch Normalization in TensorFlow](https://r2rt.com/implementing-batch-normalization-in-tensorflow.html). Also, the Batch Normalization Lesson in the nano-degree does offer an explanation on how it works and its limitations.
+
+With all of these, I can now consider the topic of Batch Normalization as completed. In case I have any other work to do or need some refreshers I think I have enough materials to scour over again.
+
+Now I am going on a tangent and read about bots for now. Procrastination. Here are some of the resources that I found which I have not yet touched:
+
+[Viber Build a Bot](https://github.com/Viber/build-a-bot-with-zero-coding)
+
+[100 Best Github Chatbot](http://meta-guide.com/software-meta-guide/100-best-github-chat-bot)
+
+[Viber Bot with Python](https://github.com/Viber/viber-bot-python)
+
+[ChatterBot](https://github.com/gunthercox/ChatterBot)
+
+This is a post on towardsdatascience for [Learning DS when you are broke](https://towardsdatascience.com/how-to-learn-data-science-if-youre-broke-7ecc408b53c7) which is simply a guide on how to tackle on DS. The next phase of my training for now would be to create 2 capstone project. One would be a Kaggle Competition and the other would be a Deep Learning Bot. Besides this one, I also need to tidy up my github and add my project codes for Udacity projects.
+
+[Fast.ai season 1 episode 22: Dog Breed Classification](https://towardsdatascience.com/fast-ai-season-1-episode-2-2-dog-breed-classification-5555c0337d60)
+
+[8 Machine Learning projects for beginners](https://elitedatascience.com/machine-learning-projects-for-beginners)
+
+[ML-AI Case studies](https://towardsdatascience.com/september-edition-machine-learning-case-studies-a3a61dc94f23)
+
+WildML's [2017 AI and Deep Learning year end review](http://www.wildml.com/2017/12/ai-and-deep-learning-in-2017-a-year-in-review/)
+
+[PSEi data](https://www.johndeoresearch.com/data/)
+
+[A post on PSEGet](http://pinoystocktrader.blogspot.com/2010/11/amibroker-charting-software-chart-data.html)
+
+Okay, so I was reading [this post](https://www.indiehackers.com/interview/building-a-3-500-mo-neural-net-for-trading-as-a-side-project-5dda352c13) about a trading bot and there are some interesting insights I have learned.
+
+## Day 75: September 19, 2018
+
+Reading more on Batch Normalization and GANs. Job for today is to watch semi-supervised GANs. So I have just finished Ian Goodfellow et.al. paper on GAN, just figured out on the testing part of their paper that the intended enemy of the _G_ is the _D_. What hit me is that it now makes sense that most of the images are, at least for human eyes, are somehow weird or off.
+
+They do have some resemblance but when you place an unknown person and claim that he looks like this guy then you are already biased I think, especially if we all know what the original looks like. Can we imagine, for discussion, when the time comes where we are able to interface with the machines directly? If we are able to be the descriminator. One problem with this is that, at least how I see it, our generator will only be as good as our discriminator and nothing more. That is how I see it, for new things to emerge I think it has been pointed out in history that limits are always going to be exceeded.
+
+Here is the tutorial page for [Quantopian](https://www.quantopian.com/tutorials/) which is for stocks and finance analysis and data. Then we have this for [TensorFlow](https://www.tensorflow.org/tutorials/). Areas of interest: for now GANs, then the possibility of building it for mobile because why the hell not.
+
+Watching semi-superviesde learning by Ian Goodfellow. So far we have only used GANs for image generation which is still a useful direction for GANs with multiple AI initiatives tackling on this. Another way we can use GANs is for semi-supervised learning. This is a more general use of GANs and an example use case of this would be to improve the performance of classifiers. It should be pointed out that not all AI initiatives require the Generation of images, a more general use case would be using classification than generation. So the focus now for classification is the _Discriminator_ instead of the generator. In the earlier model where we have generated faces, the output of the discriminator is fed to a sigmoid function where the images are classified as either real of fake. In semi-supervised learning we instead use softmax activation so that it can now classify among a variety of buckets via probabilities.
+
+The example we would be using is a classifier for SVHN dataset. We will be classifying the numbers between 0-9 and another bucket for all the fake images. A normal classifier would only be able to correctly classify from _labeled images_. For semi-supervised GAN application we would be able to classify between _labeled images_ , _fake generated images_ and _unlabled images_. This is now more in line with the current industry usage for classification because labeled data is expensive. By leveraging the power of GANs on unlabled images we can now use the vast unlabled data taht is available in the internet. One additional technique that will be reuqired for this setup is for the use of _feature matching_. Here is my understading of feature matching: Our generator would tend to overfit our discriminator because it wants to always pass the test. The problem here is that most of the outputs of the genrator would then tend to look the same which would lead to the discriminator catching on. In feature matching, the idea is that the statistical disctirbution of a feature is considered as well  before the classification layer. Normally, this feature is one of the deep layer nodes right before the softmax activation so we now that the features here are already deep and rich in a sense (since it has already been extracted multiple times, remember that the deeper the layer the more specific the feature is). So the idea is that the real images will also have a probability distributions with respect to this feature. Feature matching will therefore try to reduce the Mean Squared error between the distribution of the real image feature and to the generted feature. In simple terms, its going to also match the distribution (ideally) of a certain feature when generating an image.
+
+>Looking back to the RNN model, I think that this is one of the reasoning behind the `random_choice` method that was used during the pick word function. Instead of just picking the highest probability among the words, we are actually randomly choosing based on the probability of the words appearing. This way the output is more stable. WOW. Insight. :muscle: The problem before in the script generation was that after a while the same words or sequencees were being repeated over and over to till the required length. By actually using the probability of the words in choosing randomly we achieved a more stable result. Stable in the context that we were able to move away from the repetitivesequences or words. So, for future reference, if we are able to get the probabilities of a feature then we should try to at least choose randomly with respect to the inherent distibution of probabilities and not just default to the argmax function.
+
+## Day 76: September 20, 2018
+
+Started out the Project for today. Went on to code some parts of the project: placeholders for the images and the learnrates and also started on the discriminator functions. Currently reading on the [DCGAN paper](https://arxiv.org/pdf/1511.06434.pdf) for more insights.
+
+## Day 77: September 21, 2018
+
+Still on the DCGAN paper. Right now I am trying to figure out what Architecture I would want for this project. It looks like its going to be an hourglass shapeed architecture (obviously) with the Generator feeding to the Discriminator. Actually, it seems like it should be inverted hourglass(?) or diamond. The generator is increasing in size and the discriminator is decreasing in size.
+
+[LINK FOR DCGANs](https://towardsdatascience.com/implementing-a-generative-adversarial-network-gan-dcgan-to-draw-human-faces-8291616904a)
+
+## Day 78: September 22, 2018
+
+Now, doing the Generator function. A few more and we can begin the training. I am facing some issues with GitHub again, I can't open most of my notebooks.
+
+So far, i am done with my generator. Up next is the training optimizer function.
+
+## Day 79: September 23, 2018
+
+Objective for today is to submit one draft before 6PM. So for now we are at the model_loss function. it will get the loss for both discriminator and generator. This is one of the unique traits of GAN, since we have two systems working we need to have two losses to track as well. Then after we do the `model_loss` we proceed with defining our `optimizer` function for training. For this one, again, we are using __Adam__ as our optimizer.
+
+## Day 80: September 24, 2018
+
+Managed to submit the project file for initial checking. I am having a problem with the generator. It is not initializing well. For some reason there are ghosting in the first steps. So I sent the file for assistance from the reviewer on how to fix the issue.
+
+The review was fast, although it was not that helpful in terms of insights. I am about to apply the changes but for now the connection is again bad. What else? I received an email again from EDS team about algorithmic trading. Its a sign. :joy: I am still working on this nano-degree and I intend to finalize my GitHub Repo for the whole course before moving forward.
+
+For now I am going to apply the necessary changes in the code and I will make another training run for it. Hopefully that will fix my issues. The goal for now is to have the initialization of the images to be black which means that there are now biases or ghosting for the model.
+
+## Day 81: September 25, 2018
+
+Currently playing around with my hyperparameters now. I reset my alpha values for the generator to be the same as the discriminator at 0.2. I have also adjust my layers in the generator with 512 256 256 instead of the 512 256 128. I figured I might as well make use of my GPU time :imp:. For now I still have 40+ hours of GPU enabled time in the course and I assume the quadcopter project will not take that long. One entire training pass for the DCGAN face generation project takes approximately 25 mins to 30 mins balancing out the production of an MVP should be of importance. Viewing the [guide](https://github.com/tensorflow/tensorflow/blob/r1.11/tensorflow/contrib/eager/python/examples/generative_examples/dcgan.ipynb) I am amazed by the idea of using a GIF to portray the changes while it is training, like a flipbook of some sorts. I still have to play around with it for a bit but I like the idea of being able to animate what is actually happening along the way.
+
+So I just received my second review. It is now more clear what the problem was and how to fix it. By now the main reason I cannot get better results is that I have some lousy hyperparameters. I am going over the hyperparameters selection again and I will be doing some initial runs in the office later. I was able to make one run earlier but my results were not that great and my batchsize was smaller so I generated more images than I wanted to. I have to fix this. One of the more pressing issue I am facing is the use of Dropout layers as suggested by my reviewer. Basing on [this post](https://towardsdatascience.com/dont-use-dropout-in-convolutional-networks-81486c823c16) it says that we do not use dropout in between Convolutional layers, and I am guessing that since Conv_transpose is just the opposite then we also do not want a dropout there. Normally, dropouts are used between Fully Connected layers so in this case the Dense layer. This also has to be fixed.
+
+In terms of discriminator bias (pun intended :joy:) we have in place a smoothing factor. We use to balance out (ironically by providing bias) our discriminator loss function. This is done to help the generator overcome the initial strenght of the discriminator. Without smoothing, there is a possibility that the generator will collapse during training and it will simply stop trying to beat the discriminator.
+
+I have also added Xavier intialization to the kernel initializer. From the reviewer's tip it says that it helps in the initialization of the weights. Reading further, I found out that Xavier is used to keep the intial weights to within a Gaussion (? if I remember correctly) distribution. This in turm would help the model during the training as it will avoid the gradient from blowing up uncontrollably or from going down to where it vanishes and the model gets stuck.
+
+Main issue right now is actually in the hyperparameters. Beta values, alpha values, learning rate and batch sizes all would play a part in the training of the model. In a numbers perspective, I think the celebA training actually performs good with the Generator loss being lower than the Discriminator loss which would indicate that the generator is actually able to pull the discriminator. The only problem is that the faces are somewhat uncomprehensible when you look at them. This is a problem if we submit because strictly speaking we have a rubric that requires our generator to have some comprehensible faces generated. I have no other concerns with the MNIST data set. It does not really have a problem in a way because numbers have less features than faces so we need to fix first the celebA generation and the MNIST generation would (if I am correct) be fixed as well.
+
+## Day 82: September 26, 2018
+
+So I found this [post](https://towardsdatascience.com/implementing-a-generative-adversarial-network-gan-dcgan-to-draw-human-faces-8291616904a) in towardsdatescience with the implementation of a DCGAN. It had within it the use of Dropouts in between the Conv2D and Conv2DTranspose. It is just outputting black boxes for the MNIST data. This really is a bit frustrating, the concept of GAN is easy to grasp but damn the implementation is really difficult. The balancing of hyperparameters to come up with a result is hard and often counter-intuitive.
+
+So I finally passed the Face Generation project. :muscle: It does have some more improvements to be made but overall the reviews came great. All units passed. Actually I want to download my reviews if possibe so that I can refer to them again as notes. There are lots of instances where I have to learn more about hyperparamenters and how they interact with the model. Building GAN was fun (frustrating but fun).
+
+## Day 83: September 27, 2018
+
+Here is the review from the project page, I am saving it for future reference:
+
+
+Meets Specifications
+
+Well Done!!! You have met all the specifications, but don't stop here, keep experimenting. Experimenting is the only way you understand DL.
+
+Go ahead and explore the wonderful world of GANs. Below are a few links for starters...
+1) In order to gain more intuition about GANs in general, I would suggest you take a look at this link.
+
+2) Also, if you want to gain intuition about the convolution and transpose convolution arithmetic, I would suggest referring to this [paper](https://arxiv.org/abs/1603.07285).
+
+3) For more advanced techniques on training GANs, you can refer to this paper.
+
+4) One of the biggest problem GAN researchers face (you yourself must have experienced) with standard loss function is, the quality of generated images does not correlate with loss of either G or D. Since both the network are competing against each other, the losses fluctuate a lot. This problem was solved in early 2017 with introduction of Wasserstein GANs. With WGAN, the loss function directly correlates with how good your model is, and tracking decrease in loss a good idea. Do read it up.
+
+5) Finally, have a look at this amazing library by Google for training and evaluating Generative Adversarial Networks.
+
+6) Here are some other important resources for GAN:
+http://www.araya.org/archives/1183 for GAN stability.
+https://github.com/yihui-he/GAN-MNIST, https://github.com/carpedm20/DCGAN-tensorflow for DCGAN.
+https://medium.com/@ageitgey/abusing-generative-adversarial-networks-to-make-8-bit-pixel-art-e45d9b96cee7
+
+7) Below are few GAN videos:
+https://www.youtube.com/watch?v=dqwx-F7Eits&list=PLkDaE6sCZn6FcbHlDzbVzf3TVgxzxK7lr&index=3
+https://www.youtube.com/watch?v=RvgYvHyT15E
+https://www.youtube.com/watch?v=HN9NRhm9waY
+https://www.youtube.com/watch?v=yz6dNf7X7SA
+https://www.youtube.com/watch?v=MgdAe-T8obE
+
+8) Take a look at this Progressive Growing of GANs for Improved Quality, Stability, and Variation, which creates HD quality photos similar to the below image.
+
+All the best for your future and Happy Learning!!!
+
+ Required Files and Tests
+
+The project submission contains the project notebook, called “dlnd_face_generation.ipynb”.
+
+The iPython notebook and helper files are included.
+
+All the unit tests in project have passed.
+
+Great work! All the unit tests are passed without any errors. But you need to keep in mind that, unit tests cannot catch every issue in the code. So, your code could have bugs even though all the unit tests pass.
+Build the Neural Network
+
+The function model_inputs is implemented correctly.
+
+Correct, you have defined the placeholder tensors, which are the building block in computation graph of any neural net in tensorflow.
+
+The function discriminator is implemented correctly.
+
+Correct implementation of Discriminator, good work!
+
+The function generator is implemented correctly.
+
+Good Job implementing the generator!
+
+Experiment with more conv2d_transpose layers in generator block so that there're enough parameters in the network to learn the concepts of the input images. DCGAN models produce better results when generator is bigger than discriminator. Suggestion: 1024->512->256->128->out_channel_dim (Use stride as 1 to increase the number of layers without changing the size of the output image).
+
+The function model_loss is implemented correctly.
+
+Correct!
+Good job utilizing label smoothing for discriminator loss, it prevents discriminator from being too strong and to generalize in a better way. Refer https://arxiv.org/abs/1606.03498
+
+The function model_opt is implemented correctly.
+
+Correct.
+To avoid internal covariant shift during training, you use batch norm. But in tensorflow when is_train is true and you have used batch norm, mean and variance needs to be updated before optimization. So, you add control dependency on the update ops before optimizing the network. More Info here http://ruishu.io/2016/12/27/batchnorm/
+
+Neural Network Training
+
+The function train is implemented correctly.
+
+* It should build the model using model_inputs, model_loss, and model_opt.
+* It should show output of the generator using the show_generator_output function
+
+Great work combining all the functions together and making it a DCGAN.
+
+Good job scaling the input images to the same scale as the generated ones using batch_images = batch_images*2.
+
+Tip: Execute the optimization for generator twice. This ensures that the discriminator loss does not go to 0 and impede learning.
+
+Extra:
+1) Talk on “How to train a GAN” by one of the author of original DCGAN paper here..
+
+2) Here is a post on Gan hacks, https://github.com/soumith/ganhacks
+
+3) Plot discriminator and generator loss for better understanding. You can utilize the below code snippet to plot the loss graph to get a better understanding.
+
+```python
+d,_ = sess.run(…)
+g,_ = sess.run(…)
+d_loss_vec.append(d)
+g_loss_vec.append(g)
+```
+
+At the end, you can include the below code to plot the final array:
+
+```python
+Discriminator_loss, = plt.plot(d_loss_vec, color='b', label='Discriminator loss')
+Genereator_loss, = plt.plot(g_loss_vec, color='r', label='Generator loss')
+plt.legend(handles=[ Discriminator_loss, Genereator_loss])
+```
+
+You'll be getting a graph similar to the below image,
+![image1](https://udacity-reviews-uploads.s3.us-west-2.amazonaws.com/_attachments/84774/1537935964/graph.png)
+
+The hyperparameters chosen are correct and your model generates realistic images. Good Job!
+
+You can further improve the quality of the generated image by experimenting with the parameters and the tips I provided in generator. Below are a few extra tips on choosing the hyperparameters for starters...
+Tips:
+
+1) Try using different values of learning rate between 0.0002 and 0.0008, this DCGAN architectural structure remains stable within that range.
+
+2) Experiment with different values of beta1 between 0.2 and 0.5 and compare your results. Here's a good post explaining the importance of beta values and which value might be empirically better.
+
+3) An important point to note is, batch size and learning rate are linked. If the batch size is too small then the gradients will become more unstable and would need to reduce the learning rate and vice versa. Start point for experimenting on batch size would be somewhere between 16 to 32.
+
+Extra: You can also go through Population based training of neural networks, it is a new method for training neural networks which allows an experimenter to quickly choose the best set of hyperparameters and model for the task.
+
+Below is an output that I got by modifying based on the tips. Experiment, that's the only way you learn Deep Learning.
+
+![image2](https://udacity-reviews-uploads.s3.us-west-2.amazonaws.com/_attachments/84774/1537935991/download_6_.png)
+
+Your model generates good face images and hyperparameters are correct. You can still improve your model to generate realistic faces by following the same tips I provided for you in the above MNIST section.
+
+Tip: If you want to generate varied face shapes, experiment with the value of z_dim (probably in the range 128 - 256).
+
+Below is one of the generated images that I got by making slight changes to your model.
+
+![image3](https://udacity-reviews-uploads.s3.us-west-2.amazonaws.com/_attachments/84774/1537936048/download_5_.png)
+
+So, there we go. A very long review which is good beause I now have more materials to look forward to. I am interested to learn also about the plotting/graphing part of TensorFlow because I am a strong believer in visuals and learn better when I actually see the graph than just going over the losses and infer from those numbers.
+
+> Dropout layers is a regularization technique. We use it to prevent overfitting. With a smaller data set (~1000 or less), we would want to reduce overfitting if we want to create a more universal model. This is the importance of dropouts and it is not the same as batch normalization either.
+
+A tip on _feature matching_ is that for convolution classification we do not use batch normalization, instead we use another form of normalization or none at all for code simplicity. Actally implementing batch normalization when we do feature matching kind of defeats the purpose of the feature matching. This is because the batch normalization will subtract off the mean of of every feature value and add an offset parameter that it learns as a bias. When we subtract from the mean then essentialy our feature matching will no longer work as there is no difference in averages. A reasearcher from OpenAI had a workaround for this via weight normalization which would be a good read.
 
 ## Resources
 
@@ -1198,3 +1454,25 @@ __"Rebellions are built on hope"__.
 [Elite Data Science ML Projects for beginners](https://elitedatascience.com/machine-learning-projects-for-beginners)
 
 [Elite Data Science: Becoming a Data Scientist](https://elitedatascience.com/become-a-data-scientist)
+
+## For Projects:
+
+[Viber Build a Bot](https://github.com/Viber/build-a-bot-with-zero-coding)
+
+[100 Best Github Chatbot](http://meta-guide.com/software-meta-guide/100-best-github-chat-bot)
+
+[Viber Bot with Python](https://github.com/Viber/viber-bot-python)
+
+[ChatterBot](https://github.com/gunthercox/ChatterBot)
+
+[Fast.ai season 1 episode 22: Dog Breed Classification](https://towardsdatascience.com/fast-ai-season-1-episode-2-2-dog-breed-classification-5555c0337d60)
+
+[8 Machine Learning projects for beginners](https://elitedatascience.com/machine-learning-projects-for-beginners)
+
+[ML-AI Case studies](https://towardsdatascience.com/september-edition-machine-learning-case-studies-a3a61dc94f23)
+
+[WildML's 2017 AI and Deep Learning year end review](http://www.wildml.com/2017/12/ai-and-deep-learning-in-2017-a-year-in-review/)
+
+[PSEi data](https://www.johndeoresearch.com/data/)
+
+[A post on PSEGet](http://pinoystocktrader.blogspot.com/2010/11/amibroker-charting-software-chart-data.html)
