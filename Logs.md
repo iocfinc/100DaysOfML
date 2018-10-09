@@ -485,7 +485,7 @@ So update on this day is that I was able to finish fully my TensorFlow lesson. L
 
 I finally figure out how I can install opencv-python. This was the last package that I need to install to run the python notebook for the convolutional layer. In case I forget it, I have to run it via pip: __pip install opencv-python__. Additional note, it should be while __*inside*__ the environment. For now, I'll stick to the videos and note taking. Just a side note, the reason I can't download it is because the connection is  :shit: but at least I have the internet so to put things in perspective, I am still lucky :ok_hand:.
 
-So I am now in CNN, and I have just finished 7 videos. Learned on how images are interpreted by computers: basically as a huge tensor with a base element of a pixel. Then we went on to discuss MLPs and how they are used for image classification and where they are trumped by CNNs: the explanation was that CNNs are more suited for multi-dimensional analysis where it looks for coreelation not just in value but also in the relative position of the elements which obviously works well with images. Then we went on with Categorical Cross-Entropy for the loss function and how it is going to be used in the context of identifying an image: Basically, the model will output the probabilities of the labels and the error is taken from those probabilities taken together and compared with the probabilities of the one-hot encoded label. Then we moved on to validating models in Keras: there was an article about the MNIST data set and how it came to be and also about previous researches done on the data set and its results. Also was able to read more on the Keras documentation, I remember it was the __callback__ class where we get to store data of our training runs and see how our model is proceeding with its training. Based on the documentation on the __callback__ class there were also some interesting functions like _earlystopping_ which stops the training when the loss or accuracy is not improving and _adjusting LR on plateu_ where the LR is decreased automatically when a patience epoch threshold is met to ensure learning progresses.
+So I am now in CNN, and I have just finished 7 videos. Learned on how images are interpreted by computers: basically as a huge tensor with a base element of a pixel. Then we went on to discuss MLPs and how they are used for image classification and where they are trumped by CNNs: the explanation was that CNNs are more suited for multi-dimensional analysis where it looks for correlation not just in value but also in the relative position of the elements which obviously works well with images. Then we went on with Categorical Cross-Entropy for the loss function and how it is going to be used in the context of identifying an image: Basically, the model will output the probabilities of the labels and the error is taken from those probabilities taken together and compared with the probabilities of the one-hot encoded label. Then we moved on to validating models in Keras: there was an article about the MNIST data set and how it came to be and also about previous researches done on the data set and its results. Also was able to read more on the Keras documentation, I remember it was the __callback__ class where we get to store data of our training runs and see how our model is proceeding with its training. Based on the documentation on the __callback__ class there were also some interesting functions like _earlystopping_ which stops the training when the loss or accuracy is not improving and _adjusting LR on plateu_ where the LR is decreased automatically when a patience epoch threshold is met to ensure learning progresses.
 <br>
 That is all for now, will read more on this blog from [Machine Learning Mastery](https://machinelearningmastery.com/about/). I will find a way to download the opencv-python package later.
 
@@ -1441,6 +1441,529 @@ So, there we go. A very long review which is good beause I now have more materia
 
 A tip on _feature matching_ is that for convolution classification we do not use batch normalization, instead we use another form of normalization or none at all for code simplicity. Actally implementing batch normalization when we do feature matching kind of defeats the purpose of the feature matching. This is because the batch normalization will subtract off the mean of of every feature value and add an offset parameter that it learns as a bias. When we subtract from the mean then essentialy our feature matching will no longer work as there is no difference in averages. A reasearcher from OpenAI had a workaround for this via weight normalization which would be a good read.
 
+So I am watching now Lecture 13 - Generative Models from the Standford course. Generative is apparently a distinct subset of networks where it is expected to generate an output (like seriously) based on the given inputs. For example, RNN was actually generative, in a sense that it can produce a label or a similar text based on the initialized input.
+
+## Day 84: September 28, 2018
+
+Finished the GAN semi-supervised learning videos. Summary to come up next.
+
+So a recap on to the GAN semi-supervised learning videos. The idea behind it is that as semi-supervised GANs can leverage the lack of data by generating new ones. This in turn would be used to add to a limited number of data which our classifier would then use to build its model. So from the original small dataset we train our GAN to generate sample data that is close to the original one. Then from this augmented dataset we then train our classifier to figure our how to correctly classify the data. The unsupervised part comes due to the fact that the fake data generated would be unlabled. This is concept that I had in mind and how I understood the semi-supervised model. The good thing with this is that you can use it to come up with a sturdier model with less data. As we already know, having data is already expensive. Having labeled data is going to cost so much more. This semi-supervised learning model using GAN is a great tool in overcomming some of the difficulties that we may encounter due to the lack of useful data. This is my summary of what I learned from the lecture. I am now moving on to the supervised learning module. The final module. I have come a long way from where I was before this foundations degree. But looking forward, I have a long way more to go and that is exciting.
+
+## Day 85: September 29, 2018
+
+We are on standby duties today. So more of videos and readings and lectures for today. I see a lot of topics on the Reinforcement learning module. Most of them are 30 minutes to an hour long. I am guessing that they are more of explenatory videos and lessons on how to apply Reinforcement learning and what we can do with them.
+
+Now on reinforcement learning. Basically, the modeling of learning through interaction: We prove that nobody was born a master but we can learn through interaction and learning what each and every action corresponds to  (positivie or negative). This is basically the concept of reinforcement learning. Interact with the world, did it help? If it does then we get a reward and we note what we did. Interact again, did it help? If it does not then we lose something but we also know what not to do. This goes on and on until we learn enough things to be able to do more advanced task. And so on until we can actually model how to do complex tasks.
+
+First we need to define the words that we will likely encounter throughout this course. __Agent__ is the doer that we want to train, it will be the one interacting with the environment. To give it more context, we would want to think of the agent for this case to be a _puppy_. Then we want to train our puppy, we give the command "sit". Obviously, the puppy would have no idea what the command initially means but it knows it can do a lot of basic things like "sit", "bark", "roll over", etc. Since he still has no idea we would assume that he will pick one action on equal probability at random. For simplicity, let us say our puppy did sit, then we reinforce that response by giving it a treat (or if we are heartless we electrocute it for every wrong response). So by now the puppy will have a small bias to "sit" more when it hears the command "sit". Repeatedly do this loop of action reward and we can form a habit which is what we want to achieve for RL. For simplicity again we would assume that our agent/puppy is only interested to maximize the rewards. So every time he responds correctly to the command he gets a reward then instinctively his concept of action-reward will get reinforced.
+
+The idea above is far simplistic and I will be able to learn more about how complex learning actually is. For example, the puppy should be able to learn as well pre-requisite actions that are not commanded but is necessary to get the reward. One way this is explained is that suppose the puppy already knows that when he performs "sit" he will get a reward, the dog could try to just sit there and expect to get a treat but actually it still has to learn that it will only need to sit when the pre-requisite command "sit" has been given. This is just one of the things that our agent would need to learn, and this will only be learned through interaction to the world.
+
+Moving on, we are introduced to the tool that we will mostly be using to test our models for RL: __OpenAI Gym__ :joy:. This [blog post](https://blog.openai.com/openai-gym-beta/) from the openai website is the announcement and simple introduction to OpenAI. Simply put, its a toolkit where we can test out our models/algorithms in trying to solve Reinforcement Learning (RL) algorithms for various environments. Now the environments of OpenAI is the place where our agent will interact and will learn what to do and what the objective is going to be.
+
+Here is the [docs](https://gym.openai.com/docs/) for OpenAI gym. We can read through it to get the installation and setups done.
+
+## Day 86: September 30, 2018
+
+Continuation of the RL series. I am on standby today and the message notifications are off so I am going to be up until possibly 5-6AM. Now we go deeper into the cycle of interaction between the _agent_ and the _environment_. This is very similar to _FEECONT_ in university, feedback and controls class. In this case we are creating a general model which can be the basis of how we approach a RL problem in the future. So the idea is simple, we have the agent and the environment. The agent observes the __State (S)__ of the environment and takes __Action (A)__. Once the action has been completed, based on the reaction of the environment the agent will then get a __Reward (R)__ which can be postiive +1 which is a reward or negative -1 which is a penalty. Then it will go on and on in doing this with the intention of getting the most number of rewards. In the case of the puppy agent we had earlier, he will learn to not just map out the command to the correct action but also to learn when the action is needed to be done and do the action only when the command is given (do nothing is an action).
+
+Now we go on to learn about the _sparse reward_ problem in RL. This happens when the agent only gets rewarded at the end of each episode. For example the agent plays chess. With episodic model in place, we only get rewarded after the game is over (i.e. checkmate). Now should already be able to see what the problem is, your agent has to go through the entire length of the game before the reward based on the outcome is claimed. It can do bad things while in the game and still win and we will be reinforcing the bad things it does because it does not know it is bad. In the context of winning, its all part of the plan to get the reward. Also, our agent could have been doing brilliant moves along the way and still lost and it disregards those moves for future reference because it has led to a loss. This would eventually lead to problems early on and the agent can simply collpase and stop training unless we change our algorithm. This is a case of perspective: Do we look at the task itself as one big outcome or do we look at the task as the accumulation of multiple steps that could then be optimized to minimize the total costs to reach the objective?
+
+Tasks in RL can be episoding or continuing. _Continuing_ tasks are tasks that will go on forever without end. Episoding task on the other hand are tasks that have a well defined starting and ending point. In this context, we define an _episode_ as the complete of sequence of interaction from start to finish. With this defenition, we can then get the other assumption that episodic tasks come to an end whenever the agent reaches a terminal state.
+
+The reward hypothesis is the next topic. The idea of giving reward to agents is borrowed from Behavioral science. The terms reinforcement and reinforcment learning also comes from behavioral science. The idea behind giving reward is that we want to promote actions taken by our agent that is contributing to the achievement of a goal so that it is more likely to do these actions in the future. But what constitutes a reward? For our example with the dog, it is simply giving a reward after the correct action is done based on the queue. This is a straight forward reward approach. But, complex problems like teaching a robot to walk properly can have different interpretations of when a reward is due. Do we give a reward if the robot is able to move from point A to point B? Do we encourage the user with rewards when it is able to move without falling. A lot of interpretation can be made. But the gist of the reward hypothesis is:
+
+> All goals can be framed as the maximization of __expected__ cumulative reward.
+
+We then move on to the DeepMind [paper](https://arxiv.org/pdf/1707.02286.pdf) about using reinforcement learning to train locomotive behaviours for a humanoid (i.e. Walk and move past obstacles). What we need to learn here is how to factor in the objective to be maximized in the way we give rewards to our agent. First we have to define the setup of the sytem. The agent is controlling a humanoid, the objetive is that it has to make it walk. The feedback is taken from various sensors in the joints of the humanoid as well as a contact point which when triggered would indicate that the humanoid has fallen and will terminate the episode. The whole episode is then defined as the entire length from which the humanoid is standing until the humanoid falls and triggers the termination. We can see here that for the humanoid to get the most ammount of reward, it has to stay upright and keep walking for as long as possible. So how did they define the reward for the agent? What they did was first they decided to keep the reward equation consistent and simple across all terrains that the humanoid has to go over. The main component of the reward is a funtion of the velocity along the x-axis of the humanoid so that the humanoid would be enticed to move forward, then there is a small term that adds penalties on excessive torques. (context: the humanoid is moving along the x-axis for forward and backwards movement, y-axis would then mean that the humanoid is moving up or down (i.e. climbing a step or jumping), and z-axis is when the robohumanoidt has to move laterally when it has to avoid obstacles or walls for example). The reward equation was then modified to include penalties for deviating laterally (i.e. go straight as much as possible), another penalty for the deviations vertically (i.e. do not jump uneccessarily). So the final equation for the humanoid reward (for time t) is a function of a reward proportional to the velocity (set to a maximum), a penalty for the lateral deviation, a penalty for the vertical deviation, a penalty for excessive torques on the joints and finally a fixed value small reward which is to encourage the humanoid to at least stand properly. If we read the reward funtion correctly, the idea is now clearer on what the expected behavior is going to be. It cannot be seen here as I have not given the proportions in this post but the idea is the same. For one, the agent has to keep the humanoid to at least stand up to get the constant reward in the reward function. Second, the humanoid will have to learn how to move the humanoid forward to get the reward for the velocity forward. Now that the robot is able to get the idea of what to maximize, it then has to minimize the penalties it incurs. First, it has to apply the correct force to its joints so that the torque penalty is reduced. Then it has to learn when to jump over obstacles (like hurdles and falls or steps) and when to avoid obstacles and go around it (i.e. when walls are in place). It looks quite simple when it is now given as a model, but reaching the proper tuning is going to be the difficult part.
+
+## Day 87: October 1, 2018
+
+So just a continuation of RL for today. Been watching the DeepMind video by ColdFusion in YouTube. They are on to some great things. I am just happy to be pivoting towards that. For now we have the continuation of the problem of Reinforcement learning. We have covered now the concept of discounting and _discount factor_. The _discount factor_ basically allows the agent to plan its actions some steps in advance but in proportion to a multiplier. The discount factor is denoted by gamma (small letter y, I need some Latex) and is always in the range between 0 and 1. The discount factor allows the agent to model some steps in advance but understandably through a limited ammount of time. This is important feature to have because our agent needs some way to know that there is a future and that there is potential reward for future actions so that it does not unnecessarily terminate itself. This works due to the logic behind the reward hypothesis in which the agent has to maximize the __cummulative__ reward. By letting the agent know that there is a possibility for future reward, albeit at a discounted rate, it will be able to plan more and try to reach longer. The gist of the discount factor is that the larger the discount factor is, the farther the agent is looking ahead. Generally, discount factors are set closer to 1 than 0 because choosing a small discount factor will cause a fault in the agent where it will try to terminate itself because it cannot see the potential future reward afforded by the higher value discount factor.
+
+Then we touched on the conecpt of Markov Decision Process (MDP). This is where we are able to model the different states, the actions that can lead to these states, the probability that a certain action is taken, and the reward for the provided action once completed. In MDP we have a __state space (S)__ which is the set of all (nonterminal) states. In cases of episodic task, we use S+ to refer to the set of all states which includes terminal states because it is already episodic. Then we have the __action space (A)__ which is the set of all possible actions in the model. One-step dynamics determines how the environment decides the state and reward at every time step. One-step dynamics is the condition probabilities for each possible next state (s'), reward (r), current state(s), action (a) which is p(s',r | s,a).
+
+So now I am finished with the statement of the RL problem. I am on to the RL solution in Udacity. I have 10 modules to do and so far I have done 2 of them, at the end there is a project as well. I might go beyond the 100 Days for this but that should not matter for now. The target is to crunch in the remaining time. There is still time, 12 days is long enough even if I do this one module a day I still have, probably, enough time to take on the Quadcopter project.
+
+Now, the evening session of Day 87. Wow. :joy: First let me just internalize it. 87 days. 87 days of doing something towards Deep Learning and AI and Machine Learning. 87 days since I decided to pledge an hour everyday to learn, code and do something related to the AI-ML-DL field. Day 4 was when the official start of the Deep Learning Foundations Nano-degree began as part of my __#100DaysOfMLCode__. Now I am on the last stretch. I am not yet there but I can see the end and, in the context of discount factor, the possible future I can have in the field. To think that from some negative thought would come and nudge me in this direction. It really is great to continue looking forward and not dwelling on the things that are already out of your control. Acting out on the only available choice left for you. If ever someone would read this, thank you for reaching this far. You can do it as well. I don't know why you would even bother looking at someone else's logs but if you are: You are awesome! :smiling_imp: :muscle:
+
+So, to continue on the momentum I am now reading up on the Introduction To Reinforcement Learning from the book [_Reinforcement Learning: An Introduction 2nd Ed._](http://go.udacity.com/rl-textbook) by Richard S. Sutton and Andrew G. Barto. I am not trying to read all of it, its 548 pages. I am just going to read the introduction and the basis of RL.
+
+> Reinforcement learning is learning what to do—how to map situations to actions—so as to maximize a numerical reward signal. The learner is not told which actions to take, but instead must discover which actions yield the most reward by trying them. In the most interesting and challenging cases, actions may affect not only the immediate reward but also the next situation and, through that, all subsequent rewards. These two characteristics—trial-and-error search and delayed reward—are the two most important distinguishing features of reinforcement learning.
+
+The excerpt above is taken directly from the book. I want to just point out that Reinforcement learning does not have any initialized bias or pre-coded reactions that is hidden behind it. The agent starts with a clean slate and only through constant trial-and-error interaction as well as the delayed reward condition will it be able to get an idea of what it has to do.
+
+## Day 88: October 2, 2018
+
+Okay, So now we are at Module 3. We are introduced to _policies_, _state-value functions_, _Bellman equations_. In terms of policy we have two types: _Deterministic_ and _Stochastic_. For deterministic, there is exactly one mapping to the action based on the state and its probability is 1. Meaning, the agent already has a script to follow for a given state. Stochastic on the other hand allows us to provide more actions to the current state. Since we now have multiple actions for a state, the next action is then determined by probability and not certainty (p=1, i.e. deterministic). For one of the Bellman equations (there are 4 in total, chapter 3 of the book) it simply states that the value of any state is the immediate reward + the value of the state that follows. This equation is recursive and allows us to determing the value of the current state in the environment. This is under the assumption that our discount factor is 1, therefore no discounting. But if we rewrite this to accont for the discount factor, then it becomes: the value of any state is equal to the sum of the immediate reward  and the discounted value of the state that follows. This Bellman Equation becomes the Bellman Expectation Equation, which is the one we will generally be using moving forward. This is because in complex worlds, the immediate reward and next state cannot be know with certainty.
+
+Defenition The policy $\pi' \geq \pi iff v\sub{\pi'} (s) \geq v\sub{pi} (s) for all s \in S$. There is a possibility that there would be two policies which cannot be compared (i.e. the same policies). Also, with this in mind, it is guaranteed that an optimal policy exists although it may not be unique (i.e. Multiple paths that can lead to the same cummulative reward). The _optimal policy_ is denoted by $v *$ (v-star) which indicates that it is the optimal policy or an optimal policy.
+
+We then move on to _action-value policy_. The state-value policy earlier gives out the value of the state $s$ under a policy $\pi$. Action-value policy is giving the value of taking action $a$ in state $s$ under a policy $\pi$. In state-value policy (svp) we denote it with a single value on the tile, this is because the action is predetermined. For action-value policy (avp), we now plot all the values for the possible actions from a given state that leads to the terminal state. Again, as usual, terminal states will have a value of 0 because there is no action done. The notation for action-value funtion is q and the optimal action-value is denoted by q*.
+
+How do we boil this down in relation to the agent? Basically, the agent will interact with the environment, it will try out different routes and plot the rewards and state-value as well as action-value. When it is done with the interaction, it can then proceed to estimate the optimal value function. Then from that optimal value function, it can estimate the best policy to choose. So, once the agent decides the optimal action-value function q*, it can then proceed to obtain the optimal policy $\pi *$ by getting the argmax of the action-value for a given state. The question that remains now is how does the agent interact with the environment and decide how to estimate the action-value for the state.
+
+Lightly writing about Thinking, Fast and Slow: Chapter 22. This is a very interesting chapter as it speaks about intuition, skill and how it is acquired. If you read it, you will see the connection between how an agent learns viewed through a lens of psychology and behavioural sciences.
+
+## Day 89: October 3, 2018
+
+Grinding for more videos to watch in the Udactiy course. As this is more of a lecture intensive module, I am guessing that I might have to exceed the estimated time.
+
+Now we are on DynamicProgramming and we will be using OpenAI Gym: FrozenLakeEnv. The story of the FrozenLakeEnv is pasted below and copied from the [Github Repo](https://github.com/openai/gym/blob/master/gym/envs/toy_text/frozen_lake.py):
+
+```
+
+Winter is here. You and your friends were tossing around a frisbee at the park
+when you made a wild throw that left the frisbee out in the middle of the lake.
+The water is mostly frozen, but there are a few holes where the ice has melted.
+If you step into one of those holes, you'll fall into the freezing water.
+At this time, there's an international frisbee shortage, so it's absolutely imperative that
+you navigate across the lake and retrieve the disc.
+However, the ice is slippery, so you won't always move in the direction you intend.
+The surface is described using a grid like the following
+    SFFF
+    FHFH
+    FFFH
+    HFFG
+S : starting point, safe
+F : frozen surface, safe
+H : hole, fall to your doom
+G : goal, where the frisbee is located
+The episode ends when you reach the goal or fall in a hole.
+You receive a reward of 1 if you reach the goal, and zero otherwise.
+```
+
+The idea behind it is quite simple, our objective now is that we need to write our code in a way where we would be able to make our agent train on the environment. But that is to come, for now we will focus more on how to arrive there. Now let us try to apply an iterative approach on how to find the Bellman Expectation Equation. So first a review of Bellman Expectation Equation is that it is simply the probabilty of the action mutliplied by the sum of the reward for that action plus the Expectation value at the succeeding state. So for multiple possible actions from the current state, it is simply the summation of the Bellman Expectation Equations to all the available actions/state pairs. So with this in mind, we can now define all the equations for all the possible states in the environment. This would then lead us to a system of linear equation for all the possible states. For simple systems like a 2x2 grid environment, this can be bearable to manually compute as there would only be 4 equations and 4 unknowns. But the use of the _iterative method_ is for systems that are much more complex especially for the much larger MDPs. So how does the _iterative method_ work? Basically we need to start with an initialization. In this case, we are going to assume that all the values are initially zero. From this we will then solve for the values of the states, do note that intuitively we would start at states near the goal where there is no need for the terminal state and work our way back. We would then check if there is a big difference in the changes of the states. We then go over all the possible states checking if there is still a big change in the values before moving on to the next step. This is where the iterative part comes in. The idea behind this is that as the iteration gets deeper, the change in the value of the state gets smaller and would always converge (this is because there will always be a solution and optimal path). Once the change between the states get small enough then we can already assume that it is the _True value_ for the state.
+
+![Iterative Approach Psuedocode](https://d17h27t6h515a5.cloudfront.net/topher/2017/September/59cc184c_policy-eval/policy-eval.png)
+
+The policy evaluation as laid out in the iterative approach is guaranteed to converge to the state-value function coresponding to a policy $\pi$, as long as the state-value for that policy is finite for each state in the state space. In essence, as long as there is no loops in the system or as long as there is a defined path to the goal or terminal state then there would always be a policy that is optimal. For a finite Markov Decision Process (MDP), the convergence would be guaranteed as long as eitehr conditions below are met:
+
+* Discount factor is less than 1 (therefore there is a need for the reward to decay) or;
+* if the agent starts in any state in the State space, it is guaranteed to eventually reach a terminal state if it follows policy $\pi$
+
+Some additional pointers on the convergence conditions. The idea behind the first line where the discount factor is always less than 1 is to discourage the system from getting into a loop that will not terminate. If we simply add up all the states while in the loop then the agent would think that by going around, it will gain more rewards but it is no closer to the terminal state since it is just doing the same thing over and over again. Also, one way to look at it would be that since the reward is not discounted, the agent will simply try to pass by all the available states before going to the terminal state. By discounting the rewards, the agent will be forced to shorten the states that it has to pass through so that the reward at the end of the state will not get severely discounted. The second line would mean that there is some state in the State space where the agent will start that will not have a path towards the terminal state when it follows a policy. This is for those unique cases where there is no continuity in pathing between the start state and the terminal state or when the policy from that state will force the agent to go into a non-terminating loop. In both these conditions, if they are not met then we can say that the iterative policy evaluation will not converge because the state-value function may not be will defined.
+
+The example from the lecture regarding this condition is stated below:
+
+Consider the following:
+
+* Two states s1 and s2, where s2 is the terminal state.
+* One action a (This is also a Markov Reward Process since there is only one action)
+* The probability of going to s1 with a reward of 1 from s1 doing action a is 1.
+
+The conditions above is talking about two states s1 and s2 with s2 being the terminal state but the only action for s1 is a which directly leads back to s1. In essence, s2 is isolated. So in this case, the episode is non-terminating given the policy. If the discounting factor is 1 then the value of state s1 given the policy is just going to be 1+1+1+... which is never going to converge, this will diverge to infinity. So in this case, the policy is the one that is not allowing the value-state to converge. As stated in the module, one optional way to learn about convergence is the review of geometric series and negative binomial distribution.
+
+```python
+while True:
+    delta = 0
+    for s in range(env.nS):
+        Vs = 0 # Inintialize the Vs to be zeros
+        for action, action_prob in enumerate(policy[s]):
+            for prob, next_state,reward,done in env.P[s][action]:
+                Vs+= action_prob*prob*(reward+gamma*(V[next_state]))# Update the Vs with the equation
+                # action_prob is the probability that it will take that action according to the policy
+                # prob is the probability that it will take that action out of all possible policy (meaning, no policy yet all fair)
+        delta = max(delta, np.abs(V[s]-Vs))
+        V[s] = Vs
+    if theta < delta: # Check if there is still a need to update
+            break
+return V
+```
+
+## Day 90: October 4, 2018
+
+Now we move on to _Estimation of Action Values_. This one is used for estimating V of the state-value function with the one-step dynamics of MDP and will return an estimate Q (action-value) for the policy. The pseudo-code for this is seen below. The input would be the State-value funtion and the output would be Action-value which is almost similar to the State-value but with the added multiplier of the probability for that action. This would be used to determine the values of the action-value for the environment.
+
+![Estimate Action Values Pseudocode](https://d17h27t6h515a5.cloudfront.net/topher/2017/September/59cc021b_est-action/est-action.png)
+
+```python
+def q_from_v(env, V, s, gamma=1):
+    q = np.zeros(env.nA)
+    for a in range(env.nA): # Note that we are not going over the entire state for this one.
+    # If we were going to do it for the entire state-space then we have to add another for loop taking s in range of env.nS
+        for prob, next_state,reward,done in env.P[s][a]:
+            q[a] +=prob*(reward + gamma*V[next_state]) # This is the updating of the action-value for a given action at a state
+    return q
+```
+
+Then we have the _policy improvment_ section of the code. In this one, we are going to tell the agent how it would be choosing which action is going to be on the policy. In simplest terms, the idea is that the greatest value for the action-value would be the action that the agent would apply while building the policy. So in this case, we are sort of doing a shortest path/greatest action-value accumulation for the policy. This is will work because the action-values for each action is actually taking into account the reward and the state-value for the next-step so the calculation of the best action-value by the greatest value is valid. One caveat for this policy implemetation code is that it migh encounter a state where the action value are both equal (i.e. more than one path available). In these situations, the idea would be to arbitrarilly choose one and proceed with the policy evaluation. We would still be able to return back to the branching point later on while we check again for possible improvements of policy and we can then update the policy if necessary to get to the optimal one.
+
+![Policy Improvement Pseudocode](https://d17h27t6h515a5.cloudfront.net/topher/2017/September/59cc057d_improve/improve.png)
+
+For the policy improvement section, what we would need as input would be MDP and the value function of V and the output would be the value of the policy that is optimal (by that iteration).
+
+```python
+# Implementation of Policy improvement
+
+#TODO: add implementation of Policy Improvement in here
+
+def policy_improvement(env, V, gamma=1):
+    policy = np.zeros([env.nS, env.nA]) / env.nA
+    for s in range(env.nS):
+        q = q_from_v(env, V, s)
+        policy[s][np.argmax(q)] = 1 # Basically, just find the greatest action-value for the state and set the prob to 1
+        # For Stochastic random equiprob
+        #best = np.argwhee(q==np.max(q).flatten())
+        #policy[s] = np.sum([np.eye(env.nA)[i] for i in best], axis=0)/len(best) # This is already stochastic not yet discussed
+    return policy
+```
+
+Then we proceed with _policy iteration_.
+
+For now, since I am unable to connect to the udacity workspace I am going to continue reading on the book on RL. One great point discussed in the book is on how machine learning fits in the supervised and unsupervised paradigm that exists on ML.
+
+Another point that was breifly tackled but is propped up to be an ongoing problem in RL is the __exploitation-vs-exploration__ problem. Its just quite fascinating that I resonate so well with regards to this problem. The idea below is lifted from the book and I think there is some relatable points here that applies to life as well.
+
+> One of the challenges that arise in reinforcement learning, and not in other kinds of learning, is the trade-off between exploration and exploitation. To obtain a lot of reward, a reinforcement learning agent must prefer actions that it has tried in the past and found to be efective in producing reward. But to discover such actions, it has to try actions that it has not selected before. The agent has to exploit what it has already experienced in order to obtain reward, but it also has to explore in order to make better action selections in the future. The dilemma is that neither exploration nor exploitation can be pursued exclusively without failing at the task. The agent must try a variety of actions and progressively favor those that appear to be best.
+
+You have to know what you are good at but in order to know what you are really good at means you have to try things and accept that you are not good at it. Its simple really, when you think about it but it is hard to find the balance of staying put and moving forward to the unknown.
+
+## Day 91: October 5, 2018
+
+Good news for me [PyTorch Scholarship from Facebook is open for application](https://admissions.udacity.com/apply/intro-dl-pytorch-scholarship). Sent my scholarship bid and now I am just waiting if I do get accepted or not. I want to take on the PyTorch course to gain more insights on what the difference is. But for now we return to the lecture.
+
+The topic for today is _Policy Iteration_ which in its simplest sense is basically the combination of the _policy eveluation_ and _policy improvement_. It begins with a policy chosen from an equiprobable random policy. Now, with the policy choses, it can start with the policy eveluation step with the initalized policy. Then after the policy has been evaluated, it will go to the policy iteration process where it tries to see if there is a better policy to be tested and this would iterate through the possible combinations until it is able to find the optimal policy for the problem. Provided that there is a finite number of iterations then this method should be able to converge on the optimal policy.
+
+![Policy Iteration Pseudocode](https://d17h27t6h515a5.cloudfront.net/topher/2017/September/59cd57e2_iteration/iteration.png)
+
+```python
+import copy # This will allow us to create a shallow copy during the iteration process.
+
+def policy_iteration(env, gamma=1, theta=1e-8):
+    policy = np.ones([env.nS, env.nA]) / env.nA
+    ## TODO: complete the function
+    while True: # repeat iteration until optimal policy is acheived
+        V = policy_evaluation(env, policy, gamma, theta)
+        new_policy = policy_improvement(env, V, gamma)
+        if (policy == new_policy).all():
+            break # end when the new_policy is equal to zero (optimal)
+        policy = copy.copy(new_policy) # Store the best policy for now and move on to the net iteration
+    return policy, V
+```
+
+Then we move on to the _Truncated Policy Iteration_ portion. What is it really? First of all we have to know that we can apply truncation in policy evaluation and policy iteration portion. First is that we apply truncation on the policy evaluation portion and then we apply this truncated policy evaluation to the policy iteration to acheive a truncated policy iteration.. Recall that the vanilla version requres that we acheive a difference between the state-value functions to be zero or at least a small number theta for us to determine that we have arrived at an optimal position. Truncated policy iteration is a version of the policy iteration where instead of trying to acheive a value very close to the optimal, we instead would like to ask the iteration to stop after some determine steps. We do not truncate the process, we truncate the iterations. Why would it work? It would work under the assumption that we are converging when we are evaluating our values during each iteration step. So after a few steps in the iteration process the values should already be in the correct ballpark of the values. With this information, we can then assume that even the rough estimate is already useful enough to compute the values and get a policy that is optimal. Think of it as early stopping in a Neural Network, during the latter part of the training of NN the changes would be small that it would seem that they are not moving but the weights are already near the values we want them to be and they are already useful with some degree of accuracy. The truncated policy iteration is useful in providing a fast way to arrive at a policy for the agent and reducing the computations needed to meet the required theta value or the near optimal policy.
+
+![Truncated Policy Evaluation Pseudocode](https://d17h27t6h515a5.cloudfront.net/topher/2017/September/59cda462_truncated-eval/truncated-eval.png)
+
+So, as we can see in the pseudocode for the policy evaluation, we are simply using a counter to record the number of sweeps we have done and we are no longer using the theta value as our stopping criterion.
+
+![Truncated Policy Iteration Pseudocode](https://d17h27t6h515a5.cloudfront.net/topher/2017/September/59cda5ad_truncated-iter/truncated-iter.png)
+
+In truncated policy iteration, instead of calling the policy evaluation that uses theta we instead call on the truncated policy evaluation function. Do note that the theta value is actually used to gauage if there is convergence on the values of the state. So for the stopping criterion (optimal policy has been found) of the truncated policy evaluation, it has to compare the difference between the updates in state-value with respect to the theta. Now, there is a catch here. We should be carefull of the relationship between our theta and our number of sweeps. While it is true that the estimation is still going to arrive at the optimal policy, if we set our theta to a very small value, our loop could go on forever. Do note that the changes between every sucessive iteration is going to be larger in this case as it is on the earlier portion of the evaluation. This is similar to the early stages of training of a neural network, we should expect large swings of delta on the early stages so we should adopt a theta value that will be in line with these larger changes.
+
+Then for the final part of the module, we are going over _Value Iteration_. This is the most condensed version of evaluation possible. What it basically does is that instead of evaluating the MDPs until the delta arrives at a small value (vanilla), or evaluating at fixed sweeps (truncated), what we do here is that we simply do __one__ sweep of evaluation of the state-vale and proceed directly to the policy evaluation. So in simplest terms, we are simultaneously performing policy evaluation and policy improvement. This would make it an estimate but it is fast.
+
+![Value Iteration Pseudocode](https://d17h27t6h515a5.cloudfront.net/topher/2017/September/59cdf750_value-iteration/value-iteration.png)
+
+And with this, I am done with the dynamic programming module. I am now moving on to Monte Carlo problems and the mini-project is a Blackjack Agent. So excited. For additional readings on the topic of dynamic programming, I need to do some readings on Chapter 4 of the book. Also, I have to pull my frozenlake AI and run it later.
+
+## Day 92: October 6, 2018
+
+Will take a break for this weekend. I am on to Monte Carlo problem for AI. Excited but I have other commitments. I would probably be watching some lectures and then update my notes at a later time.
+
+Some readings about AI in stocks analysis [on a medium post](https://medium.com/@TalPerry/deep-learning-the-stock-market-df853d139e02). Here is [another one](https://medium.com/@jaungiers/how-to-develop-an-ai-trading-strategy-system-26ff8b1dcc35) concerning the development process.
+
+I was able to watch some topics while on the bus earlier. Now we are on the Monte Carlo Methods for AI.
+
+## Day 93: October 7, 2018
+
+Recall first that we are working on an the interaction between the agent and its environment. The agent is in a _state_ and will do an _action_ which according to the rules of the environment is going to be given an appropriate _reward_ signal. The agent's goal is to _maximize the cummulative reward_. With this, the agent evaluates the _policy_ on what to do when interacting with the environment. So what is different in monte carlo methods? Monte Carlo Methods (MCM), unlike Dynamic Programming, does not require the model of the entire environment. It is the first learning method for _estimating_ value functions and finding optimal policies. MCM do not assume complete knowledge of the environment. What MCM requires is experience -- sample sequences of staes,actions, and rewards from _actual_ or _simulated_ interaction with an environment. So now, we have a method where we do not have to do prior calculations or know the layout of the environment. It can, through interaction, learn from the environment the consequences of its actions. While it is true that a model is required, the model need only generate sample transitions and not the entire list of probabilities for all possible transitions that was required in DP.
+
+MCM is a way of solving the RL problem (interact with the environment and maximize the cummulative reward) based on averaging sample returns. One characteristic of MCM is that it considers the entire episode as the experience and increment in an episode-by-episode basis and not "real-time" or step-by-step. "Monte Carlo" is a broadly used term for an estimation method which operates with an involvement of _significant random component_.
+
+So first, we have to learn how MCM solves for the state-values, suppose we want to compute for the state-value given a policy given a set of episodes (experience) obtained when we follow the policy and it passes state s. Each time we pass by the state s (think of it as the tile version) when we follow the policy is considered a _visit_. In the course of an episode, the state s may be passed several times. To better understand it, I'll put it in the context of cards for blackjack. State s can be the card "ace" and everytime we visit s would therefore mean that everytime we draw an ace. Now, back to the original discussion. We can compute the value of the state s based on the reward after following the policy but we have two options to go here. We can do a _first-visit MC method_ where the estimate of state-value for s as the average of returns following the first visits to S. Note that we used visits here instead of visit because remember that we are considering all the sample episodes and not just one episode. The second method for estimating would be _every-visit MC method_ where all the occurances of state s in an episode is considered and averaged.
+
+![First-Visit MC method - State Value Pseudocode](https://d17h27t6h515a5.cloudfront.net/topher/2017/October/59dfe1e7_mc-pred-state/mc-pred-state.png)
+
+Above is the pseudocode for the first-visit MC method. Do note that both first-visit and every-visit is guaranteed to converge. This roughly follows the __Law of Large Numbers__ concept.
+
+```python
+# TODO: Create a policy for the agent.
+def generate_episode_from_limit(bj_env):
+    # In this policy, the policy is that it will always HIT for values less than or equat to 18
+    # It will always stick when the value is already above 18.
+    # Do note that the dealer's policy is that it will stick at anything greater than or equal to 17.
+    # Thus, we create a policy to beat that. Otherwise, we will just be breaking even by virtue of LLN.
+    episode = []
+    state = bj_env.reset()
+    while True:
+        action = 0 if state[0] > 18 else 1
+        next_state, reward, done, info = bj_env.step(action)
+        episode.append((state, action, reward))
+        state = next_state
+        if done:
+            break
+    return episode
+```
+
+```python
+# TODO: implement the value evaluation using MC method
+
+from collections import defaultdict
+import numpy as np
+import sys
+
+def mc_prediction_v(env, num_episodes, generate_episode, gamma=1.0):
+    # initialize empty dictionary of lists
+    returns = defaultdict(list)
+    # loop over episodes
+    for i_episode in range(1, num_episodes+1):
+        # monitor progress
+        if i_episode % 1000 == 0:
+            print("\rEpisode {}/{}.".format(i_episode, num_episodes), end="")
+            sys.stdout.flush()
+        # First, we get our experience by generating episodes
+        episode = generate_episode(env) # Note that generate_episode is based on the policy we created
+        # We prepre the SAR for that episode
+        state,action,reward = zip(*episode) # unpack
+        # Apply discounting
+        discounted = np.array([gamma**i for i in range(len(reward)+1)]) # We are creating an array of the discount factor
+        # Actual calculation of returns
+        for i, state in enumerate(state):
+            returns[state].append(sum(reward[i:]*discounted[:-(1+i)]))
+    V = {k:np.mean(v) for k,v in returns.items()} # create a dict
+    return V
+```
+
+Then after the state-value has been calculated, we can proceed with the action-value calculation. One notable corollary for the use of action-value computation for MCM is that we will not use if for estimating in deterministic policies. This is one of the things required to ensure that there would be convergence for the estimation. Do note that it is not really exclusively for deterministic policies but it is intended for zero-probability state-action pairs.
+
+![First-Visit MC method - Action Value Pseudocode](https://d17h27t6h515a5.cloudfront.net/topher/2017/October/59dfe1f8_mc-pred-action/mc-pred-action.png)
+
+Before we implement the action-value estimation using MCM, we first have to fix the deterministic policy we created earlier.
+
+```python
+def generate_episode_from_limit_stochastic(bj_env):
+    # To make it work with MCM action-value estimation, we give it a stochastic policy.
+    # In this example, we are using 80% probability that it will STICK to a sum of 18 and above.
+    # While the cards are 18 below, it has an 80% chance to HIT.
+    episode = []
+    state = bj_env.reset()
+    while True:
+        probs = [0.8, 0.2] if state[0] > 18 else [0.2, 0.8]
+        action = np.random.choice(np.arange(2), p=probs)
+        next_state, reward, done, info = bj_env.step(action)
+        episode.append((state, action, reward))
+        state = next_state
+        if done:
+            break
+    return episode
+```
+
+Now that we have created a stochastic policy, we can now proceed with creating our action-value estimation.
+
+```python
+def mc_prediction_q(env, num_episodes, generate_episode, gamma=1.0):
+    # initialize empty dictionaries of arrays
+    returns_sum = defaultdict(lambda: np.zeros(env.action_space.n))
+    N = defaultdict(lambda: np.zeros(env.action_space.n))
+    Q = defaultdict(lambda: np.zeros(env.action_space.n))
+    # loop over episodes
+    for i_episode in range(1, num_episodes+1):
+        # monitor progress
+        if i_episode % 1000 == 0:
+            print("\rEpisode {}/{}.".format(i_episode, num_episodes), end="")
+            sys.stdout.flush()
+        # The portion below is the same as before
+        episode = generate_episode(env)
+        state,action,reward = zip(*episode)
+        discounted = np.array([gamma**i for i in range(len(reward)+1)])
+        for i, state in enumerate(state):
+            # This is where the similarities end. Below is the code for going over and estimating the action-value for the policy
+            returns_sum[state][action[i]]+=(sum(reward[i:]*discounted[:-(1+i)]))
+            N[state][action[i]] +=1
+            Q[state][action[i]] = returns_sum[state][action[i]]/N[state][action[i]]
+    return Q
+```
+
+We then move on to Monte Carlo Controls. The problem is, How does the agent learn the optimal policy by just interacting through the environment?
+
+## Day 94: October 8, 2018
+
+Was reading the book today. Not much else done today.
+
+We now move on to how we can create a better method of updating the policy for MCM. Recall that earlier examples like the one we did for blackjack required that a sample of 500000 be created before the policy can be evaluated and improved. One solution put forward for this is to use the same concept as value iteration in DP. This would mean that we create moving averages of our value and update the policy every iteration. This would call for an incremental mean that we shall code below. How would this work? Say we have successive state-action-reward chains. We approximate the value of the state-value or action-value by doing incremental mean to the values as they appear in the sequence.
+
+![Incremental mean Pseudocode](https://d17h27t6h515a5.cloudfront.net/topher/2017/October/59d6690f_incremental/incremental.png)
+
+```python
+# TODO: Incremental mean function
+import numpy as np
+def running_mean(x):
+    mu = 0
+    mean_values = []
+    for k in np.arange(0, len(x)):
+        # TODO: fill in the update step
+        mu = mu + (x[k]-mu)/(k+1)  # Note that we are at index-zero. This is why we devide by k+1 as we would have to divide by zero if we did not use this.
+        mean_values.append(mu)
+    return mean_values
+```
+
+Monte Carlo Control Policy Evaluation. The incremental mean we have above is useful only for one pair. We have to make changes to it so that it can accomodate multiple state-action pairs. Now we move on to discuss _Greedy policy_. Recall first that to evaluate a policy of an environment that we do not know any idea about, we have to assume an equal probability for each action. The example put forward for this is in choosing between door A and B. Say we are trying to evaluate and improve our policy, since we have no idea of what the value for each door we simply assume that they are both zero initially. Since they are equal in value, we simply tossed a coin to decide which door we open. So for the first trial, we open Door B and we had no reward so the value are both still zero. Now we toss the coin again and we opened Door A this time. Then we had a reward of 1. Now the value of Door A is 1 and the value of Door B is 0. If we follow _greedy policy_ we are litterally going to choose Door A simply because it has a higher value that Door B. Now we opened Door A again and we got a reward of 3. Now the value of Door A is 2 while Door B is still at 0. So we choose again obviously, since we are greedy we opened Door A again and we got a reward of 1 again. This would go on and on and we will keep getting 1 or 3 everytime we opened Door A. If you are a simpleton then I guess you can call it a day and simply keep opening Door A. The problem with Greedy Policy is that it will tend to skew the values more to the one that has provided the initial value change. Now, there would never be a chance where we figure out that Door B has an equal distribution of 0 and 100 as rewards compared to Door A which has an equal distribution of 1 or 3 as rewards. It just so happened that the first impression we got from Door B was a reward of 0 and we immediately got a reward for Door A with reward 1. In hindsight and in this context, we would have chosen to open Door B forever because we already know what the distributiona and value of the rewards are. For the agent, which does not know and has to interact with the environment, this is not as straightforward as it seems. Remember that our agent does not have an idea of the distribution of values and rewards for each door and must rely on its interaction. Now we would want to solve this problem of the Greedy Policy being so rigid that it does not do anything else except open the proven action. We would want to introduce stochastics in the Greedy Policy so that even if it is still Greedy at heart, it will have a probabilty that it would pick the "un-greedy" action every now and then. To create this new version, we introduce a new value which is epsilon. Epsilon is a small number that we introduce to the probabilty of doing an action based on Greedy logic. Epsilon is a value between 0 and 1 and it indicates how often our agent would choose to explore and do the wrong thing. So now, with the introduction of epsilon, we are still in a majority going to follow greedy policy but with a chance of exploring the other option instead just so that we can check if there is somehting in the other option. This new version of greedy policy which has an epsilon value is called _epsilon-greedy policy_. The psuedocode for the epsilon-greedy policy is seen below.
+
+![Epsilon-Greedy Policy Pseudocode](https://d17h27t6h515a5.cloudfront.net/topher/2017/October/59d53a9a_screen-shot-2017-10-04-at-2.46.11-pm/screen-shot-2017-10-04-at-2.46.11-pm.png)
+
+Some things to look out for in epsilon values. One is that the value of epsilon can be between 0 and 1 _inclusive_. While having an epsilon value of 0 means that the greedy choice is always picked, it does not mean that having an epsilon value of 1 will make the agent always pick the non-greedy choice. This is better explained when you simply look at the pseudocode. Do note that it is still epsilon devided by absolute value of the action-value so it is not ALWAYS going to pick the non-greedy choice. In reality, having an epsilon value of 1 is simply going to make the chances equal for the greedy and non-greedy choice since the term left would be epsilon divided by the absolute value of the action-value. In short, as long as the epsilon value is greater than 0 would mean that there is going to be a chance that the non-greedy choice is taken (maximum of 50% probability).
+
+I just remembered something with regards to Greedy Policy. During the RNN project of script generation, there was a piece of code there that almost acts similar to the greedy policy. I think that was on the next word function during generation where the RNN would choose the next word based on the probability. My first attempt there was that I just chose the argmax of the probability so that the highest probability won out. As per the reviewer's advise, I changed it to randomchoice based on probability. So the new model would be choosing between all the candidate next words but it is still based on their probability so the highest probability word would still have a higher chance of getting picked but the other words also has a chance. What happened to the RNN generated text was that it became more stable in the output. When I was using the argmax method, I noticed that the conversation actually became circular in nature and often would lead to a loop. With the addition of randomchoice, which we can think of in this context as epsilon-greedy, the results became more stable. _Just want to point out some of the idiosyncracy and counter-intuitive points I learned so far._
+
+![Exploration Vs. Exploitation](https://d17h27t6h515a5.cloudfront.net/topher/2017/October/59d55ce3_exploration-vs.-exploitation/exploration-vs.-exploitation.png)
+[source](http://slides.com/ericmoura/deck-2/embed)
+
+Exploration-Exploitation Dilemma is a unique state on which our agent can encounter while solving the environments. Remember that our agent in this case does not have any pre-conceived idea of what the environment is and what the rewards are going to be. What it does know is what the objective is, which in this case is to win complete the task with maximum reward. Through interaction, the agent will become aware of how the environment works and bases will base the next action to take in the future based on the current experiences gained when interacting with the environment. Intuitively, we would devise a strategy(policy) for the agent to always select the action that it beleives (based on past experiences) will maximize the return. With this, the agent would most likely follow a policy that is greedy with respect to its action-value function estimate. While a policy following the greedy policy might converge to a policy, it can be a sub-optimal policy. This is beause the agent's knowledge is still limited and can be flawed. There is a chance, and a high chance, that the actions _estimated_ to be non-greedy (less value) is actually better than the chosen action based on the greedy policy. With this in mind, we should take note that our RL agent cannot act greedily at every time step. This would mean that it is always __exploiting__ its knowledge. In order to discover the optimal policy, it has to continue to refine the estimated return for all state-action pairs. This would mean that it has to be exploring the range of posiblities of values by visiting every state-action pair. The agent should always act _somewhat greedily_, towards its goal of maximizing return _as quickly as possible._ I think the quote _"Do you want to keep playing or do you want to win?"_ is appropriate here. This dilemma is the basis for the creation of the epsilon-greedy policy where instead of just choosing the action with the best value (based on limited experience), the agent will try to do actions that it thinks is sub-optimal for the chance of finding out if there is an update to that action.
+
+How do we choose the value of $\epsilon$? There are two ways to look at this: Theoretical and Actual. First, we shall establish first that while exploration and exploitation is a dilemma for our agent, we should help it along by agreeing that at the early stages the agent should favor exploration and only after some time will it start to favor exploitation given that it has a good estimate of the action-value function for each state. Therefore, we shall aim to give our agent a policy that will favor first exploration and slowly lean more towards exploitation after some time. If we recall, setting $\epsilon = 1$ will make the actions equiprobable (50-50 chance of choosing between explore and exploit). Then we learned that $\epsilon = 0$ will make our agent _always_ choose the greedy algorithm (therefore exploit). With the first idea that we should slowly transition from explore to exploit and with the second idea of the values of $\epsilon$ and its realtionship with the behaviour of the system, we can therefore come up with the following values for $\epsilon$: Its value should start from 0 and slowly over time transition to a value of 1.
+
+We then try to discuss about __Greedy in the Limit with Infinite Exploration (GLIE)__. These are actually conditions that will ensure that our MC control will converge to the optimal policy. The following are the two conditions defined in the GLIE to ensure convergence to the optimal policy ($\pi$$\scriptscriptstyle*$):
+
+* every state-action pair $s, a$( for all $s \in S$ and a $\in A(s)$) is visitied __ininitely__ many times, and
+* the policy converges to a policy that is greedy with respect to the action-value function estimate $Q$.
+
+The condiions of GLIE there to ensure that the agent continues to explore for all time steps and that the agent will gradually transition to a more exploitive behaviours (but with the probability of exploring) at the later stages.
+
+One way to satisfy the conditions would be to modify the value of $\epsilon$. To be specific, we have values of $\epsilon\scriptstyle{i}$ which corresponds to the $i$-th time step. To ensure that the GLIE is still met, we make sure that:
+
+* $\epsilon\scriptstyle{i}$ $\gt 0$ for all time steps $i$, and
+* $\epsilon\scriptstyle{i}$ decays to zero in the limit as the time step $i$ approaches infinity. This means that: $\lim\nolimits_{x\rightarrow\infin}\epsilon\scriptstyle{i}=0$.
+
+In practice, however, we do not actually try to set and reach the value of 0 for our $\epsilon$. Even though the conveergence will not be guaranteed by mathematics, we can still get better results by either: using a fixed $\epsilon$ value or lettin $\epsilon\scriptstyle{i}$ decay to a small positive value, like 0.1. Why do we do this in practice? Whie the mathematical proof of convergence when we choose to let our $\epsilon$ value decay to 0 is guaranteed, what it does not tell us is _when_ the convergence would happen. Obviously, while it will happen, we do not have time to wait for it to converge. Convergence could happen in the first 1000 steps or in the 1 millionth step. The GLIE only assures us that it will converge. If we follow it and let our $\epsilon$ value equal to 0 then our agent will have a harder time correcting itself once it chooses the greedy choice even if the convergence has not yet been reached. This is the reason why we almost always never let our $\epsilon$ value be equal to 0. For more information regarding this, udacity gave us [this paper](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf) to read.
+
+Now we go on to implement our GLIE MC control for our blackjack agent. Do note that the one below is for first-visit MCM. We can change this to every-visti MCM and the results should still be the same.
+
+![GLIE MC Control Pseudocode](https://d17h27t6h515a5.cloudfront.net/topher/2017/October/59dfe20e_mc-control-glie/mc-control-glie.png)
+
+```python
+# Additonal functions for reuse
+# THis is taken directly from the solution manual.
+def generate_episode_from_Q(env, Q, epsilon, nA):
+    """ generates an episode from following the epsilon-greedy policy """
+    # Taken from: generate_episode_from_limit_stochastic(bj_env) fnction
+    # We need to create a blank policy instead of the earlier policy.
+
+    episode = []
+    state = env.reset()
+    while True:
+        action = np.random.choice(np.arange(nA), p=get_probs(Q[state], epsilon, nA)) \
+                                    if state in Q else env.action_space.sample()
+        next_state, reward, done, info = env.step(action)
+        episode.append((state, action, reward))
+        state = next_state
+        if done:
+            break
+    return episode
+
+def get_probs(Q_s, epsilon, nA):
+    """ obtains the action probabilities corresponding to epsilon-greedy policy """
+    policy_s = np.ones(nA) * epsilon / nA
+    best_a = np.argmax(Q_s)
+    policy_s[best_a] = 1 - epsilon + (epsilon / nA)
+    return policy_s
+
+def update_Q_GLIE(env, episode, Q, N, gamma):
+    """ updates the action-value function estimate using the most recent episode """
+    states, actions, rewards = zip(*episode)
+    # prepare for discounting
+    discounts = np.array([gamma**i for i in range(len(rewards)+1)])
+    for i, state in enumerate(states):
+        old_Q = Q[state][actions[i]] 
+        old_N = N[state][actions[i]]
+        Q[state][actions[i]] = old_Q + (sum(rewards[i:]*discounts[:-(1+i)]) - old_Q)/(old_N+1)
+        N[state][actions[i]] += 1
+    return Q, N
+```
+
+```python
+# TODO: implement our GLIE MC Control for our agent
+def mc_control_GLIE(env, num_episodes, gamma=1.0):
+    nA = env.action_space.n
+    # initialize empty dictionaries of arrays
+    Q = defaultdict(lambda: np.zeros(nA))
+    N = defaultdict(lambda: np.zeros(nA))
+    # loop over episodes
+    for i_episode in range(1, num_episodes+1):
+        # monitor progress
+        if i_episode % 1000 == 0:
+            print("\rEpisode {}/{}.".format(i_episode, num_episodes), end="")
+            sys.stdout.flush()
+        ## TODO: complete the function
+        # set our epsilon value
+        epsilon = 1.0/((i_episode/8000)+1)
+        # NOTE: we can change the divisor from 8000 to a new value so that we can edit out
+        # how much our epsiolon value updates.
+        # Generate the episodes
+        episode = generate_episode_from_Q(env, Q, epsilon, nA)
+        # now we update our action-value function after the episode
+        Q,N = update_Q_GLIE(env, episode, Q, N, gamma)
+    policy = dict((k,np.argmax(v)) for k,v in Q.items())
+    return policy, Q
+```
+One last lesson for the module and MCM will be done. We move now to constant-$\alpha$.
+
+## Day 95: October 9, 2018
+
+So why is there a need for constant-$\alpha$? Recall earlier that we tried implementing an incremental mean where we averaged the values calculated during our evaluation-iteration sequence. There is one minor flaw in using the incremental mean we have been using. Using it will mean that the early values will tend to have more weight on the mean than the later values. By recalling that the new values are the result of policy improvement, it should be clear that we would want the later values to have more weight in the average. Incremental mean will not allow us to do this because the later values would simply be diluted in the mean calculation. This is where the constant-$\alpha$ function steps in. Instead of calculating the mean for _all_ the values as they increment, constant-$\alpha$ will simply calculate the mean for a small window size taken from the recent calculations. Think of it as a _moving average_ where the latest values have more weight than the old ones. This helps us in solving the bias incremental mean would tend to have when it solves for the mean. Instead of taking to account all the values which would include the ones that are potentially flawed during the early stages of the policy, we simply take into account the latest values for computation so that the improved values will have more weight and give better inputs to the policy improvement.
+
+![Constant-alpha evaluation Pseudocode](https://d17h27t6h515a5.cloudfront.net/topher/2017/October/59dff13c_screen-shot-2017-10-12-at-5.47.45-pm/screen-shot-2017-10-12-at-5.47.45-pm.png)
+
+Looking at the psuedocode above, we can see that $\alpha$ is actually a coefficient or proportionality similar to discount rate. The idea behind $\alpha$ is that it will dictate the recency of the values to be considered.  $\alpha$ values would range from 0 to 1 and below is the implications for the values of  $\alpha$.
+
+*  $\alpha = 0$ would mean that the action-value function is never going to get updated. (The agent will never update.)
+*  $\alpha = 1$ would mean that the new value is going to be the new value. (The agent will always update.)
+
+Let us look back on why the following implications exists. First would be when  $\alpha = 0$ the agent will never update. This would be because the difference between the estimate and the last value will never be added to the current value so the update funtion will not exists. For the second one, we simply have to distribute the signs and we can see that $Q(S\scriptstyle_t$, $A\scriptstyle_t)$ will simply cancel out leaving only $G\scriptstyle_t$ which is the current estimated value. So, smaller values of $\alpha$ will encourage the agent to consider a bigger window while a big value for $\alpha$ will make the user consider more recent values. $Q(S\scriptstyle_t$, $A\scriptstyle_t)$ $\leftarrow (1-\alpha)$ $Q(S\scriptstyle_t$, $A\scriptstyle_t)$ $+$ $\alpha G \scriptstyle_t$. The preceeding equation is simply a rewritten version of the original. It just shows how much the agent will trust the most recent value $G\scriptstyle_t$ as opposed to the estimate $Q(S\scriptstyle_t$, $A\scriptstyle_t)$.
+
+There is an __important note__ that was given in the udacity lecture. There is no correct value of $\alpha$. Its setting would be largely dependent on the environment it is going to be used in so the trial-and-error method would still be the way to go. We have to take note that a high $\alpha$ will make the convergence to an optimal policy difficult because the values would be fluctuating due to the constant updates. Setting a low $\alpha$ on the otherhand will slow the convergence considerably.
+
+![Constant-alpha GLIE MC Control Pseudocode](https://d17h27t6h515a5.cloudfront.net/topher/2017/October/59dfe21e_mc-control-constant-a/mc-control-constant-a.png)
+
+The psuedocode above is going to give us the idea of how a constant-$\alpha$ evaluation would work in the MCM GLIE setting. Do note the that the psuedocode before this one is simply to show the evaluation of the $\alpha$. This current one is used to actually implement constant-$\alpha$ for MCM.
+```python
+# NOTE: additional function used to update the Q when using constant alpha
+def update_Q_alpha(env, episode, Q, alpha, gamma):
+    """ updates the action-value function estimate using the most recent episode """
+    states, actions, rewards = zip(*episode)
+    # prepare for discounting
+    discounts = np.array([gamma**i for i in range(len(rewards)+1)])
+    for i, state in enumerate(states):
+        old_Q = Q[state][actions[i]] 
+        Q[state][actions[i]] = old_Q + alpha*(sum(rewards[i:]*discounts[:-(1+i)]) - old_Q)
+    return Q
+```
+
+```python
+# TODO: Implement a constant-alpha GLIE MC control for our Blackjack agent
+def mc_control_alpha(env, num_episodes, alpha, gamma=1.0):
+    nA = env.action_space.n
+    # initialize empty dictionary of arrays
+    Q = defaultdict(lambda: np.zeros(nA))
+    # loop over episodes
+    for i_episode in range(1, num_episodes+1):
+        # monitor progress
+        if i_episode % 1000 == 0:
+            print("\rEpisode {}/{}.".format(i_episode, num_episodes), end="")
+            sys.stdout.flush()
+        ## TODO: complete the function
+        # First set the epsilon value
+        epsilon = 1.0/((i_episode/8000)+1)
+        # NOTE: we can change the divisor from 8000 to a new value so that we can edit out
+        # how much our epsiolon value updates.
+        # NOTE: Still the same epsiode generator
+        episode = generate_episode_from_Q(env, Q, epsilon, nA)
+        # now we update our action-value function after the episode
+        # NOTE: This is the part where the constant-alpha gets applied
+        Q = update_Q_alpha(env, episode, Q, alpha, gamma)
+    policy = dict((k,np.argmax(v)) for k,v in Q.items())
+    return policy, Q
+```
+
+Now, Monte Carlo Methods lesson is completed. I still have to read about how the optimal decision would be reached. Also, there is more to this than just finishing the lesson. I am thinking that the next step here would be to do some OpenAI gym practice. But in the meantime, focus is still on finishing this nanodegree. I have a lot of ground to cover in terms of the lessons needed so I need to focus on those first.
+
+Now that we have finished MCM, lets summarize some learnings first. MCM is used for agents that do not have any idea of the environment and must learn through interacting with it. Unlike DP where the agent should have an idea of all the probabilities and values of state-action pairs in order for it to come up with policy improvement to get closer to the optimal policy, MCM can make these improvements as it goes along the environment. It will constantly update and optimize its policy until it has reached the most optimal one. One pitfall of MCM is that it would likely become greedy in its policy. While this is encouraged at the later stages when it has a good grasp of the envrionment, in its early stages where it still has not done a lot of state-action pairs this behaviour should be discouraged. To resolve this greedy policy issue, we add a variable $\epsilon$ which makes the agent's actions stochastic instead of deterministic leaning towards the greedy. This is done so that the agent will do more exploring in its early stages. To balance out and reintroduce the exploitive behaviour to the agent at the later stages, we want to slowly decrease the value of $\epsilon$ so that it reaches to a point of almost nearly 0 (suggested to be 0.1 or close but never 0). Another problem with basic implementation of MCM is that it will take into account all the previous values it has for its estimates. This presents an issue because, as stated earlier, the early stages of the agent interaction with the environment is still flawed or at least not yet the general average. To fix this, we would want the agent to look more on the latest estimates and use that to decide on the policy since the latest estimates were taken when the agent already has a good sense of what the environment is. To add this to the $Q$ update, we use the constant-$\alpha$ method. The variable $\alpha$ is used to determine how recent, or how far into the past, the agent will consider when it is updating its $Q$ values.
+
+Now we go to __Temporal Difference Methods (TDM)__. In MCM we were limited in updating our estimates only after the end of the episode, thus MCM is only applied to episodic task otherwise the agent will never update. What do we do then when we need a model-free approach to learning for continous task? For example, a self-driving car. If you use MCM on a self-driving car, then it would have to either crash or reach its destination first before the estimates are acheived. This would be problematic and expensive as well because we will most likely run out of cars during our initial stages when the car would tend to explore. Or for example an agent playing Chess, obviously the MCM will not be a good fit to this situation because winning or lossing in Chess is more to do with the actions in between the start and the end of the episode. This is where Temporal Difference Methods come in. From what I understand in TDM, the method will actually try to improve the estimates based on time and not based on the end of the episode. For example, in a self-driving car every time the car is able to navigate from one corner to the other without issues then the model will update its values and learn from what it did during the time it moved from the start of the block to the finish. Or in Chess, the agent will calculate the probability of winning based on the move it did and how the opponent react so that it can adjust its strategy as the game progresses.
+
+Now on to the first Temporal Difference method we will tackle which is _one-step TD_ or _TD(0)_. Suppose we stat at $t=0$ where our state-value would have been 0, since we have no bias yet. Then we let the agent take an action and it has now taken one time interval leading us to be at $t=t+1$. At this point, we would already have a reward $R\scriptstyle_{t+1}$. From here we can already update our estimate value by factoring in the current reward plus the estimate of what the future value would be based on the current one. # NOTE: Not yet sure of this.
+
 ## Resources
 
 [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/)
@@ -1455,11 +1978,11 @@ A tip on _feature matching_ is that for convolution classification we do not use
 
 [Elite Data Science: Becoming a Data Scientist](https://elitedatascience.com/become-a-data-scientist)
 
-## For Projects:
+## For Projects
 
 [Viber Build a Bot](https://github.com/Viber/build-a-bot-with-zero-coding)
 
-[100 Best Github Chatbot](http://meta-guide.com/software-meta-guide/100-best-github-chat-bot)
+[100 Best Github Chatbot](http://meta-g uide.com/software-meta-guide/100-best-github-chat-bot)
 
 [Viber Bot with Python](https://github.com/Viber/viber-bot-python)
 
@@ -1476,3 +1999,5 @@ A tip on _feature matching_ is that for convolution classification we do not use
 [PSEi data](https://www.johndeoresearch.com/data/)
 
 [A post on PSEGet](http://pinoystocktrader.blogspot.com/2010/11/amibroker-charting-software-chart-data.html)
+
+[Carto - Location and Data](https://carto.com/)
