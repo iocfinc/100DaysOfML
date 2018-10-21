@@ -1917,6 +1917,7 @@ There is an __important note__ that was given in the udacity lecture. There is n
 ![Constant-alpha GLIE MC Control Pseudocode](https://d17h27t6h515a5.cloudfront.net/topher/2017/October/59dfe21e_mc-control-constant-a/mc-control-constant-a.png)
 
 The psuedocode above is going to give us the idea of how a constant-$\alpha$ evaluation would work in the MCM GLIE setting. Do note the that the psuedocode before this one is simply to show the evaluation of the $\alpha$. This current one is used to actually implement constant-$\alpha$ for MCM.
+
 ```python
 # NOTE: additional function used to update the Q when using constant alpha
 def update_Q_alpha(env, episode, Q, alpha, gamma):
@@ -1960,9 +1961,623 @@ Now, Monte Carlo Methods lesson is completed. I still have to read about how the
 
 Now that we have finished MCM, lets summarize some learnings first. MCM is used for agents that do not have any idea of the environment and must learn through interacting with it. Unlike DP where the agent should have an idea of all the probabilities and values of state-action pairs in order for it to come up with policy improvement to get closer to the optimal policy, MCM can make these improvements as it goes along the environment. It will constantly update and optimize its policy until it has reached the most optimal one. One pitfall of MCM is that it would likely become greedy in its policy. While this is encouraged at the later stages when it has a good grasp of the envrionment, in its early stages where it still has not done a lot of state-action pairs this behaviour should be discouraged. To resolve this greedy policy issue, we add a variable $\epsilon$ which makes the agent's actions stochastic instead of deterministic leaning towards the greedy. This is done so that the agent will do more exploring in its early stages. To balance out and reintroduce the exploitive behaviour to the agent at the later stages, we want to slowly decrease the value of $\epsilon$ so that it reaches to a point of almost nearly 0 (suggested to be 0.1 or close but never 0). Another problem with basic implementation of MCM is that it will take into account all the previous values it has for its estimates. This presents an issue because, as stated earlier, the early stages of the agent interaction with the environment is still flawed or at least not yet the general average. To fix this, we would want the agent to look more on the latest estimates and use that to decide on the policy since the latest estimates were taken when the agent already has a good sense of what the environment is. To add this to the $Q$ update, we use the constant-$\alpha$ method. The variable $\alpha$ is used to determine how recent, or how far into the past, the agent will consider when it is updating its $Q$ values.
 
+## Day 96: October 10, 2018
+
 Now we go to __Temporal Difference Methods (TDM)__. In MCM we were limited in updating our estimates only after the end of the episode, thus MCM is only applied to episodic task otherwise the agent will never update. What do we do then when we need a model-free approach to learning for continous task? For example, a self-driving car. If you use MCM on a self-driving car, then it would have to either crash or reach its destination first before the estimates are acheived. This would be problematic and expensive as well because we will most likely run out of cars during our initial stages when the car would tend to explore. Or for example an agent playing Chess, obviously the MCM will not be a good fit to this situation because winning or lossing in Chess is more to do with the actions in between the start and the end of the episode. This is where Temporal Difference Methods come in. From what I understand in TDM, the method will actually try to improve the estimates based on time and not based on the end of the episode. For example, in a self-driving car every time the car is able to navigate from one corner to the other without issues then the model will update its values and learn from what it did during the time it moved from the start of the block to the finish. Or in Chess, the agent will calculate the probability of winning based on the move it did and how the opponent react so that it can adjust its strategy as the game progresses.
 
 Now on to the first Temporal Difference method we will tackle which is _one-step TD_ or _TD(0)_. Suppose we stat at $t=0$ where our state-value would have been 0, since we have no bias yet. Then we let the agent take an action and it has now taken one time interval leading us to be at $t=t+1$. At this point, we would already have a reward $R\scriptstyle_{t+1}$. From here we can already update our estimate value by factoring in the current reward plus the estimate of what the future value would be based on the current one. # NOTE: Not yet sure of this.
+
+The first version of TD we are going to use is _one-step TD_ or _TD(0)_. The equation for the update statement would be: $V(S\scriptstyle_t)$ $\leftarrow$ $V(S\scriptstyle_t)$ + $\alpha(R\scriptstyle_{t+1}$ + $\gamma V($$S\scriptstyle_{t+1}$$)$ - $V(S\scriptstyle_t)$$)$. Now, what we would need to be able to do _TD(0)_ is the current state-value: $V(S\scriptstyle_t)$, the reward for the next state: $R\scriptstyle_{t+1}$, the next state-value: $V(S\scriptstyle_{t+1}$$)$. It is not included in the actual update function but since this is an evaluation, you should also know that the action: $A$ taken to reach the next state by following the policy $\pi$ is to be considered as well.
+
+If we dissect the equation, we an get the its components as: the previous estimate: $V(S_t)$, and the __TD Target__: $\alpha(R_{t+1} + \gamma V(S_{t+1})$. If we destribute $\alpha$ we can get a function of: $V(S_t) \leftarrow V(S_t) + \alpha(R_{t+1} + \gamma V(S_{t+1}) - V(S_t))$. Now we can again see the effect of alpha with regards to estimate. Do note that it still looks the same as the estimate function we had earlier for Monte Carlo Methods in the constant-$\alpha$. Some notes on the advantages of TD(0) on MC Prediction. First is that it can update the value function estimate for every time step compared to the MC which can only do it at every end of episode. This makes TD applicable to both episodic and continous taks. Also, in practice, the TD prediction can converge faster than the MC prediction. This is yet to be proven and the Udacity team has gievn us example 6.2 of the book on RL to try on how to compare these things.
+
+We would then implement TD(0), via a mini-project. A brief description of the mini-project environment: it is an OpenAI Gym environment called Cliff Walking. A brief summary of the environment first. The gridworld is of size 4x12 and there are 48 states in total (0-47) that the agent can move through. There are also 4 actions that the agent can do which corresponds to its movement, up, down, left and right. So we have $S^{+}={0,1,...,47}$ and $A = {0,1,2,3}$. We will try to solve this environment by using Temporal Difference method. First we will implement the TD prediction. The The psuedocode of TD(0) prediction is seen below.
+
+![TD Prediction: TD(0) Pseudocode](https://d17h27t6h515a5.cloudfront.net/topher/2017/October/59dfc20c_td-prediction/td-prediction.png)
+
+```note
+The grid below shows the layout of the cliff walker environment.
+
+[[ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11],
+ [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+ [24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35],
+ [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47]]
+
+ initial state = 36
+ terminal state = 47
+ cliff = 37 - 46
+
+Then for the move list:
+UP = 0
+RIGHT = 1
+DOWN  = 2
+LEFT = 3
+```
+
+```python
+# TODO: Implement the TD prediction for the project.
+from collections import defaultdict, deque
+import sys
+
+def td_prediction(env, num_episodes, policy, alpha, gamma=1.0):
+    # initialize empty dictionaries of floats
+    V = defaultdict(float)
+    # loop over episodes
+    for i_episode in range(1, num_episodes+1):
+        # monitor progress
+        if i_episode % 100 == 0:
+            print("\rEpisode {}/{}".format(i_episode, num_episodes), end="")
+            sys.stdout.flush()
+        ## TODO: complete the function
+        # As always, we begin with a reset
+        state = env.reset()
+        # Let's evaluate until it is done (infinite loop)
+        while True:
+            action = policy[state] 
+            # Based on the current state we choose action A based on the policy.
+            next_state,reward,done,info = env.step(action)
+            # We then get the next_state, reward for action, terminal state or not and info from env
+            V[state] = V[state] + alpha*(reward + (gamma*V[next_state])-V[state])
+            # We do the update statement for TD(0)
+            state = next_state
+            # The equivalent of t = t+1
+            # We then loop this until the terminal state in which case done = True
+            if done:
+                break
+    return V
+```
+
+## Day 97: October 11, 2018
+
+Now that we can evaluate the state-value $V(S)$, we can proceed now with the control portion of our method. For TD and specifically for TD(0), we will be using SARSA(0) control method. First of all we need to recall that for Temporal Difference on one step, we will need initially the State, Action and Reward for t. Then from that Reward at t we can get evaluate the value of the State and the Action for t+1. So we can get:
+
+$$S_0 A_0 R_1 S_{1} A_{1} | R_2 S_2 A_2 | R_3 ...$$
+
+Now we can see why its named _sarsa_. Basically, at the start it needs the first SARSA which corresponds to one whole time step from the initial time $t$ to one time-step forward $t+1$. From one whole starting set of $SARSA$ we can then use temporal difference to estimate the next reward $R_2$ for the given we follow the policy and take $A_1$. Then, it is just going to be a cycle of estimating the $R$ then from that follow the policy to choose which $S$ and $A$ to take and so on until we can have an improved policy and eventually reach our optimal policy.
+
+![TD Control: Sarsa(0) Psuedocode](https://d17h27t6h515a5.cloudfront.net/topher/2017/October/59dfd2f8_sarsa/sarsa.png)
+
+```python
+# TODO: We shall first do the pre-requisite functions needed for sarsa
+def update_Q(Q_0,Q_1,reward,alpha,gamma):
+    # NOTE: Sarsa wil make use of Q values (action-values)
+    '''This will return the Q-value computation'''
+    return Q_0 + alpha*(reward + gamma*(Q_1)-Q_0)
+
+def epsilon_greedy(env,Q_s,episode_num,eps=None):
+    # NOTE: We will be using epsilon-greedy as part of our implementation of Sarsa
+    epsilon = 1.0/episode_num
+    if eps is not None:
+        epsilon = eps # When we want to use constant epsilon
+    policy_s = np.ones(env.nA) * epsilon / env.nA
+    policy_s[np.argmax(Q_s)] = 1 - epsilon + (epsilon/env.nA)
+    return policy_s
+```
+
+```python
+# TODO: Implement Sarsa TD control
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+def sarsa(env, num_episodes, alpha, gamma=1.0):
+    # initialize action-value function (empty dictionary of arrays)
+    Q = defaultdict(lambda: np.zeros(env.nA))
+    # initialize performance monitor
+    # loop over episodes
+    plot_every = 100
+    tmp_scores = deque(maxlen=plot_every) # Creating a double ended queue, this is new.
+    scores = deque(maxlen=num_episodes) # Creates a record for the scores
+    # We would need to loop until a the num_episodes is reached
+    # loop over episodes
+    for i_episode in range(1, num_episodes+1):
+        # monitor progress
+        if i_episode % 100 == 0:
+            print("\rEpisode {}/{}".format(i_episode, num_episodes), end="")
+            sys.stdout.flush()
+        score = 0 # set the score to 0
+        state = env.reset() # again, we start the episode with a reset of the environment
+        policy_s = epsilon_greedy(env,Q[state],i_episode)
+        action = np.random.choice(np.arange(env.nA),p=policy_s)
+        # Here the action taken is based on the probability of the action when following policy_s which is an epsilon_greedy policy.
+        for t_step in np.arange(300): # Since we do not want to go into a loop, we need to limit our episodes.
+            next_state,reward,done,info = env.step(action)
+            # We first unpack our values based on the action
+            score += reward
+            # We then update our score with the reward we received from the action
+            if not done:
+                # NOTE: We take another step if we are not yet done. WE evaluate again using epsilon-greedy probabilities
+                policy_s = epsilon_greedy(env,Q[next_state],i_episode)
+                next_action = np.random.choice(np.arange(env.nA),p=policy_s)
+                Q[state][action] = update_Q(Q[state][action],Q[next_state][next_action],reward,alpha,gamma)
+                # The statement above is the updating of the action-value
+                state = next_state
+                action = next_action
+                # After the update, we move one time-step forward so next_state/action becomes current.
+            if done:
+                Q[state][action] = update_Q(Q[state][action],0,reward,alpha,gamma)
+                # We do one last update
+                tmp_scores.append(score) # do final update of the score
+                break
+        if (i_episode % plot_every == 0):
+            scores.append(np.mean(tmp_scores)) # We update our deque scores list with the average of scores
+    plt.plot(np.linspace(0,num_episodes,len(scores),endpoint=False),np.asarray(scores))
+    plt.xlabel('Episode Number')
+    plt.ylabel('Mean reward (over Next %d episodes)' % plot_every)
+    plt.show()
+    print(('Best Average Reward over %d epsidodes' % plot_every),np.max(scores))
+    return Q
+```
+
+The first Control method we have for Temporal Difference would be _sarsa_ where we evaluate the next values $Q(S,A)$ via the $\epsilon$-greedy method similar to the one we used in Monte Carlo Methods. First we initialize all of our values to zero to since we want them to be equiprobable. Then we follow our initial $\epsilon$-greedy policy and choose our first _action_. From this action we can get our initial reward. Then from this we can get an estimated value, our _TD target_, which we will then use to evaluate the succeeding steps. Then similar to the MCM method, this will go on until we eventually reach our optimal policy.
+
+The next Control method we will discuss for TD is the _Sarsamax_ method, which is also called _Q-learning_. The main difference for this is that instead of updating $Q(S_0,A_0)$ after the whole SARSA term has been completed, we actually update it before we take the next action $A_1$ leaving us with $SARS$ then update. Here is how the new equation looks like:
+$$
+S_0 A_0 R_1 S_1 | update\\
+Q(S_0,A_0) \leftarrow Q(S_0,A_0) + \alpha(R_1 + \gamma \max_{\mathclap{a \in A}} Q(S_1,a) - Q(S_0,A_0))
+$$
+
+As we can see, instead of getting evaluating the next action-value based on the policy, we actually use the greedy method by simply choosing the maximum action-value for the state-action pair for state $S_1$. When we compare it to the vanilla _sarsa_ we can say that the vanilla is aproximating the $epsilon$-greedy policy while the _sarsamax_ or _Q-learning_ directly attempts to get the approximate optimal value.
+
+![TD Control: Sarsamax Pseudocode](https://d17h27t6h515a5.cloudfront.net/topher/2017/October/59dff721_sarsamax/sarsamax.png)
+
+```python
+# TODO: Implement Sarsamax evaluation
+def q_learning(env, num_episodes, alpha, gamma=1.0):
+    # initialize empty dictionary of arrays
+    '''
+    This is going to evaluate Q-learning or sarsamax. Instead of following an state-action pair based on the epsilon-greedy policy, we are going to use the greedy policy.
+    '''
+    Q = defaultdict(lambda: np.zeros(env.nA))
+    plot_every = 100
+    tmp_scores = deque(maxlen=plot_every) # Creating a double ended queue, this is new.
+    scores = deque(maxlen=num_episodes) # Creates a record for the scores
+    # loop over episodes
+    for i_episode in range(1, num_episodes+1):
+        # monitor progress
+        if i_episode % 100 == 0:
+            print("\rEpisode {}/{}".format(i_episode, num_episodes), end="")
+            sys.stdout.flush()
+        ## TODO: complete the function
+        score = 0
+        state = env.reset() # again, we start the episode with a reset of the environment
+        while True:
+            policy_s = epsilon_greedy(env,Q[state],i_episode)
+            action = np.random.choice(np.arange(env.nA),p=policy_s)
+            next_state,reward,done,info = env.step(action)
+            score += reward
+            # The same as sarsa, only the update statement is going to change
+            # Instead of a state-action pair from the policy, we will get the highest action-value
+            Q[state][action] = update_Q(Q[state][action],np.max(Q[next_state]),reward,alpha,gamma)
+            state = next_state # We then move one time step, updating the current state.
+            if done:
+                tmp_scores.append(score) # do final update of the score
+                break
+        if (i_episode % plot_every == 0):
+            scores.append(np.mean(tmp_scores)) # We update our deque scores list with the average of scores
+    plt.plot(np.linspace(0,num_episodes,len(scores),endpoint=False),np.asarray(scores))
+    plt.xlabel('Episode Number')
+    plt.ylabel('Mean reward (over Next %d episodes)' % plot_every)
+    plt.show()
+    print(('Best Average Reward over %d epsidodes' % plot_every),np.max(scores))
+    return Q
+```
+
+Then, we move on to the final Control method for TD which is _Expected Sarsa_. Expected sarsa is similar to sarsamax where the only difference is in the update step of the action-values. Instead of finding the maximum action-value for the actions in state $S_{t+1}$, expected sarsa uses the _expected value_ of the next state-action pair and accounts for the probability that the agent will choose the action on the next state. The equation for _expected sarsa_ is seen below. The idea behind the summation is that expected sarsa is actually calculating the action-value not just by following the $\epsilon$-greedy policym or the greedy policy but all the possible actions it has to take. Simply said, its trying to optimize every action step taken based on the policy before taking the step.
+
+$$
+Q(S_t,A_t) \leftarrow Q(S_t,A_t) + \alpha(R_1 + \gamma \sum_{\mathclap{a \in A}}\pi(a|S_{t+1}) Q(S_{t+1},a) - Q(S_t,A_t))
+$$
+
+![TD Control: Expected Sarsa Pseudocode](https://d17h27t6h515a5.cloudfront.net/topher/2017/October/59dffa3d_expected-sarsa/expected-sarsa.png)
+
+```python
+# TODO: Implement Expected Sarsa evaluation
+def expected_sarsa(env, num_episodes, alpha, gamma=1.0):
+    # initialize empty dictionary of arrays
+    Q = defaultdict(lambda: np.zeros(env.nA))
+    plot_every = 100
+    tmp_scores = deque(maxlen=plot_every) # Creating a double ended queue, this is new.
+    scores = deque(maxlen=num_episodes) # Creates a record for the scores
+    # loop over episodes
+    for i_episode in range(1, num_episodes+1):
+        # monitor progress
+        if i_episode % 100 == 0:
+            print("\rEpisode {}/{}".format(i_episode, num_episodes), end="")
+            sys.stdout.flush()
+        ## TODO: complete the function
+        score = 0
+        state = env.reset() # again, we start the episode with a reset of the environment
+        policy_s = epsilon_greedy(env,Q[state],i_episode)
+        # NOTE: For expectedsarsa, we need to get the policy at the initial step. Then we will go over improving the policy as we go at the end of every iteration.
+        while True:
+            action = np.random.choice(np.arange(env.nA),p=policy_s)
+            next_state,reward,done,info = env.step(action)
+            score += reward
+            # The same as sarsa, only the update statement is going to change
+            # Instead of a state-action pair from the policy, we will get the highest action-value
+            policy_s = epsilon_greedy(env,Q[next_state],i_episode, 0.005)
+            Q[state][action] = update_Q(Q[state][action],np.dot(Q[next_state],policy_s),reward,alpha,gamma)
+            # NOTE: We do not need to do np.sum since np.dot will return a scalar value that already accounts for the pairing of probabilities from policy_s and action-value Q.
+            state = next_state # We then move one time step, updating the current state.
+            if done:
+                tmp_scores.append(score) # do final update of the score
+                break
+        if (i_episode % plot_every == 0):
+            scores.append(np.mean(tmp_scores)) # We update our deque scores list with the average of scores
+    plt.plot(np.linspace(0,num_episodes,len(scores),endpoint=False),np.asarray(scores))
+    plt.xlabel('Episode Number')
+    plt.ylabel('Mean reward (over Next %d episodes)' % plot_every)
+    plt.show()
+    print(('Best Average Reward over %d epsidodes' % plot_every),np.max(scores))
+    return Q
+```
+
+Below is the summary of the equations for the Control methods for temporal difference. Arrangement is _sarsa_,_sarsamax_ and _expectedsarsa_. Additional readings on the topic can be found on the textbook sections 6.4 to 6.6.
+
+$$
+Q(S_t,A_t) \leftarrow Q(S_t,A_t) + \alpha(R_1 + \gamma Q(S_{t+1},A_{t+1}) - Q(S_t,A_t))\\
+Q(S_t,A_t) \leftarrow Q(S_t,A_t) + \alpha(R_1 + \gamma \max_{\mathclap{a \in A}} Q(S_1,a) - Q(S_0,A_0))\\
+Q(S_t,A_t) \leftarrow Q(S_t,A_t) + \alpha(R_1 + \gamma \sum_{\mathclap{a \in A}}\pi(a|S_{t+1}) Q(S_{t+1},a) - Q(S_t,A_t))
+$$
+
+The summary would be:
+
+* Sarsa and Expected Sarsa are **on-policy** TD control algorithms. They both follow the same policy which is $\epsilon$-greedy. This policy is then evaluated and improved and used for the selection of the next actions.
+
+* Sarsamax is __off-policy__ method of TD control. It simply follows greedy policy when optimizing the policy.
+
+* There is better online performance for On-policy TD control methods than Off-policy methods.
+
+* Expected Sarsa generally achieves better performance than vanilla Sarsa.
+
+Another optional thing to do would be to come up with this figure during testing.
+
+![Optional Exercise Fig. 6.4 Textbook](https://d17h27t6h515a5.cloudfront.net/topher/2017/December/5a36bc5a_screen-shot-2017-12-17-at-12.49.34-pm/screen-shot-2017-12-17-at-12.49.34-pm.png)
+
+The lesson here is that Q-learning (sarsamax) is getting worse online performance. This is when the agent collects less reward on average per episode but if you look at the path it took it actually is the optimal path. Sarsa on the otherhand acheived great results in terms of average reward per episode but its policy is sub-optimal since it went to the "safe" path which is furthest from the cliff.
+
+## Day 98: October 12, 2018
+
+No new lessons for today. Focus is on completing all the mini-projects.
+
+## Day 99: October 13, 2018
+
+One more day till the 100. Still focused on the mini-projects. I have a few more lessons to go through then I can start on the Quadcopter project.
+
+Okay, So I have just finished the coding for the Teporal difference lessons. Most of it came from the help of the solution manual. Added my take on what is happening based on the cheatsheet for the course.
+
+For now, I am skipping first the OpenAI Taxi Gym mini-project. I am going first to go over the other topics in the module. First up for today: _Deep reinforcement learning_. Change of plan, the internet connection is not cooperating.
+
+## Day 100: October 14, 2018
+
+Okay, so now Deep Reinforcement Learning. But first a review. Most of reinforcement learning problems are framed as Markov Decision Process(MDP). MDPs are typically consisting of states $S$ and actions $A$ along with probabilities $P$, rewards $R$ and a discount factor $\gamma$. $P$ is showing the probability of an state and reward pair of any future time ($t+1$) is given as a function of the state and action at current time $t$, $P(S_{t+1},R_{t+1}|S_t,A_t)$, this characteristic is called the _Markov property_. We normally want to solve for two values: _State Value function $V(S)$_ and _Action Value function $Q(S,A)$_. State value is simply the value of the state considering its location relative to the goal or the reward. Action value is the value of taking an action in the context of completing the goal or getting the reward. __The *Goal* is to find the optimal policy $\pi^*$ which maximizes the total reward received__. Since MDPs are probabilistic in nature, this is where the discount factor $\gamma$ comes in. Since we cannot know for certain what the total reward is going to be, due to probababilistic tendencies, we rephrase the goal as: __To find the optimal policy $\pi^*$ which maximizes the total *expected* reward.__ Reinforcement Learning algorithms can be group into either __Model-based Learning (Dynamic Programming)__ or __Model-free learning__. Model-based learning as the name suggests requires that all the possible values and proabilities are given before any computation can be done. The methods in Model-based learning are _Policy Iteration_ and _Value Iteration_. To approach problems where the probabilities and values are unknown we need to use Model-free learning methods like _Monte Carlo methods_ and _Temporal-difference learning_. Model-free learning will get the approximate values and probabilities by actually interacting with its environment and learning updating the values as it gains more experience.
+
+Deep reinforcement learning is actually the application of deep learning with reinforcement learning concepts. This would mean that most of the actions is going to occur in a _continous space_ instead of a _discrete space_. Table and dictionary mappings that we had for pairs of action and reward or action value for each state-action pairing will not scale well and will not be applicable in continous space. This is one of the first problem we will solve on DRL. We first need to generalize the approach we had for RL into something that scales and applies to continous spaces. But before that we need to actually define what a continous space is. Basically, continous means that it is not confined to a set of integer values [0,1,2,3] but could be values that can take on a _range_ of posibilities [0.0, 1.0]. Why continous and why do we need to have a method for continous values? For one, having discrete representation for tasks in the real world is infeasible. We simply cannot divide the whole world into grids with discrete values. If we do try to divide it into grids then we have to use a scale so small to give a good representation of the world and that would mean that our data for the coordinate system alone would be huge. Actions cannot also be simply using discrete values. The example for this would be a dart throwing robot. The force it applies, the angle of the joints etc. will have a distinct effect on where the dart will land on the board. Having them in discrete values will severly limit which parts of the board we can hit. So the need for continous spaces is actually needed for us to deal with the real physical world.
+
+So for the first part, how do we use concepts in RL for continous spaces? One way would be _discretization_ (ironic isn't it?). By discretization, we are going to do minimal changes, if any, to our existing RL methods. Discretization is simply dividing our continous space, say the room, into grids. This way, our robot could know its position via its grid position. What if there are obstacles in the room? We simply block out any of the grids that have these obstacles, we call these grids with obstacles as _occupancy grid_. If you are familiar with the captchas that require you to select the images with buses or traffic lights etc. that is the same concept, so obviously we are going to have a problem due to the use of the grid. Instead of the robot avoiding the actual outline of the obstacles, it avoids the occupancy grid as a whole. What if our grid sizes our too large, then our robot could think that there might be no path from its current position to a goal due to the occupancy grids blocking the way. One solution for this is to use _non-uniform discretization_. One way of non-uniform discretization implementation is when we use disimilar step sizes in our grid so that we can limit the occupancy grids of obstacles allowing a path for our robot to be available. Another way to use non-uniform discretization is to divide the large occupancy grids into smaller grids and define the occupancy grids from the smaller grids. Do note that non-uniform discretization can lead to computation complications due to disimilar step sizes or due to increased complexity of the grids due to smaller step sizes. This can lead to computation and time penalties when evaluating values for the agent.
+
+Now we go to exercises for creating discrete spaces, this is found on the udacity reinforcement learning repo.
+
+```python
+def create_uniform_grid(low, high, bins=(10, 10)):
+    """Define a uniformly-spaced grid that can be used to discretize a space.
+    Parameters
+    ----------
+    low : array_like
+        Lower bounds for each dimension of the continuous space.
+    high : array_like
+        Upper bounds for each dimension of the continuous space.
+    bins : tuple
+        Number of bins along each corresponding dimension.
+    Returns
+    -------
+    grid : list of array_like
+        A list of arrays containing split points for each dimension.
+    """
+    grid = [np.linspace(low[A],high[A],num = bins[A]+1)[1:-1] for A in range(len(bins))]
+    # First we do a list compression and use linspace to generate the list of points between low and high given the number of splits (bins).
+    print("Format: (low, high)/bins => grid")
+    for low,high,bins,splits in zip(low,high,bins,grid):
+        print("    [{}, {} /{} => {}]".format(low,high,bins,splits))
+    return grid
+
+
+low = [-1.0, -5.0]
+high = [1.0, 5.0]
+create_uniform_grid(low, high)  # [test]
+```
+
+```python
+# TODO: Create the discretize function below
+def discretize(sample, grid):
+    """Discretize a sample as per given grid.
+    Parameters
+    ----------
+    sample : array_like
+        A single sample from the (original) continuous space.
+    grid : list of array_like
+        A list of arrays containing split points for each dimension.
+    Returns
+    -------
+    discretized_sample : array_like
+        A sequence of integers with the same number of dimensions as sample.
+    """
+    discretized_sample = list(int(np.digitize(sample, grid))for sample,grid in zip(sample,grid))
+    return discretized_sample
+
+
+# Test with a simple grid and some samples
+grid = create_uniform_grid([-1.0, -5.0], [1.0, 5.0])
+samples = np.array(
+    [[-1.0 , -5.0],
+     [-0.81, -4.1],
+     [-0.8 , -4.0],
+     [-0.5 ,  0.0],
+     [ 0.2 , -1.9],
+     [ 0.8 ,  4.0],
+     [ 0.81,  4.1],
+     [ 1.0 ,  5.0]])
+discretized_samples = np.array([discretize(sample, grid) for sample in samples])
+print("\nSamples:", repr(samples), sep="\n")
+print("\nDiscretized samples:", repr(discretized_samples), sep="\n")
+```
+
+Okay, so there are more methods discussed in the introduction like Tile coding and approximation. For _tile coding_ it is heuristically splitting tiles into segments of two tiles to to aid in finding out the optimal value for the agent. This is usually done heurestically like for example decided by the contribution of the effects each tile makes to the value and then from there decide which tiles to further explore on. This is done until some maximumm number of splits are done or when an upper limit of episodes are reached. Think of it as the same principle in numerical methods in finding the derivative or integral of a function. We approximate the first one and then split the range into two and then approximate again and find out which part of the new split the approximate value will fall on to until finally we can get the approximate to be in a range so small that it is almost accurately representing the actual value.
+
+Then there is the approximation portion. _This is where it gets interesting_. Obviously, by digitizing a contnous space into a discrete function we will not be able to represent it completely (unless if the function is simple enough). The model we would generate would be limited by the complexity of the function of the model we are trying to approximate. Recall what we did with tile coding where we approximate the location of the actual value by splitting the error and moving our estimates closer to where the actual value is. Does it sound familiar? This is because it is the same concept as _Gradient descent_. In gradient descent, we were trying to get the weights for each input so that we can reduce the error we get at the output and the target. What we got from the gradient descent is a set of weights that when multiplied to each nodes can give us a value that is close (to a certain degree) to our desired value. From these weights, we can actually get the approximate model of the function between the input and the output. In the context of reinforcement learing, we can use the same concept of gradient descent into creating a model for our environment. This will allow us to map the result of our inputs (in this case the action of an agent) to the output (in this case the total reward). So I think what we have just modeled was the approximate optimal policy $\pi^*$. WOW.
+
+Okay, I might still be wrong about which value the approximation is used for, it could be the $V(s)$ or it might be $Q(S,A)$ but it still works out that we will be able to map out the continous space approximate for these values using the gradient descent method. Now that we have cleared that up we move on to what we can do with the information. First we go about Q learning, here are some interesting topics I have found [Stocks Analysis](https://www.kaggle.com/itoeiji/deep-reinforcement-learning-on-stock-data), [Trading](http://www.wildml.com/2018/02/introduction-to-learning-to-trade-with-reinforcement-learning/), [Playing DOOM](https://medium.freecodecamp.org/an-introduction-to-deep-q-learning-lets-play-doom-54d02d8017d8) and this guide on making use of [Deep Q-learning with Neural Networks](https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0). Okay, so I have been reading about the posibilities of Deep Q-learning and it does really make sense to move deeper into this line of course. The ability to use deep neural networks and combine it with the learning ability of Artificial Intelligence makes the endeavour exciting. From playing Doom, to playing Go in AlphaGo, to OpenAI's Dota2 bot, the applications right now are exciting _but_ the implications are really what I want to work on. The fact that I can make a stock trader for this one is aligned with my goal of having a bot do my trades. Also, It does align with my decision to pivot towards AI, automation. I am torn between diving deeper into Deep Reinforcement learning and on using Deep Learning on finding ways to change something in society and I think Deep Reinforcement Learning is going to bring out the best of two worlds.
+
+First we transform into Deep Reinforcement Learning the Monte Carlo Methods. The same is going to be said for Temporal Difference. The same concept is done except that it is adopted for the use in continous space and with the application of the _approximation_ model we discussed earlier to provide a model for the action-values.
+
+Since I am not able to continue watching so now I have a fallback in the book. I have been reading about the summary of Part 1: Tabular Solution Methods. One of the main concepts that was stated was on how the methods like Dynamic programming, Monte Carlo Methods and Temporal Difference are not actually to be treated as distinct sets of method for learning but rather as a collection that is to be used in solving the agent's problem. The other concept is the _Generalized Policy Iteration_ which in essence is the one that seeks to make the learnings into actionable and coherent knowledge. It is in GPI where the two simultaneous processes are outlined. First is in making the value function consistent with the current policy (policy evaluation), and the other process is making the policy greedy with respect ot the current value function (policy improvement). In Generalized Policy Iteration, the two processes are alternating seeking to constantly improve and find the optimal value $v*$ and optimal policy $\pi*$. Almost _ALL_ reinforcement learning methods are well described as GPI, meaning that they let policy-evaluation and policy-improvement intearact, mutually exclusive in terms of internal details but symbiotic in relationship. The GPI will eventually, in theory, end when both the evaluation process and improvement process stabilize. This would mean that there is no longer a change produced in the value function and the policy optimization which can therefore be considered as the optimal values. There is a bit of irony with GPI. The evaluation process and improvement process are actually both competing and at the same time cooperating. They compete in a sense that a change in policy by following greedy would mean that the value estimates would get erroneous and has to change. When the value estimates get changed to evaluate the current policy then the policy would also be pulled into the correct direction, although following greedy again would lead to the evaluation to get erroneous. This goes on and on with both evaluation and optimization pulling the other into the opposite direction but in the end the goal of getting to an optimized function is actually acheived through this process. So we can say that they are also cooperating. Its quite a weird interaction but it works. Both are actually not attempting to directly acheive optimality but by interacting with one another inadvertently arrivess to the optimal solution. Its quite amazing really.
+
+The flow of knowledge in the Deep Q Learning portion is so high. I don't know if its because I am already tired or if there is purely conceptual bombs being dropped on me constantly. I have to rewatch this portion some time, good thing the course materials would be available for 1 whole year.
+
+## Day 101: October 15, 2018
+
+For now we are moving on to implementation of Deep Q learning. [Here](https://keon.io/deep-q-learning/) is one resource to look at for implementation using Keras-python.
+
+Today is an extension of the Standby day so I am obviously still up at 3:00AM. I am having some difficulty digesting the information I just received from Deep Q learning module. So I was taking some time off of the udacity lessons. Went on to LinkedIN and found some post about DSGO which I am looking forward to watching if they ever release a recorded vision of it. While browsing through my feed I saw [this article](https://www.linkedin.com/pulse/engineers-guide-artificial-intelligence-galaxy-kai-fu-lee/) titled: An Engineer's Guide to the Artificial Intelligence Galaxy. It really resonated with me. Although I am not yet inside the field of AI, I am already making the pivot towards it and I am excited but also scared.
+
+Here are some of the points Mr. Kai Fu Lee adviced so as we can have the time of our life in the comming decade: one is:
+
+> Embrace AI, and align your career by betting on its inevitability.
+
+Yes, change led by AI will eventually transform the way we live much like the industrial revolution and the introduction of electricity. Its normal to be fearful of the unknown. By knowing that you are good enough and that you have been trained for the changes you have worked hard to overcome. While it might make you feel uneasy, feeling like you are not in control, like you are not in the direction you wanted, remember to embrace the changes and look at the positive things that you will make of it. We must warmly embrace Ai, and while it may fail at our times just like how things are on the alpha and beta versions, we must, for the sake of its improvement, adapat to it and be prepared to catch its mistakes for some time. Given more time to learn, it will eventually get better and that will lead to the overall good. It just needs data and some ELS and then when its stable, it will just get better.
+
+Here is an idea, what if we link together an AI that will invest in the market and manage money and an AI that will classify loan takers. Has that been done before? I think that would work right? The trader AI will actively create the wealth and the loan-AI will check out who we can loan money to. Imagine if this was done in 4WD, I think if there is data on the rate of default for loans under certain conditions, we can easily underwrite some loans to the needy and deserving. One makes the money, the other distributes it. The money will circulate but it also would accumulate. Responsible money making.
+
+## Day 102: October 16, 2018
+
+For now, reading on the paper of DQN. The premise is that the researchers were able to create a system that was able to play an Atari2600 game with the use of Q-learning algorithms paired with Deep Learning techniques. The result was that the agent was able to learn how to play the games purely based on the interaction with the environment. In the end, the agent was able to play and often surpassed human-level scores for most of the games and improved upon the best linear learner for the games it played. So how did they do it? They actually used deep neural networks as a way to create the model for the agent. The result was that the model for the agent became closer to the approximate and became a vectore instead of a simple linear model. What happened was $V(s)$ became $\hat{V}(s,w)$ where $w$ is the new weight array. So in terms of deep neural nets, the input is the state and the model becomes the weight and the output becomes the actions. The values were corrected based on the return. In Q-learning, there is a function called Q-function, this is used to approximate the reward based on a state. We call this $Q(s,a)$ where $Q$ calculates the expected future value given state $s$ and action $a$. Recall from Deep Neural Networks that our network will need two values for it to be able to get the error and apply gradient descent to adjust the weights. So we need to define the _target_ and _prediction_ fomulas. Both our target and predictions are obviously the Q-functions. For our target it could be as simple as $r+\gamma \max \hat{Q}(s,a)$ and for our prediction its going to be $\hat{Q}(s,a)$. From this we can get the loss as $(r+\gamma \max \hat{Q}(s,a) - \hat{Q}(s,a))^2$.
+
+Had to stop for a bit since there was a critical issue at work. All hands on deck for this one.
+
+Okay, so I have resumed watching the remaining RL methods. I have just finished the _Policy-based methods_ and I am now on _Actor Critic method_. Right now the concepts are a bit hazy for me since there is no examples given yet, it has been mostly math equations and derivations and context on why it works. I have to do some searches for more digestible explanation since the videos is a bit lacking for me.
+
+Now I have completely watched over the entire lessons. The idea now is to make sure that I can take on the project which seems like a capstone to be honest. It is a bit daunting for now but I know I'll get there. I have 12 days to complete the task. So for now, its on to planning first. Right now I have just downloaded a copy of the notebook in the workspace. The expected outcome is not that the quadcopter is to fly flawlessly but for the resulting data to show that the algorithm is actually converging.
+
+So the plan later would be to read up on DDPG, possibly implement it to simple tasks first, OpenAI Taxi possibly. Then from there get the basic gists of it and reframe that to the problem in Quadcopter.
+
+## Day 103: October 17, 2018
+
+[Deep Reinforcement Learning](
+    
+) syllabus. Post of implementation of [Deep Deterministic Policy Gradinents in Tensorflow](https://pemami4911.github.io/blog/2016/08/21/ddpg-rl.html) by Patrick Emami. Using Keras and DDPG [article](https://yanpanlau.github.io/2016/10/11/Torcs-Keras.html).
+
+So from [this article](https://pemami4911.github.io/blog/2016/08/21/ddpg-rl.html) I am learning about what _Deep Deterministic Policy Gradient (DDPG)_ is. Since the inception of DQN, researchers were able to realize that deep learning methods can now be.
+
+![actor-critic architecture from Sutton's book](https://yanpanlau.github.io/img/torcs/sutton-ac.png)
+
+One thing I need to resolve is my AWS account. It would not be possible to deploy and train this on my PC.
+
+```python
+class TaxiEnv(discrete.DiscreteEnv):
+    """
+    The Taxi Problem
+    from "Hierarchical Reinforcement Learning with the MAXQ Value Function Decomposition"
+    by Tom Dietterich
+    Description:
+    There are four designated locations in the grid world indicated by R(ed), B(lue), G(reen), and Y(ellow). When the episode starts, the taxi starts off at a random square and the passenger is at a random location. The taxi drive to the passenger's location, pick up the passenger, drive to the passenger's destination (another one of the four specified locations), and then drop off the passenger. Once the passenger is dropped off, the episode ends.
+    Observations: 
+    There are 500 discrete actions since there are 25 taxi positions, 5 possible locations of the passenger (including the case when the passenger is the taxi), and 4 destination locations. 
+    
+    Actions: 
+    There are 6 discrete deterministic actions:
+    - 0: move south
+    - 1: move north
+    - 2: move east 
+    - 3: move west 
+    - 4: pickup passenger
+    - 5: dropoff passenger
+    
+    Rewards: 
+    There is a reward of -1 for each action and an additional reward of +20 for delievering the passenger. There is a reward of -10 for executing actions "pickup" and "dropoff" illegally.
+    
+    Rendering:
+    - blue: passenger
+    - magenta: destination
+    - yellow: empty taxi
+    - green: full taxi
+    - other letters: locations
+    """
+```
+
+A big change, career wise, has been decided today. Actually, it was never decided today but has started out as an idea some days prior to the start of this pledge. Today I have made clear my intentions. This is why its actually so liberating. Now that it is decided, all the more reason to focus and give this all that I have.
+
+## Day 104: October 18, 2018
+
+Okay, so it is now the 18th. I plan to at get a grasp of Actor Critic implementation and use it on Cart Pole environment in OpenAi Gym just so that I can guage if I am able to make it converge. From there we can start transitioning to the harder part of coding our Actor Critic method for the quadcopter in the project.
+
+For now, I am trying to understand _Deep Q learning_ via this [article](https://medium.freecodecamp.org/improvements-in-deep-q-learning-dueling-double-dqn-prioritized-experience-replay-and-fixed-58b130cc5682) on freecodecamp.
+
+![Architecture DDQN](https://cdn-images-1.medium.com/max/1000/1*FkHqwA2eSGixdS-3dvVoMA.png)
+
+[Actor Critic Method AC2 with sonic hedgehog](https://medium.freecodecamp.org/an-intro-to-advantage-actor-critic-methods-lets-play-sonic-the-hedgehog-86d6240171d). This article is about the theory behind A2C.
+
+I am currently doing DQN and applying it to CartPole env. So far, my model is not converging. I still have a long way to go before the A2C model can be tackled. So much pressure for now. But we have to push on. I am going to try using Kaggle to take this on. Training is progressing slowly on my laptop (no surprises there). Sidenote: They are constantly hammering something on the walls somewhere near my unit, its annoying. :annoyed:
+
+```python
+#NOTE:
+'''
+The source of this is the article explaining DQN: https://keon.io/deep-q-learning/.
+They have a github repo with the compiled codes which we are using as reference to code the Cart Pole DQN agent.
+'''
+
+import gym
+import random
+import numpy as np
+from collections import deque
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.optimizers import Adam
+import h5py
+Episodes = 100 # Maximum training episodes
+#TODO: Define te clss of the DQN agent
+class dqn_agent:
+    def __init__(self, state_size, action_size):
+        self.state_size = state_size # Get the state size: Number of states
+        self.action_size = action_size
+        self.memory = deque(maxlen=2000) # double ended list with maximum elements of 2000
+        self.gamma = 0.618 # Discount rate for future rewards
+        self.epsilon = 1.0 # max exploration coefficient
+        self.epsilon_min = 0.01 # minimum exploration coefficient
+        # self.epsilon_decay = 0.995 # we will use exponential decay for epsilon
+        self.epsilon_decay = 0.02 # we will use exponential decay for epsilon
+        self.learning_rate = 0.001 # For Adam optimizer
+        self.model = self._build_model()
+        self.epsilon_value =[]
+
+    def _build_model(self):
+        # TODO: Create the neural network with keras
+        model = Sequential()
+        model.add(Dense(24, input_dim = self.state_size, activation = 'relu'))
+        model.add(Dense(24, activation = 'relu'))
+        model.add(Dense(self.action_size,activation = 'linear')) # To choose action
+        model.compile(loss='mse', optimizer = Adam(lr = self.learning_rate))
+        return model
+
+    def remember(self, state, action, reward, next_state, done):
+        self.memory.append((state, action, reward, next_state, done))
+        # Creating the memory buffer for replay
+
+    def act(self, state):
+        if np.random.rand() <= self.epsilon:
+            return random.randrange(self.action_size) # choose a random action Explore
+        # Predict the reward value given the state
+        act_values = self.model.predict(state)
+        # Pick the action to take that maximizes reward
+        return np.argmax(act_values[0])
+    # def replay(self, batch_size):
+    #         minibatch = random.sample(self.memory, batch_size)
+    #         for state, action, reward, next_state, done in minibatch:
+    #             target = reward
+    #             if not done:
+    #                 target = (reward + self.gamma *
+    #                         np.amax(self.model.predict(next_state)[0]))
+    #             target_f = self.model.predict(state)
+    #             target_f[0][action] = target
+    #             self.model.fit(state, target_f, epochs=1, verbose=0)
+    #         if self.epsilon > self.epsilon_min:
+    #             self.epsilon *= self.epsilon_decay
+    def replay(self, batch_size):
+        minibatch = random.sample(self.memory,batch_size) # Retrieve a minibatch
+        for state, action, reward, next_state, done in minibatch:
+            target = reward
+            if not done: # evaluate
+                target = (reward + self.gamma*np.amax(self.model.predict(next_state)[0]))
+                target_f = self.model.predict(state)
+                target_f[0][action] = target
+                self.model.fit(state,target_f,epochs=1,verbose = 0)
+            if self.epsilon > self.epsilon_min: #Introduce decay
+                self.epsilon = self.epsilon_min + (1-self.epsilon_min)*np.exp(-self.epsilon_decay*episode)
+                # self.epsilon *= self.epsilon_decay
+            # self.epsilon_value.append((self.epsilon,episode))
+    def load(self, name):
+        self.model.load_weights(name)
+    def save(self,name):
+        self.model.save_weights(name)
+
+if __name__ == "__main__":
+    env = gym.make('CartPole-v1')
+    state_size = env.observation_space.shape[0]
+    action_size = env.action_space.n
+    agent = dqn_agent(state_size,action_size)
+    done = False
+    batch_size = 32
+    reward_list = [] # for plotting rewards later
+
+    for episode in range(Episodes):
+        state = env.reset()
+        state = np.reshape(state,[1,state_size])
+        for time in range(500): # Max steps per episode
+            # env.render()
+            action = agent.act(state)
+            next_state, reward, done, _ = env.step(action) # unpack the interaction
+            reward = reward if not done else -10 # add reward until it falls then subtract 10 to total
+            next_state = np.reshape(next_state,[1,state_size])
+            agent.remember(state,action,reward,next_state,done)
+            state = next_state
+            if done:
+                print('episode: {}/{}, score: {},epsilon:{:.2}'.format(episode,Episodes,time,agent.epsilon))
+                break
+            if len(agent.memory) > batch_size:
+                agent.replay(batch_size, episode)
+        reward_list.append((episode,time,agent.epsilon))
+        # if episode % 100 == 0: # Save every 100 episodes
+        #     agent.save("./save/cartpole-dqn.h5")
+
+#TODO: Create the graph to plot the training progress
+import matplotlib.pyplot as plt
+%matplotlib inline
+def running_mean(x,N):
+    cum_sum = np.cumsum(np.insert(x,0,0))
+    # N here would be the range of the the moving average
+    return (cum_sum[N:] - cum_sum[:-N]/N)
+
+eps, reward, epsilon= np.array(reward_list).T
+moving_ave_reward = running_mean(reward_list,10)
+plt.plot(eps[-len(moving_ave_reward):],moving_ave_reward)
+plt.plt(eps,reward,epsilon color = 'grey', alpha = 0.3 )
+plt.xlabel('Episode')
+plt.ylabel('Reward')
+# NOTE:
+# Expected value is that the moving averge should at least be increasing.
+# Epsilon is supposed to decay.
+```
+
+Okay, so I am now on my first run for the agent. Based on the current results at 250/500, it is still erratic in its steps. I don't think it is learning that well. The scores are still in the 10 to 20 region. I still have to check it but it looks like the actions are still random. I am not sure if I have to edit it out yet, I am currently waiting for the run to finish so that we can gauge how it did but for now that is what I am thinking is wrong. Or possibly the discount factor $\gamma$ is too high at 0.95, I'll change it later to 0.618. This is what is hard with DL networks, its hard to see the effect of hyperparameters to the training.
+
+Its funny, I figured out why it was not convering. I made an error in the indention and it affected the updating of the $\epsilon$ value. That was why the epsilon seemed to get smaller but the training is stuck. It was constantly choosing random actions because it thought that it was still in the exploration phase. :smiling_imp: So for now, it is training and it is converging. I was right when I said that there would be a cap on what the maximum possible reward would be, its 500 but for some reason the results in the reference showed a value of 1000+.
+
+So now, it is converging. For this environment, it seems that a high $\gamma$ is still considered and is still bearable compute wise. Its effects show in the results, the higher the gamma, the better total score would be obviously. The effect is also that it would be able to acheive the higher score faster than a low $\gamma$ value, which I did not know initially. The things we learn when we actually try and experiment is great.
+
+Next up would possibly be an $atari$ game using actor critic.
+
+## Day 105: October 19, 2018
+
+Trying out Kaggle for GYM. If it works, then I have a faster method of training since it would allow the training on a GPU. So we are able to run the gym inside Kaggle. Although it does not have the render option. So we might have to use AWS still. For now, I am slowly getting the grasp of DQN which is basically a part of DDPG. From what I understand, DDPG is simply two DQNs separately training from one another but are merged to provide feedbacks and improve the policy. Think of it as a Generative Adverserial Network of some sort. The actor is the generator, trying to provide the best performance or the best policy. Then you have the critic or the discriminator, its job is to comment on the performance of the actor to make sure that it improves at the same time tries to improve itself on how to give out relevant comments. Together, while they are adverserial, they make the process of policy improvement work.
+
+TODO: Search for simple implementation of Actor-Critic later. Might have to do some downloading again on Sunday. DDQN etc.
+
+## Day 106: October 20, 2018
+
+There will be minimal work done today. I have a seminar to attend to for electronics engineering. Time to check out what would be the changes in the comming years with regards to the ECE in Philippine context.
+
+For today's topic, we first had obviously the keynote: which for some reason was not coherent. It was not really driving home a point that we can act upon or make us thing. He just stated the current state of ECE in the Philippines in some mix and match of examples all diverging instead of convergin to a single point.
+
+We had a speaker for biomedical engineering and how ECE can make a contribution with regards to management and upkeep of our Technological assets in terms of Biomedicine and what the current difficulties he noticed from his conduction of seminars all over the country. Then we had AGILE project management which was related to my current track. Its simply sumarized the points we need to look out for and cover in terms of handling projects, be it personal or professional and in a scalable way. "We are all Project Engineers" he said, pointing out the fact that even in our own personal life we can apply the concepts of AGILE to constantly evolve and deliver. Then we had a talk on the cognizance of Solar Power in the Philippine context. Mostly it was a re-introduction of solar power concepts and PV. The new things learned was actually on the calculations and installations of the panels as well as the computations of ROI for installations.
+
+For the afternoon session it was more tightly packed. Skipped the talk on 5G, 2016 there was already a talk about 5G presented by an IEEE felow in my university. Now, in the local it is still the same thing and its 2018. The same concepts regarding the needed improvements in 5G: A better control solution for the transmitters so that we can save up on power consumption as well as more cell penetrations for densely packed environments to catch up with the demand due to the rise of Data and mobile devices which is projected to increase further. Returned back to the venue and caught the second half of Avionics talk from a PECE that was on the MRO hub. Listened to him discuss on the different panels and electronics inside the aircraft. He also discussed briefly the redundancies in the power sources/supply for the aircraft. Then we had a short break followed by a back-to-back talk on Bonding and Grounding as well as Data Center design. We discussed the different standards and practices with regards to DC design as well as the code for proper cabling and grounding and bonding for design. There was still another talk with regards to FO splicing but that was already way past the program time of 4:15PM. We called it a day by then, it was already 6:00PM. Very clear example of just how "professional" engineers are. No wonder we keep delaying projects, we can't even comply to time budgets and constraints.
+
+## Day 107: October 21, 2018
+
+Reading again A2C and A3C methods. Have to catch up on the implementation of the system for the project. I might have to take some more days off just o finish within time for the project. Found a very useful [repo for A2C in CartPole](https://github.com/rlcode/reinforcement-learning/blob/master/2-cartpole/4-actor-critic/cartpole_a2c.py). It was good in a sense that it gives some comments with regards to the code blocks.
+
+## Day 108: October 22, 2018
+
+Finishing up on the A2C CartPole agent so that we can do the training.
 
 ## Resources
 
@@ -1978,11 +2593,13 @@ Now on to the first Temporal Difference method we will tackle which is _one-step
 
 [Elite Data Science: Becoming a Data Scientist](https://elitedatascience.com/become-a-data-scientist)
 
+[Github repository for Implementations from Barto et.al. Book](https://github.com/ShangtongZhang/reinforcement-learning-an-introduction)
+
 ## For Projects
 
 [Viber Build a Bot](https://github.com/Viber/build-a-bot-with-zero-coding)
 
-[100 Best Github Chatbot](http://meta-g uide.com/software-meta-guide/100-best-github-chat-bot)
+[100 Best Github Chatbot](http://meta-guide.com/software-meta-guide/100-best-github-chat-bot)
 
 [Viber Bot with Python](https://github.com/Viber/viber-bot-python)
 
@@ -2001,3 +2618,5 @@ Now on to the first Temporal Difference method we will tackle which is _one-step
 [A post on PSEGet](http://pinoystocktrader.blogspot.com/2010/11/amibroker-charting-software-chart-data.html)
 
 [Carto - Location and Data](https://carto.com/)
+
+[Stock trader using DDPG](https://towardsdatascience.com/a-blundering-guide-to-making-a-deep-actor-critic-bot-for-stock-trading-c3591f7e29c2)
